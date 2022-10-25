@@ -1,0 +1,778 @@
+2022/10/25 13:23:29 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:23:46 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:24:04 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:26:47 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:26:48 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:26:48 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:26:48 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:27:00 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:27:01 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:27:02 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:27:02 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:28:02 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:28:19 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:29:00 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:29:02 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:29:04 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:33:20 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AssignmentController.php(51): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AssignmentController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:38:10 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:306
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:38:23 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:306
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:42:46 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:306
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:45:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Object ( [_e:CComponent:private] => [_m:CComponent:private] => [select] => * ...' at line 1. The SQL statement executed was: SELECT `user`.`id` AS `t0_c0`, `user`.`username` AS `t0_c1`, `user`.`email` AS `t0_c3`, `user`.`create_at` AS `t0_c5`, `user`.`lastvisit_at` AS `t0_c6`, `user`.`superuser` AS `t0_c7`, `user`.`status` AS `t0_c8`, `profile`.`user_id` AS `t1_c0`, `profile`.`lastname` AS `t1_c1`, `profile`.`firstname` AS `t1_c2` FROM `tbl_users` `user`  LEFT OUTER JOIN `tbl_profiles` `profile` ON (`profile`.`user_id`=`user`.`id`) WHERE (CDbCriteria Object ( [_e:CComponent:private] => [_m:CComponent:private] => [select] => * [distinct] => [condition] => id=:ycp0 [params] => Array ( [:ycp0] => 1 ) [limit] => -1 [offset] => -1 [order] => [group] => [join] => [having] => [with] => [alias] => [together] => [index] => [scopes] => )).
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (295)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php (61)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php (13)
+2022/10/25 13:45:26 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Object ( [_e:CComponent:private] => [_m:CComponent:private] => [select] => * ...' at line 1. The SQL statement executed was: SELECT `user`.`id` AS `t0_c0`, `user`.`username` AS `t0_c1`, `user`.`email` AS `t0_c3`, `user`.`create_at` AS `t0_c5`, `user`.`lastvisit_at` AS `t0_c6`, `user`.`superuser` AS `t0_c7`, `user`.`status` AS `t0_c8`, `profile`.`user_id` AS `t1_c0`, `profile`.`lastname` AS `t1_c1`, `profile`.`firstname` AS `t1_c2` FROM `tbl_users` `user`  LEFT OUTER JOIN `tbl_profiles` `profile` ON (`profile`.`user_id`=`user`.`id`) WHERE (CDbCriteria Object ( [_e:CComponent:private] => [_m:CComponent:private] => [select] => * [distinct] => [condition] => id=:ycp0 [params] => Array ( [:ycp0] => 1 ) [limit] => -1 [offset] => -1 [order] => [group] => [join] => [having] => [with] => [alias] => [together] => [index] => [scopes] => )) in C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveFinder.php(810): CDbCommand->queryAll()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveFinder.php(441): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveFinder.php(68): CJoinElement->find(Object(CDbCriteria))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1364): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1478): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(295): CActiveRecord->findAll('CDbCriteria Obj...')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:50:23 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\auth\CAccessControlFilter.php:183
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:50:52 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\auth\CAccessControlFilter.php:183
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights')
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/rights
+---
+2022/10/25 13:51:22 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails. The SQL statement executed was: drop table if exists AuthItem.
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RInstaller.php (105)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php (90)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php (13)
+2022/10/25 13:51:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "rights/auth". in C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights/auth')
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/rights/auth
+---
+2022/10/25 13:51:36 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "rights/authassignment". in C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights/authassi...')
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/rights/authassignment
+---
+2022/10/25 13:51:57 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:52:36 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:52:36 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:52:37 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:52:37 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:52:37 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:52:37 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:52:37 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:53:03 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:306
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(66): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AuthItemController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights/authitem')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights/authitem
+---
+2022/10/25 13:53:17 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(66): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AuthItemController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights/authitem')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights/authitem
+---
+2022/10/25 13:54:41 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(66): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AuthItemController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights/authitem')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights/authitem
+---
+2022/10/25 13:55:14 [error] [exception.CHttpException.403] CHttpException: There must be at least one superuser! in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php:305
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(66): RAuthorizer->getSuperusers()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): AuthItemController->accessRules()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController('rights/authitem')
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/rights/authitem
+---
+2022/10/25 13:56:45 [error] [php] unserialize(): Error at offset 0 of 8 bytes (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php:170)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php(170): unserialize()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(110): RDbAuthManager->getAuthItems()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(76): RAuthorizer->getAuthItems()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(48): RPermissionDataProvider->setItems()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php(36): RPermissionDataProvider->init()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\AuthItemController.php(79): RPermissionDataProvider->__construct()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\actions\CInlineAction.php(49): AuthItemController->actionPermissions()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(134): AuthItemController->runAction()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): AuthItemController->filterAccessControl()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): AuthItemController->runActionWithFilters()
+#15 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): AuthItemController->run()
+#16 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RDbAuthManager.php (170)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (110)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\dataproviders\RPermissionDataProvider.php (76)
+2022/10/25 13:59:47 [error] [php] include(RController.php): Failed to open stream: No such file or directory (C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php(463): include()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\components\Controller.php(6): autoload()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php(463): include()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\controllers\SiteController.php(3): autoload()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(354): require()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/rights/authitem
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\components\Controller.php (6)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\controllers\SiteController.php (3)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php (13)
+2022/10/25 14:11:33 [error] [php] include(User.php): Failed to open stream: No such file or directory (C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php(463): include()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(397): autoload()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(295): model()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): InstallController->filterAccessControl()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): InstallController->runActionWithFilters()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): InstallController->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=rights
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (295)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php (61)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php (13)
+2022/10/25 14:12:11 [error] [php] Attempt to read property "defaultScope" on null (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\user\models\User.php:131)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(329): User->defaultScope()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1410): User->getDbCriteria()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1352): User->applyScopes()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1478): User->query()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(295): User->findAll()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): InstallController->filterAccessControl()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): InstallController->runActionWithFilters()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): InstallController->run()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=rights
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\user\models\User.php (131)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (295)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php (61)
+2022/10/25 14:12:30 [error] [php] Attempt to read property "defaultScope" on null (C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\user\models\User.php:131)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(329): User->defaultScope()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1410): User->getDbCriteria()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1352): User->applyScopes()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(1478): User->query()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(295): User->findAll()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): InstallController->filterAccessControl()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): InstallController->runActionWithFilters()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): InstallController->run()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=rights
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\user\models\User.php (131)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (295)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php (61)
+2022/10/25 14:13:26 [error] [php] include(User.php): Failed to open stream: No such file or directory (C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php(463): include()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(397): autoload()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(295): model()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): InstallController->filterAccessControl()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): InstallController->runActionWithFilters()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): InstallController->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=rights
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (295)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php (61)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php (13)
+2022/10/25 14:17:55 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trello.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2022/10/25 14:18:22 [error] [php] include(User.php): Failed to open stream: No such file or directory (C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\YiiBase.php(463): include()
+#1 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\db\ar\CActiveRecord.php(397): autoload()
+#2 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php(295): model()
+#3 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php(61): RAuthorizer->getSuperusers()
+#4 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(1147): InstallController->accessRules()
+#5 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CInlineFilter.php(58): InstallController->filterAccessControl()
+#6 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CController.php(265): InstallController->runActionWithFilters()
+#9 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(282): InstallController->run()
+#10 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\xolmu\OneDrive\Рабочий стол\yii1\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=rights
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\components\RAuthorizer.php (295)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\protected\modules\rights\controllers\InstallController.php (61)
+in C:\Users\xolmu\OneDrive\Рабочий стол\trello-demo\index.php (13)

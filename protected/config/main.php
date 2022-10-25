@@ -15,27 +15,37 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
-		'application.components.*',
+    	'application.components.*',
+    	'application.modules.rights.*',//add this
+    	'application.modules.rights.components.*',//add this
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		/*
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'Enter Your Password Here',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		*/
+
+		'rights' => array(//add this
+			'install' => true,//add this
+		),//add this
 	),
 
 	// application components
 	'components'=>array(
 
 		'user'=>array(
+			'class' => 'RWebUser',
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+		),
+
+		'authManager' => array(
+			'class'=>'RDbAuthManager',
+			'defaultRoles'=>array('Guest'),
 		),
 
 		// uncomment the following to enable URLs in path-format
