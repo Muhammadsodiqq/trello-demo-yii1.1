@@ -4,9 +4,9 @@
 return array(
 	// 'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/trello.db',
 	// uncomment the following lines to use a MySQL database
-	'connectionString' => 'mysql:host=localhost;dbname=trello',
+	'connectionString' => 'pgsql:host=localhost;port=5432;dbname=trello',
 	'emulatePrepare' => true,
-	'username' => 'root',
-	'password' => '',
+	'username' => 'postgres',
+	'password' => '1234',
 	'charset' => 'utf8',
 );

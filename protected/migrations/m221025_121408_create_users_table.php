@@ -8,8 +8,7 @@ class m221025_121408_create_users_table extends CDbMigration
             'id' => 'pk',
             'username' =>'string NOT NULL unique',
             'password' =>'string NOT NULL',
-            'created_at' => 'datetime',
-			'updated_at' => 'datetime'
+            'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
 		));
 	}
 

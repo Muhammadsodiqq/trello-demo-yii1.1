@@ -16,8 +16,6 @@ return array(
 	'import'=>array(
 		'application.models.*',
     	'application.components.*',
-    	'application.modules.rights.*',//add this
-    	'application.modules.rights.components.*',//add this
 	),
 
 	'modules'=>array(
@@ -38,27 +36,19 @@ return array(
 	'components'=>array(
 
 		'user'=>array(
-			'class' => 'RWebUser',
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
 
-		'authManager' => array(
-			'class'=>'RDbAuthManager',
-			'defaultRoles'=>array('Guest'),
-		),
-
 		// uncomment the following to enable URLs in path-format
-		/*
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+		'urlManager' => array(
+			'urlFormat' => 'path',
+			'showScriptName' => false, 
+			'rules' => array(
+				'search/<action:\w+>/'=>'dashboard/search/<action>',
+				'view/<action:\w+>/'=>'dashboard/view/<action>',
 			),
 		),
-		*/
 
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),

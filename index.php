@@ -1,8 +1,8 @@
 <?php
-
-$link = pg_connect("host=localhost port=5432 dbname=test user=postgres password=1234");
-print_r($link);
-exit;
+// $link = pg_connect("host=localhost port=5432 dbname=frfr user=postgres password=1234");
+// var_dump($link);
+// echo 1; die;
+// exit;
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../yii1/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
