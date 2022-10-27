@@ -22,58 +22,58 @@ class m221026_090420_create_card_tags_table extends CDbMigration
             'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
 		));
 
-		$this->createIndex(
-            'idx-card_tags-card_id',
-            'card_tags',
-            'card_id'
-        );
+		// $this->createIndex(
+        //     'idx-card_tags-card_id',
+        //     'card_tags',
+        //     'card_id'
+        // );
 
-		$this->addForeignKey(
-            'fk-card_tags-card_id',
-            'card_tags',
-            'card_id',
-            'cards',
-            'id',
-            'CASCADE'
-        );
+		// $this->addForeignKey(
+        //     'fk-card_tags-card_id',
+        //     'card_tags',
+        //     'card_id',
+        //     'cards',
+        //     'id',
+        //     'CASCADE'
+        // );
 
-		$this->createIndex(
-            'idx-card_tags-tag_id',
-            'card_tags',
-            'tag_id'
-        );
+		// $this->createIndex(
+        //     'idx-card_tags-tag_id',
+        //     'card_tags',
+        //     'tag_id'
+        // );
 
-		$this->addForeignKey(
-            'fk-card_tags-tag_id',
-            'card_tags',
-            'tag_id',
-            'tags',
-            'id',
-            'CASCADE'
-        );
+		// $this->addForeignKey(
+        //     'fk-card_tags-tag_id',
+        //     'card_tags',
+        //     'tag_id',
+        //     'tags',
+        //     'id',
+        //     'CASCADE'
+        // );
 	}
 
 	public function safeDown()
 	{
-		$this->dropForeignKey(
-            'fk-card_tags-card_id',
-            'card_tags'
-        );
+		// $this->dropForeignKey(
+        //     'fk-card_tags-card_id',
+        //     'card_tags'
+        // );
 
-		$this->dropIndex(
-            'idx-card_tags-card_id',
-            'card_tags'
-        );
+		// $this->dropIndex(
+        //     'idx-card_tags-card_id',
+        //     'card_tags'
+        // );
 
-		$this->dropForeignKey(
-            'fk-card_tags-tag_id',
-            'card_tags'
-        );
+		// $this->dropForeignKey(
+        //     'fk-card_tags-tag_id',
+        //     'card_tags'
+        // );
 
-		$this->dropIndex(
-            'idx-card_tags-tag_id',
-            'card_tags'
-        );
+		// $this->dropIndex(
+        //     'idx-card_tags-tag_id',
+        //     'card_tags'
+        // );
 
 		$this->dropTable('card_tags');
 	}

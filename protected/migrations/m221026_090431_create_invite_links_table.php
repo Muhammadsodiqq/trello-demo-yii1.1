@@ -23,33 +23,33 @@ class m221026_090431_create_invite_links_table extends CDbMigration
             'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
 		));
 
-		$this->createIndex(
-            'idx-invite_links-board_id',
-            'invite_links',
-            'board_id'
-        );
+		// $this->createIndex(
+        //     'idx-invite_links-board_id',
+        //     'invite_links',
+        //     'board_id'
+        // );
 
-		$this->addForeignKey(
-            'fk-invite_links-board_id',
-            'invite_links',
-            'board_id',
-            'boards',
-            'id',
-            'CASCADE'
-        );
+		// $this->addForeignKey(
+        //     'fk-invite_links-board_id',
+        //     'invite_links',
+        //     'board_id',
+        //     'boards',
+        //     'id',
+        //     'CASCADE'
+        // );
 	}
 
 	public function safeDown()
 	{
-		$this->dropForeignKey(
-            'fk-invite_links-board_id',
-            'invite_links'
-        );
+		// $this->dropForeignKey(
+        //     'fk-invite_links-board_id',
+        //     'invite_links'
+        // );
 
-		$this->dropIndex(
-            'idx-invite_links-board_id',
-            'invite_links'
-        );
+		// $this->dropIndex(
+        //     'idx-invite_links-board_id',
+        //     'invite_links'
+        // );
 
 		$this->dropTable('invite_links');
 	}

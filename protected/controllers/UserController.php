@@ -38,6 +38,8 @@ class UserController extends Controller
 	}
 	*/
 
+
+
 	public function actionSignup()
 	{
 		$model = new Users;

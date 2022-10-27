@@ -11,35 +11,35 @@ class m221026_090312_create_board_members_table extends CDbMigration
             'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
 		));
 
-		$this->createIndex(
-            'idx-board_members-user_id',
-            'board_members',
-            'user_id'
-        );
+		// $this->createIndex(
+        //     'idx-board_members-user_id',
+        //     'board_members',
+        //     'user_id'
+        // );
 
-		$this->addForeignKey(
-            'fk-board_members-board_id',
-            'board_members',
-            'board_id',
-            'boards',
-            'id',
-            'CASCADE'
-        );
+		// $this->addForeignKey(
+        //     'fk-board_members-board_id',
+        //     'board_members',
+        //     'board_id',
+        //     'boards',
+        //     'id',
+        //     'CASCADE'
+        // );
 
-		$this->createIndex(
-            'idx-board_members-board_id',
-            'board_members',
-            'board_id'
-        );
+		// $this->createIndex(
+        //     'idx-board_members-board_id',
+        //     'board_members',
+        //     'board_id'
+        // );
 
-		$this->addForeignKey(
-            'fk-board_members-user_id',
-            'board_members',
-            'user_id',
-            'users',
-            'id',
-            'CASCADE'
-        );
+		// $this->addForeignKey(
+        //     'fk-board_members-user_id',
+        //     'board_members',
+        //     'user_id',
+        //     'users',
+        //     'id',
+        //     'CASCADE'
+        // );
 	}
 
 	public function safeDown()

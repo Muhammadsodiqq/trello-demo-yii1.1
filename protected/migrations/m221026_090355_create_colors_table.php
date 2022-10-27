@@ -24,5 +24,7 @@ class m221026_090355_create_colors_table extends CDbMigration
 
 	public function safeDown()
 	{
+		$this->dropTable('colors');
+
 	}
 }

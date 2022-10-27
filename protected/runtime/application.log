@@ -1833,3 +1833,1283 @@ REQUEST_URI=/user/login
 2022/10/26 18:29:19 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
 in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (78)
 in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 09:57:46 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
+in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (78)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 10:57:11 [error] [exception.Error] Error: Object of class CWebUser could not be converted to string in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:8
+Stack trace:
+#0 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#1 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#3 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#4 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#5 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#8 {main}
+REQUEST_URI=/board
+---
+2022/10/27 10:59:14 [error] [exception.CException] CException: Property "CWebUser.identity" is not defined. in /var/www/yii1/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CWebUser.php(146): CComponent->__get()
+#1 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(7): CWebUser->__get()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#5 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#6 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#7 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#10 {main}
+REQUEST_URI=/board
+---
+2022/10/27 10:59:31 [error] [exception.CException] CException: Property "CWebUser.username" is not defined. in /var/www/yii1/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CWebUser.php(146): CComponent->__get()
+#1 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(7): CWebUser->__get()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#5 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#6 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#7 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#10 {main}
+REQUEST_URI=/board
+---
+2022/10/27 10:59:48 [error] [exception.CException] CException: Property "CWebUser._id" is not defined. in /var/www/yii1/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CWebUser.php(146): CComponent->__get()
+#1 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(7): CWebUser->__get()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#5 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#6 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#7 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#10 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:01:48 [error] [exception.CException] CException: Property "CDbCriteria.usert_id" is not defined. in /var/www/yii1/framework/base/CComponent.php:173
+Stack trace:
+#0 /var/www/yii1/framework/db/schema/CDbCriteria.php(160): CComponent->__set()
+#1 /var/www/yii1/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct()
+#2 /var/www/yii1/framework/db/ar/CActiveRecord.php(1477): CDbCommandBuilder->createCriteria()
+#3 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(9): CActiveRecord->findAll()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#7 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#8 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#9 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:02:05 [error] [exception.CException] CException: Property "CDbCriteria.0" is not defined. in /var/www/yii1/framework/base/CComponent.php:173
+Stack trace:
+#0 /var/www/yii1/framework/db/schema/CDbCriteria.php(160): CComponent->__set()
+#1 /var/www/yii1/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct()
+#2 /var/www/yii1/framework/db/ar/CActiveRecord.php(1477): CDbCommandBuilder->createCriteria()
+#3 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(9): CActiveRecord->findAll()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#7 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#8 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#9 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:02:21 [error] [exception.TypeError] TypeError: count(): Argument #1 ($value) must be of type Countable|array, int given in /var/www/yii1/framework/db/schema/CDbCommandBuilder.php:555
+Stack trace:
+#0 /var/www/yii1/framework/db/schema/CDbCommandBuilder.php(100): CDbCommandBuilder->bindValues()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(1358): CDbCommandBuilder->createFindCommand()
+#2 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#3 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(9): CActiveRecord->findAll()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#7 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#8 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#9 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:03:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id:user_id.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (9)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:03:45 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id:user_id in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(1359): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#3 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(9): CActiveRecord->findAll()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#7 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#8 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#9 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:03:46 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id:user_id.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (9)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:03:46 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id:user_id in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(1359): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#3 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(9): CActiveRecord->findAll()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#7 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#8 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#9 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:03:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id:user_id.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (9)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:03:47 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id:user_id in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(1359): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#3 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(9): CActiveRecord->findAll()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#7 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#8 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#9 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:04:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "usert_id" does not exist
+LINE 1: SELECT * FROM "boards" "t" WHERE usert_id=1
+                                         ^
+HINT:  Perhaps you meant to reference the column "t.user_id".. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id=:user_id.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (9)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:04:08 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "usert_id" does not exist
+LINE 1: SELECT * FROM "boards" "t" WHERE usert_id=1
+                                         ^
+HINT:  Perhaps you meant to reference the column "t.user_id".. The SQL statement executed was: SELECT * FROM "boards" "t" WHERE usert_id=:user_id in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(1359): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#3 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(9): CActiveRecord->findAll()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#7 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#8 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#9 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:28:50 [error] [exception.CException] CException: CDbCommand and its behaviors do not have a method or closure named "all". in /var/www/yii1/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(41): CComponent->__call()
+#1 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#2 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#4 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#5 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#6 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#8 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#9 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:33:40 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: SELECT id,name,user_id FROM boards b JOIN board_members bm O...
+               ^. The SQL statement executed was: SELECT id,name,user_id FROM boards b JOIN board_members bm ON b.id = bm.board_id WHERE b.user_id = :user_id.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (42)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:33:40 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: SELECT id,name,user_id FROM boards b JOIN board_members bm O...
+               ^. The SQL statement executed was: SELECT id,name,user_id FROM boards b JOIN board_members bm ON b.id = bm.board_id WHERE b.user_id = :user_id in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(42): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#5 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#6 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#7 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#10 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:34:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: SELECT id,name,user_id FROM boards b JOIN board_members bm O...
+               ^. The SQL statement executed was: SELECT id,name,user_id FROM boards b JOIN board_members bm ON b.id = bm.board_id WHERE b.user_id =:user_id.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (42)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:34:15 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: SELECT id,name,user_id FROM boards b JOIN board_members bm O...
+               ^. The SQL statement executed was: SELECT id,name,user_id FROM boards b JOIN board_members bm ON b.id = bm.board_id WHERE b.user_id =:user_id in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(42): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#5 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#6 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#7 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#10 {main}
+REQUEST_URI=/board
+---
+2022/10/27 11:36:42 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
+in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (80)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:40:09 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "WHERE"
+LINE 5:             WHERE b.user_id =1
+                    ^. The SQL statement executed was: SELECT b.id,b.name,b.user_id 
+												FROM boards b 
+												JOIN board_members bm
+												-- ON b.id = bm.board_id AND bm.user_id = :user_id
+												WHERE b.user_id =:user_id.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (46)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 11:40:09 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "WHERE"
+LINE 5:             WHERE b.user_id =1
+                    ^. The SQL statement executed was: SELECT b.id,b.name,b.user_id 
+												FROM boards b 
+												JOIN board_members bm
+												-- ON b.id = bm.board_id AND bm.user_id = :user_id
+												WHERE b.user_id =:user_id in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(46): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#5 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#6 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#7 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#10 {main}
+REQUEST_URI=/board
+---
+2022/10/27 12:06:04 [error] [exception.ArgumentCountError] ArgumentCountError: in_array() expects at least 2 arguments, 1 given in /var/www/trello-demo-yii1.1/protected/views/board/index.php:11
+Stack trace:
+#0 /var/www/trello-demo-yii1.1/protected/views/board/index.php(11): in_array()
+#1 /var/www/yii1/framework/web/CBaseController.php(126): require('...')
+#2 /var/www/yii1/framework/web/CBaseController.php(95): CBaseController->renderInternal()
+#3 /var/www/yii1/framework/web/CController.php(872): CBaseController->renderFile()
+#4 /var/www/yii1/framework/web/CController.php(785): CController->renderPartial()
+#5 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(47): CController->render()
+#6 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#7 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#8 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#9 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#10 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#11 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#13 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#14 {main}
+REQUEST_URI=/board
+---
+2022/10/27 12:06:56 [error] [php] Array to string conversion (/var/www/trello-demo-yii1.1/protected/views/board/index.php:11)
+Stack trace:
+#0 /var/www/yii1/framework/web/CBaseController.php(126): require()
+#1 /var/www/yii1/framework/web/CBaseController.php(95): BoardController->renderInternal()
+#2 /var/www/yii1/framework/web/CController.php(872): BoardController->renderFile()
+#3 /var/www/yii1/framework/web/CController.php(785): BoardController->renderPartial()
+#4 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(47): BoardController->render()
+#5 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#6 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/yii1/framework/web/CController.php(286): BoardController->runAction()
+#8 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#9 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#10 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#12 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board
+in /var/www/trello-demo-yii1.1/protected/views/board/index.php (11)
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (47)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 12:19:13 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "1". in /var/www/yii1/framework/web/CController.php:486
+Stack trace:
+#0 /var/www/yii1/framework/web/CController.php(270): CController->missingAction()
+#1 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#2 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#3 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/board/1
+HTTP_REFERER=http://trello_demo.loc/board
+---
+2022/10/27 12:21:23 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in /var/www/yii1/framework/web/CController.php:337
+Stack trace:
+#0 /var/www/yii1/framework/web/CController.php(309): CController->invalidActionParams()
+#1 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#2 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#3 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#4 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#7 {main}
+REQUEST_URI=/board/view/1
+HTTP_REFERER=http://trello_demo.loc/board
+---
+2022/10/27 12:22:11 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "1". in /var/www/yii1/framework/web/CController.php:486
+Stack trace:
+#0 /var/www/yii1/framework/web/CController.php(270): CController->missingAction()
+#1 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#2 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#3 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/board/1
+---
+2022/10/27 12:27:12 [error] [php] Undefined variable $user_boards (/var/www/trello-demo-yii1.1/protected/views/board/index.php:11)
+Stack trace:
+#0 /var/www/yii1/framework/web/CBaseController.php(126): require()
+#1 /var/www/yii1/framework/web/CBaseController.php(95): BoardController->renderInternal()
+#2 /var/www/yii1/framework/web/CController.php(872): BoardController->renderFile()
+#3 /var/www/yii1/framework/web/CController.php(785): BoardController->renderPartial()
+#4 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(59): BoardController->render()
+#5 unknown(0): BoardController->actionView()
+#6 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#7 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#8 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /var/www/yii1/framework/web/CController.php(286): BoardController->runAction()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/views/board/index.php (11)
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (59)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 13:24:03 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "login". in /var/www/yii1/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#1 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/login
+---
+2022/10/27 13:24:23 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "luser/ogin". in /var/www/yii1/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#1 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/luser/ogin
+---
+2022/10/27 13:24:35 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "ogin". in /var/www/yii1/framework/web/CController.php:486
+Stack trace:
+#0 /var/www/yii1/framework/web/CController.php(270): CController->missingAction()
+#1 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#2 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#3 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/user/ogin
+---
+2022/10/27 14:23:08 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
+in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (80)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 14:23:32 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "boards_pkey"
+DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "boards" ("name", "user_id") VALUES (:yp0, :yp1).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (48)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 14:23:32 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "boards_pkey"
+DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "boards" ("name", "user_id") VALUES (:yp0, :yp1) in /var/www/yii1/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yii1/framework/db/ar/CActiveRecord.php(1083): CDbCommand->execute()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(811): CActiveRecord->insert()
+#2 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(48): CActiveRecord->save()
+#3 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#4 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#6 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#7 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#8 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#11 {main}
+REQUEST_URI=/board
+HTTP_REFERER=http://trello_demo.loc/board
+---
+2022/10/27 14:27:14 [error] [exception.Error] Error: Access to undeclared static property Yii::$app in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:49
+Stack trace:
+#0 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#1 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#3 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#4 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#5 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#8 {main}
+REQUEST_URI=/board
+HTTP_REFERER=http://trello_demo.loc/board
+---
+2022/10/27 14:27:36 [error] [exception.CException] CException: Property "CHttpRequest.referrer" is not defined. in /var/www/yii1/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(49): CComponent->__get()
+#1 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#2 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/yii1/framework/web/CController.php(286): CController->runAction()
+#4 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#5 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#6 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#8 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#9 {main}
+REQUEST_URI=/board
+HTTP_REFERER=http://trello_demo.loc/board
+---
+2022/10/27 14:57:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation "colors" already exists. The SQL statement executed was: CREATE TABLE "colors" (
+	"id" serial NOT NULL PRIMARY KEY,
+	"name" character varying (255) NOT NULL,
+	"created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+).
+2022/10/27 15:10:04 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
+in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (80)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:10:27 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in /var/www/yii1/framework/web/auth/CAccessControlFilter.php:183
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#1 /var/www/yii1/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#2 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#3 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#7 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#8 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#11 {main}
+REQUEST_URI=/board
+---
+2022/10/27 15:11:21 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in /var/www/yii1/framework/web/auth/CAccessControlFilter.php:183
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#1 /var/www/yii1/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#2 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#3 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#7 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#8 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#11 {main}
+REQUEST_URI=/board
+---
+2022/10/27 15:12:03 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in /var/www/yii1/framework/web/auth/CAccessControlFilter.php:183
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#1 /var/www/yii1/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#2 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#3 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#7 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#8 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#11 {main}
+REQUEST_URI=/board
+---
+2022/10/27 15:12:27 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in /var/www/yii1/framework/web/auth/CAccessControlFilter.php:183
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#1 /var/www/yii1/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#2 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#3 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#7 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#8 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#11 {main}
+REQUEST_URI=/board
+---
+2022/10/27 15:13:36 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
+in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (80)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:13:57 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
+in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (80)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:14:03 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in /var/www/yii1/framework/web/auth/CAccessControlFilter.php:183
+Stack trace:
+#0 /var/www/yii1/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#1 /var/www/yii1/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#2 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#3 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#7 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#8 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#11 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board
+---
+2022/10/27 15:44:18 [error] [php] Undefined array key "name" (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:55)
+Stack trace:
+#0 /var/www/yii1/framework/web/actions/CInlineAction.php(49): BoardController->actionIndex()
+#1 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#3 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#5 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#6 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#7 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#9 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#10 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#12 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (55)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:46:03 [error] [php] Undefined variable $colummodelns (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:77)
+Stack trace:
+#0 unknown(0): BoardController->actionView()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (77)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:49:26 [error] [php] Undefined variable $column (/var/www/trello-demo-yii1.1/protected/views/board/view.php:117)
+Stack trace:
+#0 /var/www/yii1/framework/web/CBaseController.php(126): require()
+#1 /var/www/yii1/framework/web/CBaseController.php(95): BoardController->renderInternal()
+#2 /var/www/yii1/framework/web/CController.php(872): BoardController->renderFile()
+#3 /var/www/yii1/framework/web/CController.php(785): BoardController->renderPartial()
+#4 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(85): BoardController->render()
+#5 unknown(0): BoardController->actionView()
+#6 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#7 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#8 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#10 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#12 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#13 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#14 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#15 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#16 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#17 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#18 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#19 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/views/board/view.php (117)
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (85)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:50:22 [error] [php] include(Cards.php): Failed to open stream: No such file or directory (/var/www/yii1/framework/YiiBase.php:463)
+Stack trace:
+#0 /var/www/yii1/framework/YiiBase.php(463): include()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(397): autoload()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(182): model()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(231): CActiveFinder->getModel()
+#4 /var/www/yii1/framework/db/ar/CActiveFinder.php(300): CActiveFinder->buildJoinTree()
+#5 /var/www/yii1/framework/db/ar/CActiveFinder.php(48): CActiveFinder->buildJoinTree()
+#6 /var/www/yii1/framework/db/ar/CActiveRecord.php(915): CActiveFinder->__construct()
+#7 /var/www/yii1/framework/db/ar/CActiveRecord.php(1363): Columns->getActiveFinder()
+#8 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): Columns->query()
+#9 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(71): Columns->findAll()
+#10 unknown(0): BoardController->actionView()
+#11 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#12 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#13 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#15 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#17 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#18 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#19 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#21 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#22 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#24 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (71)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:51:27 [error] [php] Attempt to read property "cards" on array (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:72)
+Stack trace:
+#0 unknown(0): BoardController->actionView()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (72)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:51:37 [error] [php] Undefined array key "cards" (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:72)
+Stack trace:
+#0 unknown(0): BoardController->actionView()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (72)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:53:54 [error] [php] Undefined array key "cards" (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:72)
+Stack trace:
+#0 unknown(0): BoardController->actionView()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (72)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:53:59 [error] [php] Undefined array key "cards" (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:72)
+Stack trace:
+#0 unknown(0): BoardController->actionView()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (72)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:56:30 [error] [php] Undefined array key 0 (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:72)
+Stack trace:
+#0 unknown(0): BoardController->actionView()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (72)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:56:46 [error] [php] Undefined array key 0 (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:72)
+Stack trace:
+#0 unknown(0): BoardController->actionView()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/view/id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (72)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:57:02 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (78)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:57:02 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1) in /var/www/yii1/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yii1/framework/db/ar/CActiveRecord.php(1083): CDbCommand->execute()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(811): CActiveRecord->insert()
+#2 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(78): CActiveRecord->save()
+#3 [internal function]: BoardController->actionView()
+#4 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#5 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#6 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#8 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#10 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#12 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#14 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#15 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#17 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#18 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 15:57:08 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (78)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:57:08 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1) in /var/www/yii1/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yii1/framework/db/ar/CActiveRecord.php(1083): CDbCommand->execute()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(811): CActiveRecord->insert()
+#2 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(78): CActiveRecord->save()
+#3 [internal function]: BoardController->actionView()
+#4 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#5 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#6 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#8 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#10 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#12 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#14 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#15 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#17 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#18 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 15:57:09 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (78)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:57:09 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1) in /var/www/yii1/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yii1/framework/db/ar/CActiveRecord.php(1083): CDbCommand->execute()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(811): CActiveRecord->insert()
+#2 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(78): CActiveRecord->save()
+#3 [internal function]: BoardController->actionView()
+#4 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#5 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#6 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#8 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#10 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#12 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#14 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#15 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#17 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#18 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 15:58:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (78)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:58:01 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1) in /var/www/yii1/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yii1/framework/db/ar/CActiveRecord.php(1083): CDbCommand->execute()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(811): CActiveRecord->insert()
+#2 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(78): CActiveRecord->save()
+#3 [internal function]: BoardController->actionView()
+#4 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#5 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#6 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#8 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#10 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#12 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#14 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#15 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#17 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#18 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 15:58:35 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (78)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 15:58:35 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23503]: Foreign key violation: 7 ERROR:  insert or update on table "columns" violates foreign key constraint "fk-columns-board_id"
+DETAIL:  Key (board_id)=(1) is not present in table "boards".. The SQL statement executed was: INSERT INTO "columns" ("title", "board_id") VALUES (:yp0, :yp1) in /var/www/yii1/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yii1/framework/db/ar/CActiveRecord.php(1083): CDbCommand->execute()
+#1 /var/www/yii1/framework/db/ar/CActiveRecord.php(811): CActiveRecord->insert()
+#2 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(78): CActiveRecord->save()
+#3 [internal function]: BoardController->actionView()
+#4 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#5 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#6 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#8 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#10 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#12 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#14 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#15 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#17 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#18 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:20:12 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ... ("cards"."column_id"="t"."id") WHERE (board_id = :board_id)...
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id ASC.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (74)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:20:12 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ... ("cards"."column_id"="t"."id") WHERE (board_id = :board_id)...
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id ASC in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(74): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:20:36 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ..."cards"."column_id"="t"."id") WHERE (t.board_id = :board_id)...
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (t.board_id = :board_id) ORDER BY t.id ASC.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (74)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:20:36 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ..."cards"."column_id"="t"."id") WHERE (t.board_id = :board_id)...
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (t.board_id = :board_id) ORDER BY t.id ASC in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(74): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:21:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ..."cards"."column_id"="t"."id") WHERE (t.board_id = :board_id)
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (t.board_id = :board_id).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (73)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:21:04 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ..."cards"."column_id"="t"."id") WHERE (t.board_id = :board_id)
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (t.board_id = :board_id) in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(73): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:21:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ... ("cards"."column_id"="t"."id") WHERE (board_id = :board_id)
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id).
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (73)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:21:10 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ":"
+LINE 1: ... ("cards"."column_id"="t"."id") WHERE (board_id = :board_id)
+                                                             ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(73): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:22:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (71)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:22:47 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(71): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:23:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (71)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:23:08 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(71): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:23:09 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (71)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:23:09 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(71): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:24:17 [error] [exception.CException] CException: Columns and its behaviors do not have a method or closure named "orderBy". in /var/www/yii1/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/yii1/framework/db/ar/CActiveRecord.php(229): CComponent->__call()
+#1 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(71): CActiveRecord->__call()
+#2 [internal function]: BoardController->actionView()
+#3 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#4 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#5 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#7 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#9 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#10 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#11 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#12 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#13 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#14 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#16 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:25:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (71)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:25:14 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ...column_id"="t"."id") WHERE (board_id = '1') ORDER BY id DESC
+                                                                ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id DESC in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(71): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 16:25:46 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ..."column_id"="t"."id") WHERE (board_id = '1') ORDER BY id ASC
+                                                                 ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id ASC.
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (71)
+in /var/www/trello-demo-yii1.1/index.php (16)
+2022/10/27 16:25:46 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 1: ..."column_id"="t"."id") WHERE (board_id = '1') ORDER BY id ASC
+                                                                 ^. The SQL statement executed was: SELECT "t"."id" AS "t0_c0", "t"."title" AS "t0_c1", "t"."board_id" AS "t0_c2", "t"."created_at" AS "t0_c3", "cards"."id" AS "t1_c0", "cards"."title" AS "t1_c1", "cards"."description" AS "t1_c2", "cards"."deadline" AS "t1_c3", "cards"."column_id" AS "t1_c4", "cards"."user_id" AS "t1_c5", "cards"."created_at" AS "t1_c6" FROM "columns" "t"  LEFT OUTER JOIN "cards" "cards" ON ("cards"."column_id"="t"."id") WHERE (board_id = :board_id) ORDER BY id ASC in /var/www/yii1/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii1/framework/db/CDbCommand.php(396): CDbCommand->queryInternal()
+#1 /var/www/yii1/framework/db/ar/CActiveFinder.php(810): CDbCommand->queryAll()
+#2 /var/www/yii1/framework/db/ar/CActiveFinder.php(441): CJoinElement->runQuery()
+#3 /var/www/yii1/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#4 /var/www/yii1/framework/db/ar/CActiveRecord.php(1364): CActiveFinder->query()
+#5 /var/www/yii1/framework/db/ar/CActiveRecord.php(1478): CActiveRecord->query()
+#6 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(71): CActiveRecord->findAll()
+#7 [internal function]: BoardController->actionView()
+#8 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#9 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#12 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#14 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#15 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#16 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#18 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#19 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
+2022/10/27 17:32:55 [error] [exception.Error] Error: Object of class CClientScript could not be converted to string in /var/www/trello-demo-yii1.1/protected/views/board/view.php:5
+Stack trace:
+#0 /var/www/yii1/framework/web/CBaseController.php(126): require()
+#1 /var/www/yii1/framework/web/CBaseController.php(95): CBaseController->renderInternal()
+#2 /var/www/yii1/framework/web/CController.php(872): CBaseController->renderFile()
+#3 /var/www/yii1/framework/web/CController.php(785): CController->renderPartial()
+#4 /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php(85): CController->render()
+#5 [internal function]: BoardController->actionView()
+#6 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#7 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal()
+#8 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /var/www/yii1/framework/web/filters/CFilterChain.php(134): CController->runAction()
+#10 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /var/www/yii1/framework/web/CController.php(1148): CFilter->filter()
+#12 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl()
+#13 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#14 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#15 /var/www/yii1/framework/web/CController.php(265): CController->runActionWithFilters()
+#16 /var/www/yii1/framework/web/CWebApplication.php(282): CController->run()
+#17 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#18 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#19 /var/www/trello-demo-yii1.1/index.php(16): CApplication->run()
+#20 {main}
+REQUEST_URI=/board/view/id/1
+HTTP_REFERER=http://trello_demo.loc/board/view/id/1
+---
