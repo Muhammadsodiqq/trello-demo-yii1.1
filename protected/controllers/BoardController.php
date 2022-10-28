@@ -101,19 +101,29 @@ class BoardController extends Controller
 		]);
 	}
 
-	public function actionUpdateCardColumn($column_id){
-		if(isset($_POST['card_id'])) {
-			return json_encode(['id' => $_POST['card_id']]);
-			print_r($_POST['Card']);die;
-			$model = new Cards;
-			$model->title = $_POST['Card']['title'];
-			$model->description = $_POST['Card']['description'];
-			$model->column_id = $_POST['Card']['column_id'];
-			if($model->save()){
-				return $this->redirect('/board/view/id/'.$id);
-			}
+	public function actionUpdateCardColumn($column_id)
+	{
+		$card_id =  Yii::app()->request->getPost('card_id');
+		header('Content-type: application/json');
+		echo CJSON::encode($card_id);
+
+
+		
+		// if(isset($_POST['card_id'])) {
+		// 	print_r($_POST['Card']);die;
+		// 	$model = new Cards;
+		// 	$model->title = $_POST['Card']['title'];
+		// 	$model->description = $_POST['Card']['description'];
+		// 	$model->column_id = $_POST['Card']['column_id'];
+		// 	if($model->save()){
+		// 		return $this->redirect('/board/view/id/'.$id);
+		// 	}
 			
-		}
-		echo("tru");die;
+		// }
+		// $data =  Yii::app()->request->getPost('card_id');
+		// $this->parseData($data);die;
+
+		// var_dump($data);
+		// echo("tru");die;
 	}
 }

@@ -81,7 +81,6 @@ $cs->registerCssFile($baseUrl . '/css/board/main.css');
 	</div>
 </div>
 
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/board.js"></script>
 
 <script>
 	let btn = document.querySelectorAll("#columnbtn")
@@ -103,3 +102,4 @@ $cs->registerCssFile($baseUrl . '/css/board/main.css');
 		})
 	})
 </script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/board.js"></script>
