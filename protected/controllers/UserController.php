@@ -42,7 +42,7 @@ class UserController extends Controller
 
 	public function actionSignup()
 	{
-		$model = new Users;
+		$model = new Users('create');
 
 		if (isset($_POST['Users'])) {
 

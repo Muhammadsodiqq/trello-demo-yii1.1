@@ -36,13 +36,13 @@ class Cards extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, description, column_id, user_id', 'required'),
-			array('column_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('title, description, column_id', 'required'),
+			array('column_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('deadline, created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, description, deadline, column_id, user_id, created_at', 'safe', 'on'=>'search'),
+			array('id, title, description, deadline, column_id, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +55,6 @@ class Cards extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'cardMembers' => array(self::HAS_MANY, 'CardMembers', 'card_id'),
-			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
 			'column' => array(self::BELONGS_TO, 'Columns', 'column_id'),
 			'cardTags' => array(self::HAS_MANY, 'CardTags', 'card_id'),
 		);
@@ -72,7 +71,6 @@ class Cards extends CActiveRecord
 			'description' => 'Description',
 			'deadline' => 'Deadline',
 			'column_id' => 'Column',
-			'user_id' => 'User',
 			'created_at' => 'Created At',
 		);
 	}
@@ -100,7 +98,6 @@ class Cards extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('deadline',$this->deadline,true);
 		$criteria->compare('column_id',$this->column_id);
-		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('created_at',$this->created_at,true);
 
 		return new CActiveDataProvider($this, array(

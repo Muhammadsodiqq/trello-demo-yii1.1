@@ -41,6 +41,7 @@ class Users extends CActiveRecord
 			array('username, password', 'required'),
 			array('username, password', 'length', 'max'=>255),
 			array('created_at', 'safe'),
+			array('username','unique','on' => 'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, username, password, created_at', 'safe', 'on'=>'search'),
@@ -129,11 +130,10 @@ class Users extends CActiveRecord
 	{
 		if($this->_identity === null)
 		{
-
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			$this->_identity->authenticate();
 		}
-
+		
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
@@ -141,6 +141,6 @@ class Users extends CActiveRecord
 			return true;
 		}
 		else
-			return false;
+		return false;
 	}
 }

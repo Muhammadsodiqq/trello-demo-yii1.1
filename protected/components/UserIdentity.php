@@ -21,6 +21,7 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		$record = Users::model()->findByAttributes(array('username'=>$this->username));
+		// var_dump($record);die;
 		if($record===null){
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		}
@@ -29,7 +30,6 @@ class UserIdentity extends CUserIdentity
 		}
 		else
 		{
-
 			$this->_id = $record->id;
 			$this->username = $record->username;
 			$this->errorCode=self::ERROR_NONE;

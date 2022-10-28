@@ -8,26 +8,17 @@ $cs->registerCssFile($baseUrl . '/css/board/main.css');
 
 <div class="board">
 
-
-	<div class="taskColumn" id="todo">
-		<div class="colHdr" dragabble="true"><strong>TO DO</strong></div>
-		<div class="taskDiv" draggable="true" id="dragtarget1"><span><strong>Task 1</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget2"><span><strong>Task 2</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget3"><span><strong>Task 3</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget4"><span><strong>Task 4</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget5"><span><strong>Task 5</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget6"><span><strong>Task 6</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget7"><span><strong>Task 7</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget8"><span><strong>Task 8</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget9"><span><strong>Task 9</strong></span></div>
-		<div class="taskDiv" draggable="true" id="dragtarget10"><span><strong>Task 10</strong></span></div>
-	</div>
 	<?php foreach ($columns as $column) { ?>
-		<div class="taskColumn" id="<?= $column->title ?>">
+		<div class="taskColumn" id="<?= $column->title ?>" column_id="<?= $column->id ?>">
 			<button type="button" class="w-100 mb-1  btn btn-success ml-auto" id="columnbtn" column_id="<?= $column->id ?>" data-toggle="modal" data-target="#myModal1">
 				card qo'shish
 			</button>
 			<div class="colHdr"><strong><?= $column->title ?></strong></div>
+
+			<?php foreach ($column->cards as $card) { ?>
+				<div class="taskDiv" data-toggle="modal" data-target="#myModal" draggable="true" id="<?= $card->id ?>"><span><strong><?= $card->column_id ?></strong></span></div>
+			<?php } ?>
+
 		</div>
 	<?php } ?>
 	<button type="button" class="taskColumnAdd btn btn-info ml-auto" data-toggle="modal" data-target="#myModal">
@@ -99,6 +90,16 @@ $cs->registerCssFile($baseUrl . '/css/board/main.css');
 		e.addEventListener('click', function(e) {
 			let btn = document.querySelector("#inp-hidden")
 			btn.value = e.target.getAttribute('column_id')
+		})
+	})
+
+	let btn1 = document.querySelectorAll(".taskDiv")
+
+	btn1.forEach((e) => {
+		e.addEventListener('click', function(e) {
+			console.log(e.target);
+			// let btn = document.querySelector("#inp-hidden")
+			// btn.value = e.target.getAttribute('column_id')
 		})
 	})
 </script>

@@ -30,8 +30,12 @@ class BoardController extends Controller
 		// var_dump(Yii::app()->user->isGuest);die;
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create','update'),
+				'actions'=>array('index','view','create','update','UpdateCardColumn'),
 				'users'=>array('@'),
+			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('UpdateCardColumn'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -69,7 +73,7 @@ class BoardController extends Controller
 	{
 		
 		$columns = Columns::model()->byid()->with('cards')->findAll('board_id = :board_id', [':board_id' => $id]);
-		// print_r($columns[0]);die;
+		// print_r($columns[0]['cards'][0]);die;
 		
 		if(isset($_POST['Board'])) {
 			$model = new Columns;
@@ -81,10 +85,11 @@ class BoardController extends Controller
 		}
 
 		if(isset($_POST['Card'])) {
-			print_r($_POST['Card']);die;
-			$model = new Columns;
-			$model->title = $_POST['Board']['title'];
-			$model->board_id = $id;
+			// print_r($_POST['Card']);die;
+			$model = new Cards;
+			$model->title = $_POST['Card']['title'];
+			$model->description = $_POST['Card']['description'];
+			$model->column_id = $_POST['Card']['column_id'];
 			if($model->save()){
 				return $this->redirect('/board/view/id/'.$id);
 			}
@@ -94,5 +99,21 @@ class BoardController extends Controller
 			'columns' => $columns,
 			'id' => $id
 		]);
+	}
+
+	public function actionUpdateCardColumn($column_id){
+		if(isset($_POST['card_id'])) {
+			return json_encode(['id' => $_POST['card_id']]);
+			print_r($_POST['Card']);die;
+			$model = new Cards;
+			$model->title = $_POST['Card']['title'];
+			$model->description = $_POST['Card']['description'];
+			$model->column_id = $_POST['Card']['column_id'];
+			if($model->save()){
+				return $this->redirect('/board/view/id/'.$id);
+			}
+			
+		}
+		echo("tru");die;
 	}
 }
