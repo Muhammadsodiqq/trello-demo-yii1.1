@@ -4821,3 +4821,23 @@ Stack trace:
 REQUEST_URI=/board/UpdateCardColumn/column_id/1
 HTTP_REFERER=http://trello_demo.loc/board/view/id/1
 ---
+2022/10/28 18:31:15 [error] [php] Undefined variable $id (/var/www/trello-demo-yii1.1/protected/controllers/BoardController.php:116)
+Stack trace:
+#0 unknown(0): BoardController->actionUpdateCardColumn()
+#1 /var/www/yii1/framework/web/actions/CAction.php(115): ReflectionMethod->invokeArgs()
+#2 /var/www/yii1/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/yii1/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/yii1/framework/web/filters/CFilterChain.php(134): BoardController->runAction()
+#5 /var/www/yii1/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii1/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#7 /var/www/yii1/framework/web/filters/CInlineFilter.php(58): BoardController->filterAccessControl()
+#8 /var/www/yii1/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#9 /var/www/yii1/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii1/framework/web/CController.php(265): BoardController->runActionWithFilters()
+#11 /var/www/yii1/framework/web/CWebApplication.php(282): BoardController->run()
+#12 /var/www/yii1/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/yii1/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/trello-demo-yii1.1/index.php(16): CWebApplication->run()
+REQUEST_URI=/board/UpdateCardColumn/column_id/1
+in /var/www/trello-demo-yii1.1/protected/controllers/BoardController.php (116)
+in /var/www/trello-demo-yii1.1/index.php (16)

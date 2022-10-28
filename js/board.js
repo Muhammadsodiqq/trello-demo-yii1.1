@@ -2,28 +2,28 @@
 	event.dataTransfer.setData("Text", event.target.id);
     // console.log(2);
 };
-
+let arr = {};
 async function dragEnter(event) {
 	event.preventDefault();
+	// let column_id;
+	let card_id;
 	if (event.target.className == "taskColumn") {
 		event.target.style.border = "1px dotted rgb(255,0,0)";
+		// console.log(event.target.getAttribute("column_id"));
+		arr.column_id = event.target.getAttribute("column_id")
 	} else if (event.target.className == "taskDiv") {
 		event.target.style.backgroundColor = "grey";
+		// card_id = event.target.id
+		arr.card_id = event.target.id
+
+		// if(column_id && card_id){
+		// 	console.log(column_id);
+		// }
+
 	}
 
-	let res = await fetch('/board/UpdateCardColumn/column_id/1',{
-		method:"POST",
-		body:JSON.stringify({
-			card_id:2
-		}),
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
-		  },
-	})
-	res = await res.json()
-    console.log( "ddd" +res);
-    console.log(event.target);
+
+
 };
 
 function dragLeave(event) {
@@ -57,13 +57,28 @@ function drop(event) {
 		var actionSpan = document.createElement('div');
 		// actionSpan.innerHTML = 'Moved to: ' + event.target.id + ' ' + actionDateTime;
 		document.getElementById(data).appendChild(actionSpan);
+		// console.log(event.target);
+		// console.log(arr);
+		$.ajax({
+			url : '/board/UpdateCardColumn/column_id/1',
+			type : 'POST',
+			data : arr,
+			dataType:'json',
+			success : function(data) {              
+				console.log('Data: '+data);
+			},
+			error : function(request,error){
+				console.log("Request: "+JSON.stringify(request));
+			}
+		});
+
 
 		event.target.style.border = "";
 	} else if (event.target.className == "taskDiv") {
 		var data = event.dataTransfer.getData("Text");
-		swapTasks(document.getElementById(data), document.getElementById(event.target.id));
+		// swapTasks(document.getElementById(data), document.getElementById(event.target.id));
 		var curDateTime = new Date();
-		// console.log(event.target);
+		console.log(event.target);
 
 		// console.log("Task: " + data + " " + curDateTime.getHours() + ":" + curDateTime.getMinutes() + ":" + curDateTime.getSeconds());
 		event.target.style.border = "";
