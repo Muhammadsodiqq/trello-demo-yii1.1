@@ -1,24 +1,17 @@
   function dragStart(event) {
 	event.dataTransfer.setData("Text", event.target.id);
-    // console.log(2);
 };
 let arr = {};
 async function dragEnter(event) {
 	event.preventDefault();
-	// let column_id;
 	let card_id;
 	if (event.target.className == "taskColumn") {
 		event.target.style.border = "1px dotted rgb(255,0,0)";
-		// console.log(event.target.getAttribute("column_id"));
 		arr.column_id = event.target.getAttribute("column_id")
 	} else if (event.target.className == "taskDiv") {
 		event.target.style.backgroundColor = "grey";
-		// card_id = event.target.id
 		arr.card_id = event.target.id
 
-		// if(column_id && card_id){
-		// 	console.log(column_id);
-		// }
 
 	}
 
@@ -30,13 +23,11 @@ function dragLeave(event) {
 	event.preventDefault();
 	event.target.style.border = "";
 	event.target.style.backgroundColor = "";
-    // console.log(event.target);
 
 };
 
 function dragOver(event) {
 	event.preventDefault();
-	// console.log(event.target);
 };
 
 // function swapTasks(node1, node2) {

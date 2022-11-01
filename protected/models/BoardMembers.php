@@ -1,26 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "card_tags".
+ * This is the model class for table "board_members".
  *
- * The followings are the available columns in table 'card_tags':
+ * The followings are the available columns in table 'board_members':
  * @property integer $id
- * @property integer $card_id
- * @property integer $tag_id
+ * @property integer $user_id
+ * @property integer $board_id
  * @property string $created_at
- *
- * The followings are the available model relations:
- * @property Cards $card
- * @property Tags $tag
  */
-class CardTags extends CActiveRecord
+class BoardMembers extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'card_tags';
+		return 'board_members';
 	}
 
 	/**
@@ -31,12 +27,12 @@ class CardTags extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('card_id, tag_id', 'required'),
-			array('card_id, tag_id', 'numerical', 'integerOnly'=>true),
+			array('user_id, board_id', 'required'),
+			array('user_id, board_id', 'numerical', 'integerOnly'=>true),
 			array('created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, card_id, tag_id, created_at', 'safe', 'on'=>'search'),
+			array('id, user_id, board_id, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,8 +44,8 @@ class CardTags extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'card' => array(self::BELONGS_TO, 'Cards', 'card_id'),
-			'tag' => array(self::BELONGS_TO, 'Tags', 'tag_id', 'with' => "color"),	
+			'board' => array(self::BELONGS_TO, 'Boards', 'board_id'),
+			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
 		);
 	}
 
@@ -60,8 +56,8 @@ class CardTags extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'card_id' => 'Card',
-			'tag_id' => 'Tag',
+			'user_id' => 'User',
+			'board_id' => 'Board',
 			'created_at' => 'Created At',
 		);
 	}
@@ -85,8 +81,8 @@ class CardTags extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('card_id',$this->card_id);
-		$criteria->compare('tag_id',$this->tag_id);
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('board_id',$this->board_id);
 		$criteria->compare('created_at',$this->created_at,true);
 
 		return new CActiveDataProvider($this, array(
@@ -98,7 +94,7 @@ class CardTags extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return CardTags the static model class
+	 * @return BoardMembers the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

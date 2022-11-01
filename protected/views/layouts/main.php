@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -31,12 +32,11 @@
 
             <div class="collapse navbar-collapse justify-content-around" id="navbarsExample02">
                 <ul class="navbar-nav mr-auto">
+                <?php if(!Yii::app()->user->isGuest){?>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" style="color: rgba(255,255,255,.5);" href="/board">Board</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+                <?php }?>
                 </ul>
                 <?php if(!Yii::app()->user->isGuest){?>
                 <form>
@@ -75,7 +75,6 @@
         </div><!-- footer -->
 
     </div><!-- page -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- JS code -->

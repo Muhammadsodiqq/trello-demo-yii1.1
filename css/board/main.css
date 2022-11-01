@@ -52,6 +52,11 @@
 		margin-top: -50px;
 	}
 
+	.member_list{
+		position:absolute;
+		margin-right: -500px;
+		/* display: inline-block; */
+	}
 	.taskDiv {
 		background-color: white;
 		margin: 2px 6px 4px 6px;

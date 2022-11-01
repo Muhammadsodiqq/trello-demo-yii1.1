@@ -49,12 +49,15 @@ class UserController extends Controller
 			$model->attributes = $_POST['Users'];
 
 			if ($model->save()) {
-				$model["password"]= $_POST['Users']['password'];
-				$this->_identity = new UserIdentity($model->username,$model->password);
+				$model["password"] = $_POST['Users']['password'];
+				$this->_identity = new UserIdentity($model->username, $model->password);
 
-				if($this->_identity->authenticate()){
+				if ($this->_identity->authenticate()) {
 					Yii::app()->user->login($this->_identity);
-				 	$this->redirect("/");
+					if (@$_COOKIE["tokenLink"]) {
+						$this->redirect('/inviteLink/invite/token/' . $_COOKIE["tokenLink"]);
+					}
+					$this->redirect("/");
 				}
 			}
 		}
@@ -65,31 +68,32 @@ class UserController extends Controller
 
 	public function actionLogin()
 	{
-		$model=new Users;
 
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
+		$model = new Users;
+
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-
-		// collect user input data
-		if(isset($_POST['Users']))
-		{
+		if (isset($_POST['Users'])) {
 			$model->attributes = $_POST['Users'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
+			if ($model->validate() && $model->login()) {
+
+				if (@$_COOKIE["tokenLink"]) {
+
+					$this->redirect('/inviteLink/invite/token/' . $_COOKIE["tokenLink"]);
+				}
 				$this->redirect(Yii::app()->user->returnUrl);
+			}
 		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('login', array('model' => $model));
 	}
 
-	
+
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
+		unset(Yii::app()->request->cookies['tokenLink']);
 		$this->redirect(Yii::app()->homeUrl);
 	}
 }

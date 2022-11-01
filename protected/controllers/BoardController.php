@@ -30,7 +30,7 @@ class BoardController extends Controller
 		// var_dump(Yii::app()->user->isGuest);die;
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create','update','UpdateCardColumn'),
+				'actions'=>array('index','view','create','update','UpdateCardColumn','delete'),
 				'users'=>array('@'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
@@ -53,28 +53,56 @@ class BoardController extends Controller
 												LEFT JOIN boards b
 												ON b.id = bm.board_id
 												WHERE bm.user_id =:user_id')->bindValue(':user_id', $id)->queryAll();
-		
-		if(isset($_POST['Board'])) {
-			$model = new Boards;
-			$model->name = $_POST['Board']['name'];
-			$model->user_id = $id;
-			// print_r($model->user_id);die;
-			if($model->save()){
-				return $this->redirect('/board');
-			}
-		}
+
 		$this->render('index', [
 			'user_boards' => $user_boards,
 			'member_boards' => $member_boards,
 		]);
 	}
 
+	public function actionCreate()
+	{
+		try
+		{
+			$this->checkAjax();
+			if(!$this->checkAjax()) {
+				// throw new Exception('Invalid request');
+				return;
+			}
+	
+			// var_dump($_POST);die;
+	
+			$model = new Boards;
+			$model->name = @$_POST['name'];
+			$model->user_id = @$_POST['id'];
+			if(!$model->save()){
+				throw new Exception	(CActiveForm::validate($model)) ;
+			}
+			echo CJSON::encode([
+				'ok' => true,
+				"data" => $model
+			]);
+
+		}catch(Exception $error)
+		{
+
+			$httpVersion = Yii::app()->request->getHttpVersion();
+			header("HTTP/$httpVersion 400");
+
+			echo CJSON::encode([
+				'ok' => false,
+				"msg" => $error->getMessage() 
+			]);
+
+		}
+	}
+
 	public function actionView($id)
 	{
-		
+
 		$columns = Columns::model()->byid()->with('cards')->findAll('board_id = :board_id', [':board_id' => $id]);
-		// print_r($columns[0]['cards'][0]);die;
-		
+		$board_members = BoardMembers::model()->with('user')->findAll('board_id = :board_id', [':board_id' => $id]);
+		$BoardAdmin = Boards::model()->with('user')->findByPk($id)->user->username;
 		if(isset($_POST['Board'])) {
 			$model = new Columns;
 			$model->title = $_POST['Board']['title'];
@@ -97,7 +125,9 @@ class BoardController extends Controller
 
 		$this->render('view', [
 			'columns' => $columns,
-			'id' => $id
+			'id' => $id,
+			'board_members' => $board_members,
+			'BoardAdmin' => $BoardAdmin
 		]);
 	}
 
@@ -116,5 +146,24 @@ class BoardController extends Controller
 			echo CJSON::encode(["ok" => true]);
 		}
 
+	}
+
+	public function actionDeleteBoard($id)
+	{
+		$model=Boards::model()->findByPk($id)->delete();
+
+		$this->redirect(Yii::app()->request->urlReferrer);
+
+	}
+
+	public function checkAjax(){
+		if(!Yii::app()->request->isAjaxRequest || !isset($_POST['id'])) {
+			throw new Exception('Invalid request');
+		}
+		if(!Users::model()->findByPk($_POST['id'])){
+			throw new Exception('Invalid user');
+		}
+
+		return true;
 	}
 }
