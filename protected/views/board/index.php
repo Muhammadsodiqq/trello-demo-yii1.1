@@ -47,7 +47,6 @@ $this->breadcrumbs = array(
 	</div>
 </div>
 
-
 <script>
 	$("#submit").click(function(e) {
 		e.preventDefault();

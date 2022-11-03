@@ -17,24 +17,24 @@ class m221026_090300_create_boards_table extends CDbMigration
         //     'user_id'
         // );
 
-		// $this->addForeignKey(
-        //     'fk-boards-user_id',
-        //     'boards',
-        //     'user_id',
-        //     'users',
-        //     'id',
-        //     'CASCADE'
-        // );
+		$this->addForeignKey(
+            'fk-boards-user_id',
+            'boards',
+            'user_id',
+            'users',
+            'id',
+            'CASCADE'
+        );
 
 
 	}
 
 	public function safeDown()
 	{
-		// $this->dropForeignKey(
-        //     'fk-boards-user_id',
-        //     'boards'
-        // );
+		$this->dropForeignKey(
+            'fk-boards-user_id',
+            'boards'
+        );
 
 		// $this->dropIndex(
         //     'idx-boards-user_id',

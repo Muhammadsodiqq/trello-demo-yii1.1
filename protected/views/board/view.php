@@ -5,8 +5,16 @@ $cs->registerCssFile($baseUrl . '/css/board/main.css');
 
 $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 
-
 ?>
+<style>
+	hr {
+		border: none;
+		border-left: 1px solid hsla(200, 10%, 50%, 100);
+		height: 300px;
+		width: 1px;
+	}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 
 <!-- </style> -->
 <?php if (Yii::app()->user->hasFlash('notice')) { ?>
@@ -47,10 +55,10 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	<ul style="position:absolute; margin-left: -260px;" class="list-group list-group-flush member_list">
 
 		<li class="list-group-item list-group-item-action">Foydalanuvchilar</li>
-		<li class="list-group-item">Admin: <?= $BoardAdmin?> </li>
+		<li class="list-group-item">Admin: <?= $BoardAdmin ?> </li>
 
 		<?php foreach ($board_members as $board_member) { ?>
-			<li class="list-group-item"><?= $board_member->user->username?></li>
+			<li class="list-group-item"><?= $board_member->user->username ?></li>
 		<?php } ?>
 
 	</ul>
@@ -116,6 +124,7 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 
 <div class="modal fade " id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
+
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="card_title"></h5>
@@ -123,30 +132,117 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<label for="card_text" class="font-weight-bold">Izoh:</label>
-				<p class="font-weight-normal" id="card_text"> </p>
-				<label for="card_date" id="deadline_label" class="font-weight-bold"></label>
-				<p class="font-weight-normal" id="card_date"> </p>
+			<div class="d-flex">
+				<div class="modal-body">
+					<label for="card_text" class="font-weight-bold">Izoh:</label>
+					<p class="font-weight-normal" id="card_text"> </p>
+					<label for="card_date" id="deadline_label" class="font-weight-bold"></label>
+					<p class="font-weight-normal" id="card_date"> </p>
 
-				<label for="tags" id="tag_label" class="font-weight-bold"></label>
-				<div id="tags">
+					<label for="tags" id="tag_label" class="font-weight-bold"></label>
+					<div id="tags">
+					</div>
+
+					<label for="tags" id="member_label" class="font-weight-bold"></label>
+					<div id="members">
+
+					</div>
+					<?php if ($is_own) { ?>
+						<a href="#" id="card_edit" type="submit" class="btn btn-primary mt-4">Edit</a>
+						<a href="#" id="card_delete" class="btn btn-danger mt-4">Delete</a>
+					<?php } ?>
 				</div>
-
-				<label for="tags" id="member_label" class="font-weight-bold"></label>
-				<div id="members">
-
+				<hr>
+				<div class=" w-100  m-1">
+					<button data-toggle="modal" data-target="#addDeadline" class="btn btn-primary m-3 btn-sm">Deadline qo'shish</button>
+					<button data-toggle="modal" data-target="#addUser" class="btn btn-primary m-3 btn-sm">Foydalanuchi qo'shish</button>
+					<button data-toggle="modal" data-target="#addDTag" class="btn btn-primary  m-3  btn-sm">Tag qo'shish</button>
 				</div>
-				<?php if ($is_own) { ?>
-					<a href="#" id="card_edit" type="submit" class="btn btn-primary mt-4">Edit</a>
-					<a href="#" id="card_delete" class="btn btn-danger mt-4">Delete</a>
-				<?php } ?>
-
 			</div>
 		</div>
 	</div>
 </div>
 
+
+<div class="modal fade  bg-white " id="addDeadline" style="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="/board/view/id/<?= $id ?>" method="POST" class="row g-3">
+					<div class="col-md-6">
+						<label for="inputEmail4" class="form-label">Name</label>
+						<input type="date" required class="form-control" id="inputEmail4" name="Card[deadline]" placeholder="name" />
+						<button type="submit" class="btn btn-primary mt-4">Save changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade shadow-inner bg-white " id="addDTag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/tag/create/" method="POST" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Name</label>
+                        <input type="text" required class="form-control" id="inputEmail4" name="Tags[name]" placeholder="name" />
+                        <input type="hidden" name="Tags[card_id]" value="1">
+                        <select class="form-select" name="Tags[color_id]" style="margin-top: 10px; display: block;">
+                            <?php foreach ($colors as $color) { ?>
+                                <option value="<?= $color->id ?>"><?= $color->name ?></option>
+                            <?php } ?>
+
+                        </select>
+                        <button type="submit" class="btn btn-primary mt-4">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade shadow-lg p-3 mb-5 bg-secondary rounded" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<!-- Foydalanuvchi qo'shish -->
+				<select class="selectpicker w-100" name="Cards[card_member_id][]" multiple data-live-search="true">
+					<?php foreach ($board_members as $key => $board_member) {
+						$card_member = CardMembers::model()->find('user_id = :user_id AND card_id = :card_id', ['user_id' => $board_member->user_id, 'card_id' => $model->id]);
+					?>
+						<option <?= $card_member ? "selected" : "" ?> value="<?= $board_member->user_id ?>"> <?= $board_member['user']->username ?> </option>
+					<?php } ?>
+				</select>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 <script>
 	let btn = document.querySelectorAll("#columnbtn")
@@ -192,7 +288,7 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 						members.innerHTML = members.innerHTML + `<a class="alert ml-2 alert-info">${data.card_members[key].user.username}</a>`
 					}
 				}
-				if(card_delete){
+				if (card_delete) {
 					card_delete.href = `/card/delete/id/${id}`
 					card_edit.href = `/card/update/id/${id}`
 

@@ -30,14 +30,14 @@ class m221026_090406_create_tags_table extends CDbMigration
         //     'color_id'
         // );
 
-		// $this->addForeignKey(
-        //     'fk-tags-color_id',
-        //     'tags',
-        //     'color_id',
-        //     'colors',
-        //     'id',
-        //     'CASCADE'
-        // );
+		$this->addForeignKey(
+            'fk-tags-color_id',
+            'tags',
+            'color_id',
+            'colors',
+            'id',
+            'CASCADE'
+        );
 
 		// $this->createIndex(
         //     'idx-tags-board_id',
@@ -45,32 +45,32 @@ class m221026_090406_create_tags_table extends CDbMigration
         //     'board_id'
         // );
 
-		// $this->addForeignKey(
-        //     'fk-tags-board_id',
-        //     'tags',
-        //     'board_id',
-        //     'boards',
-        //     'id',
-        //     'CASCADE'
-        // );
+		$this->addForeignKey(
+            'fk-tags-board_id',
+            'tags',
+            'board_id',
+            'boards',
+            'id',
+            'CASCADE'
+        );
 	}
 
 	public function safeDown()
 	{
-		// $this->dropForeignKey(
-        //     'fk-tags-color_id',
-        //     'tags'
-        // );
+		$this->dropForeignKey(
+            'fk-tags-color_id',
+            'tags'
+        );
 
 		// $this->dropIndex(
         //     'idx-tags-color_id',
         //     'tags'
         // );
 
-		// $this->dropForeignKey(
-        //     'fk-tags-board_id',
-        //     'tags'
-        // );
+		$this->dropForeignKey(
+            'fk-tags-board_id',
+            'tags'
+        );
 
 		// $this->dropIndex(
         //     'idx-tags-board_id',

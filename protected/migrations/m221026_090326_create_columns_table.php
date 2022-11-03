@@ -17,22 +17,22 @@ class m221026_090326_create_columns_table extends CDbMigration
         //     'board_id'
         // );
 
-		// $this->addForeignKey(
-        //     'fk-columns-board_id',
-        //     'columns',
-        //     'board_id',
-        //     'boards',
-        //     'id',
-        //     'CASCADE'
-        // );
+		$this->addForeignKey(
+            'fk-columns-board_id',
+            'columns',
+            'board_id',
+            'boards',
+            'id',
+            'CASCADE'
+        );
 	}
 
 	public function safeDown()
 	{
-		// $this->dropForeignKey(
-        //     'fk-columns-board_id',
-        //     'columns'
-        // );
+		$this->dropForeignKey(
+            'fk-columns-board_id',
+            'columns'
+        );
 
 		// $this->dropIndex(
         //     'idx-columns-board_id',
