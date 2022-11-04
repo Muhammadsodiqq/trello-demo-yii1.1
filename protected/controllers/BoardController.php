@@ -6,7 +6,7 @@ class BoardController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout = '//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -29,16 +29,19 @@ class BoardController extends Controller
 
 		// var_dump(Yii::app()->user->isGuest);die;
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create','update','UpdateCardColumn','delete'),
-				'users'=>array('@'),
+			array(
+				'allow',  // allow all users to perform 'index' and 'view' actions
+				'actions' => array('index', 'view', 'create', 'update', 'UpdateCardColumn', 'delete'),
+				'users' => array('@'),
 			),
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('UpdateCardColumn'),
-				'users'=>array('*'),
+			array(
+				'allow',  // allow all users to perform 'index' and 'view' actions
+				'actions' => array('UpdateCardColumn'),
+				'users' => array('*'),
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
+			array(
+				'deny',  // deny all users
+				'users' => array('*'),
 			),
 		);
 	}
@@ -62,38 +65,34 @@ class BoardController extends Controller
 
 	public function actionCreate()
 	{
-		try
-		{
+		try {
 			$this->checkAjax();
-			if(!$this->checkAjax()) {
-				// throw new Exception('Invalid request');
-				return;
-			}
-	
-			// var_dump($_POST);die;
-	
+
 			$model = new Boards;
 			$model->name = @$_POST['name'];
 			$model->user_id = @$_POST['id'];
-			if(!$model->save()){
-				throw new Exception	(CActiveForm::validate($model)) ;
+			if (!$model->save()) {
+				foreach ($model->getErrors() as $attribute => $error) {
+
+					foreach ($error as $message) {
+
+						throw new Exception($message);
+					}
+				}
 			}
 			echo CJSON::encode([
 				'ok' => true,
 				"data" => $model
 			]);
-
-		}catch(Exception $error)
-		{
+		} catch (Exception $error) {
 
 			$httpVersion = Yii::app()->request->getHttpVersion();
 			header("HTTP/$httpVersion 400");
 
 			echo CJSON::encode([
 				'ok' => false,
-				"msg" => $error->getMessage() 
+				"msg" => $error->getMessage()
 			]);
-
 		}
 	}
 
@@ -103,23 +102,23 @@ class BoardController extends Controller
 		$columns = Columns::model()->byid()->with('cards')->findAll('board_id = :board_id', [':board_id' => $id]);
 		$board_members = BoardMembers::model()->with('user')->findAll('board_id = :board_id', [':board_id' => $id]);
 		$BoardAdmin = Boards::model()->with('user')->findByPk($id)->user->username;
-		if(isset($_POST['Board'])) {
+		if (isset($_POST['Board'])) {
 			$model = new Columns;
 			$model->title = $_POST['Board']['title'];
 			$model->board_id = $id;
-			if($model->save()){
-				return $this->redirect('/board/view/id/'.$id);
+			if ($model->save()) {
+				return $this->redirect('/board/view/id/' . $id);
 			}
 		}
 
-		if(isset($_POST['Card'])) {
+		if (isset($_POST['Card'])) {
 			// print_r($_POST['Card']);die;
 			$model = new Cards;
 			$model->title = $_POST['Card']['title'];
 			$model->description = $_POST['Card']['description'];
 			$model->column_id = $_POST['Card']['column_id'];
-			if($model->save()){
-				return $this->redirect('/board/view/id/'.$id);
+			if ($model->save()) {
+				return $this->redirect('/board/view/id/' . $id);
 			}
 		}
 
@@ -135,35 +134,24 @@ class BoardController extends Controller
 	{
 		$data =  $_POST;
 		header('Content-type: application/json');
-		
-		
-		
-		if(isset($data["card_id"])) {
+
+
+
+		if (isset($data["card_id"])) {
 			$model = Cards::model()->findByPk($data["card_id"]);
 			$model->column_id = $data["column_id"];
 			$model->update();
-			
+
 			echo CJSON::encode(["ok" => true]);
 		}
-
 	}
 
 	public function actionDeleteBoard($id)
 	{
-		$model=Boards::model()->findByPk($id)->delete();
+		$model = Boards::model()->findByPk($id)->delete();
 
 		$this->redirect(Yii::app()->request->urlReferrer);
-
 	}
 
-	public function checkAjax(){
-		if(!Yii::app()->request->isAjaxRequest || !isset($_POST['id'])) {
-			throw new Exception('Invalid request');
-		}
-		if(!Users::model()->findByPk($_POST['id'])){
-			throw new Exception('Invalid user');
-		}
 
-		return true;
-	}
 }
