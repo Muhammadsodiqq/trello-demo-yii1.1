@@ -228,7 +228,8 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 			</div>
 			<div class="modal-body">
 				<!-- Foydalanuvchi qo'shish -->
-				<select class="selectpicker w-100" name="Cards[card_member_id][]" multiple data-live-search="true">
+				<button class="btn btn-primary m-3">save</button>
+				<select class="selectpickerr w-100" name="Cards[card_member_id][]" multiple data-live-search="true">
 					<?php foreach ($board_members as $key => $board_member) {
 						$card_member = CardMembers::model()->find('user_id = :user_id AND card_id = :card_id', ['user_id' => $board_member->user_id, 'card_id' => $model->id]);
 					?>
@@ -244,6 +245,14 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
+<script type="text/javascript">
+    $('.selectpickerr').selectpicker({
+        style: 'btn-info',
+        size: 4   ,
+		dropupAuto:false
+    });
+
+</script>
 <script>
 	let btn = document.querySelectorAll("#columnbtn")
 
