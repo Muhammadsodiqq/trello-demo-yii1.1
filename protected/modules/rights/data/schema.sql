@@ -1,3 +1,4 @@
+-- Active: 1667541135094@@127.0.0.1@5432@trello2@public
 drop table if exists AuthItem;
 drop table if exists AuthItemChild;
 drop table if exists AuthAssignment;
@@ -25,7 +26,7 @@ create table AuthItemChild
 create table AuthAssignment
 (
    itemname varchar(64) not null,
-   userid varchar(64) not null,
+   userid INTEGER not null,
    bizrule text,
    data text,
    primary key (itemname,userid),
