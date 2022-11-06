@@ -102,7 +102,11 @@ class BoardController extends Controller
 		$columns = Columns::model()->byid()->with('cards')->findAll('board_id = :board_id', [':board_id' => $id]);
 		$board_members = BoardMembers::model()->with('user')->findAll('board_id = :board_id', [':board_id' => $id]);
 		$BoardAdmin = Boards::model()->with('user')->findByPk($id)->user->username;
-		if (isset($_POST['Board'])) {
+
+		$colors = Colors::model()->findAll();
+
+		if(isset($_POST['Board'])) {
+
 			$model = new Columns;
 			$model->title = $_POST['Board']['title'];
 			$model->board_id = $id;
@@ -126,7 +130,8 @@ class BoardController extends Controller
 			'columns' => $columns,
 			'id' => $id,
 			'board_members' => $board_members,
-			'BoardAdmin' => $BoardAdmin
+			'BoardAdmin' => $BoardAdmin,
+			"colors" => $colors
 		]);
 	}
 

@@ -17,14 +17,14 @@ class m221026_090343_create_card_members_table extends CDbMigration
         //     'user_id'
         // );
 
-		// $this->addForeignKey(
-        //     'fk-card_members-user_id',
-        //     'card_members',
-        //     'user_id',
-        //     'users',
-        //     'id',
-        //     'CASCADE'
-        // );
+		$this->addForeignKey(
+            'fk-card_members-user_id',
+            'card_members',
+            'user_id',
+            'users',
+            'id',
+            'CASCADE'
+        );
 
 		// $this->createIndex(
         //     'idx-card_members-card_id',
@@ -32,32 +32,32 @@ class m221026_090343_create_card_members_table extends CDbMigration
         //     'card_id'
         // );
 
-		// $this->addForeignKey(
-        //     'fk-card_members-card_id',
-        //     'card_members',
-        //     'card_id',
-        //     'cards',
-        //     'id',
-        //     'CASCADE'
-        // );
+		$this->addForeignKey(
+            'fk-card_members-card_id',
+            'card_members',
+            'card_id',
+            'cards',
+            'id',
+            'CASCADE'
+        );
 	}
 
 	public function safeDown()
 	{
-		// $this->dropForeignKey(
-        //     'fk-card_members-user_id',
-        //     'card_members'
-        // );
+		$this->dropForeignKey(
+            'fk-card_members-user_id',
+            'card_members'
+        );
 
 		// $this->dropIndex(
         //     'idx-card_members-user_id',
         //     'card_members'
         // );
 
-		// $this->dropForeignKey(
-        //     'fk-card_members-card_id',
-        //     'card_members'
-        // );
+		$this->dropForeignKey(
+            'fk-card_members-card_id',
+            'card_members'
+        );
 
 		// $this->dropIndex(
         //     'idx-card_members-card_id',

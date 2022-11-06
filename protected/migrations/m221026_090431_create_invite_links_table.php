@@ -29,22 +29,22 @@ class m221026_090431_create_invite_links_table extends CDbMigration
         //     'board_id'
         // );
 
-		// $this->addForeignKey(
-        //     'fk-invite_links-board_id',
-        //     'invite_links',
-        //     'board_id',
-        //     'boards',
-        //     'id',
-        //     'CASCADE'
-        // );
+		$this->addForeignKey(
+            'fk-invite_links-board_id',
+            'invite_links',
+            'board_id',
+            'boards',
+            'id',
+            'CASCADE'
+        );
 	}
 
 	public function safeDown()
 	{
-		// $this->dropForeignKey(
-        //     'fk-invite_links-board_id',
-        //     'invite_links'
-        // );
+		$this->dropForeignKey(
+            'fk-invite_links-board_id',
+            'invite_links'
+        );
 
 		// $this->dropIndex(
         //     'idx-invite_links-board_id',
