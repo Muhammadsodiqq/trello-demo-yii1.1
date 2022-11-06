@@ -53,7 +53,7 @@ $this->breadcrumbs = array(
 		e.preventDefault();
 		// console.log($("#inputEmail4").val());
 		$.ajax({
-			url: "<?php echo Yii::app()->createUrl('Board/Update');?>",
+			url: "<?php echo Yii::app()->createUrl('Board/Create');?>",
 			type: 'POST',
 			data: {
 				id: "<?php echo Yii::app()->user->id; ?>",
