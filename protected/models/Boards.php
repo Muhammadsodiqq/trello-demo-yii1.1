@@ -36,7 +36,8 @@ class Boards extends CActiveRecord
 		return array(
 			array('name, user_id', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
+			array('name','length', 'max'=>255),
+			array('name','unique', 'className' => 'Boards', 'attributeName' => 'name'),
 			array('created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

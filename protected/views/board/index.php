@@ -21,7 +21,7 @@ $this->breadcrumbs = array(
 
 
 <!-- Modal -->
-<div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="alert alert-danger d-none" id="error">
 
@@ -48,11 +48,12 @@ $this->breadcrumbs = array(
 </div>
 
 <script>
+
 	$("#submit").click(function(e) {
 		e.preventDefault();
 		// console.log($("#inputEmail4").val());
 		$.ajax({
-			url: "<?php echo Yii::app()->createUrl('Board/Create'); ?>",
+			url: "<?php echo Yii::app()->createUrl('Board/Create');?>",
 			type: 'POST',
 			data: {
 				id: "<?php echo Yii::app()->user->id; ?>",
@@ -60,16 +61,22 @@ $this->breadcrumbs = array(
 			},
 			dataType: 'json',
 			success: function(data) {
-				console.log($(".list-group").html());
-				$(".list-group").html( $(".list-group").html() + `
-				<a href="/board/view/id/${data.data.id}" class="list-group-item list-group-item-action d-flex justify-content-between">
+				
+				$(".list-group").html( $(".list-group").html() + `<a href="/board/view/id/${data.data.id}" class="list-group-item list-group-item-action d-flex justify-content-between">
 				${data.data.name}
-					<a href="/board/DeleteBoard/id/${data.data.id}" class="d-inline-block btn btn-danger btn-sm">Delete</a>
-				</a>
-				`)
+					<a href="/board/DeleteBoard/id/${data.data.id}" class="d-inline-block btn btn-danger btn-sm">Delete</a>`)
+
+				$('.modal').removeClass('in');
+                $('.modal').attr("aria-hidden","true");
+                $('.modal').css("display", "none");
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+				$("#inputEmail4").val('')
+				$("#error").addClass("d-none")
+				$("#error").html('')
 			},
 			error: function(request, error) {
-				// console.log(request.responseJSON.msg);
+
 				$("#error").removeClass("d-none")
 				$("#error").html(`<strong>Error!</strong> .${request.responseJSON.msg}`)
 			}

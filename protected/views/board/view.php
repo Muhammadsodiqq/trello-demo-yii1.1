@@ -7,6 +7,10 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 
 ?>
 <style>
+	.showthis {
+		display: none;
+	}
+
 	hr {
 		border: none;
 		border-left: 1px solid hsla(200, 10%, 50%, 100);
@@ -16,7 +20,6 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 
-<!-- </style> -->
 <?php if (Yii::app()->user->hasFlash('notice')) { ?>
 	<div class="alert alert-info" role="alert">
 		invite link: <strong><?php echo Yii::app()->user->getFlash('notice'); ?></strong>
@@ -29,7 +32,7 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	</a>
 <?php } ?>
 
-<div class="board">
+<div class="board" id="board">
 	<?php foreach ($columns as $column) { ?>
 		<div class="taskColumn" id="<?= $column->title ?>" column_id="<?= $column->id ?>">
 			<?php if ($is_own) { ?>
@@ -70,6 +73,9 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
+		<div class="alert alert-danger d-none" id="error">
+
+		</div>
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -81,12 +87,11 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 				<form action="/board/view/id/<?= $id ?>" method="POST" class="row g-3">
 					<div class="col-md-6">
 						<label for="inputEmail4" class="form-label">Name</label>
-						<input type="text" required class="form-control" id="inputEmail4" name="Board[title]" placeholder="name" />
-						<button type="submit" class="btn btn-primary mt-4">Save changes</button>
+						<input type="text" required class="form-control" id="list_title" name="Board[title]" placeholder="name" />
+						<button type="submit" id="list_submit" class="btn btn-primary mt-4">Save changes</button>
 					</div>
 				</form>
 			</div>
-
 		</div>
 	</div>
 </div>
@@ -126,18 +131,32 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	<div class="modal-dialog" role="document">
 
 		<div class="modal-content">
+			<div class="alert alert-danger d-none" id="CardUpdateerror"></div>
 			<div class="modal-header">
-				<h5 class="modal-title" id="card_title"></h5>
+				<label for="card_title" class="font-weight-bold d-block">Title:</label>
+				<div class="">
+					<input type="checkbox" class="ml-2 trigger" name="showhidecheckbox">
+					<div class="showthis show_text form-group">
+						<input required id="input" type="text" class="form-control" name="showhideinput">
+					</div><br>
+					<h5 class="modal-title type_text" id="card_title"></h5>
+				</div>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="d-flex">
-				<div class="modal-body">
-					<label for="card_text" class="font-weight-bold">Izoh:</label>
-					<p class="font-weight-normal" id="card_text"> </p>
-					<label for="card_date" id="deadline_label" class="font-weight-bold"></label>
-					<p class="font-weight-normal" id="card_date"> </p>
+			<div class="modal-body">
+
+				<label for="card_text" class="font-weight-bold">Izoh:</label><input type="checkbox" class="ml-2 trigger" name="showhidecheckbox">
+				<div class="showthis show_area form-group">
+					<textarea required id="textarea" class="form-control" id="exampleFormControlTextarea3" rows="4"></textarea>
+				</div><br>
+				<p class="font-weight-normal type_text" id="card_text"> </p>
+				<button class="btn btn-primary d-none" id="btn_save">save</button>
+
+				<label for="card_date" id="deadline_label" class="font-weight-bold"></label>
+				<p class="font-weight-normal" id="card_date"> </p>
+
 
 					<label for="tags" id="tag_label" class="font-weight-bold"></label>
 					<div id="tags">
@@ -242,6 +261,7 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	</div>
 </div>
 
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
@@ -253,9 +273,11 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
     });
 
 </script>
+
+<!-- card view -->
 <script>
 	let btn = document.querySelectorAll("#columnbtn")
-
+	let card_id
 	btn.forEach((e) => {
 		e.addEventListener('click', function(e) {
 			let btn = document.querySelector("#inp-hidden")
@@ -269,6 +291,7 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	btn1.forEach((e) => {
 		e.addEventListener('click', function(e) {
 			getCard(e.target.id);
+			card_id = e.target.id
 		})
 	})
 
@@ -282,6 +305,8 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 				card_text.innerText = data.card.description
 				card_title.innerText = data.card.title
 				card_date.innerText = data.card.deadline
+				input.value = data.card.title;
+				textarea.value = data.card.description;
 				tags.innerHTML = ''
 				members.innerHTML = ''
 				deadline_label.innerText = data.card.deadline ? "Muddat" : ""
@@ -308,6 +333,63 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 			}
 		});
 	}
+</script>
+
+<!-- card view checkbox input -->
+
+<script>
+	$(function() {
+		let is = true;
+		$('.trigger').change(function() {
+			$(this).next('.showthis').toggle(this.checked);
+			$(this).nextAll(".type_text").toggle(!this.checked);
+
+			if ($('.show_text').css("display") == 'block' || $('.show_area').css("display") == 'block') {
+				$('#btn_save').removeClass("d-none")
+			} else {
+				$('#btn_save').addClass("d-none")
+			}
+		})
+	});
+</script>
+
+<!-- card update -->
+<script>
+	$('#btn_save').click(function() {
+		$.ajax({
+			url: `<?php echo Yii::app()->createUrl('Card/Update'); ?>`,
+			type: 'POST',
+			data: {
+				id: "<?php echo Yii::app()->user->id; ?>",
+				title: $("#input").val(),
+				description: $("#textarea").val(),
+				card_id: card_id
+			},
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				$("#card_text").text(data.data.description)
+				$("#card_title").text(data.data.title)
+				$("#textarea").val(data.data.description)
+				$("#input").val(data.data.title)
+				$(".type_text").css('display','block')
+				$(".showthis").css('display','none')
+				$(".trigger").prop('checked', false)
+
+
+				btn1.forEach((e) => {
+					console.log(e.innerText = data.data.title);
+				})
+			},
+			error: function(request, error) {
+				console.log($("#error"));
+				$("#CardUpdateerror").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
+				$("#CardUpdateerror").removeClass("d-none")
+				console.log($("#CardUpdateerror"));
+
+			}
+		});
+	})
 </script>
 
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/board.js"></script>

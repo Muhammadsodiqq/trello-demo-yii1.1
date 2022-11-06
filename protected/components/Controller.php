@@ -70,4 +70,28 @@ class Controller extends RController
         return $result;
     }
 
+    public function checkAjax()
+	{
+		if (!Yii::app()->request->isAjaxRequest || !isset($_POST['id'])) {
+			throw new Exception('Invalid request');
+		}
+		if (!Users::model()->findByPk($_POST['id'])) {
+			throw new Exception('Invalid user');
+		}
+
+		return true;
+	}
+
+	public function getError($model)
+	{
+		foreach ($model->getErrors() as $attribute => $error) {
+
+			foreach ($error as $message) {
+
+				throw new Exception($message);
+			}
+		}
+	}
+}
+
 }   
