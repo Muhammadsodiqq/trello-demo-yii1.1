@@ -2014,3 +2014,6 @@ Stack trace:
 REQUEST_URI=/card/view/id/
 HTTP_REFERER=http://trello_demo.loc/board/view/id/2
 ---
+2022/11/06 20:35:27 [warning] [application] Failed to set unsafe attribute "rememberMe" of "Users".
+in /var/www/trello-demo-yii1.1/protected/controllers/UserController.php (79)
+in /var/www/trello-demo-yii1.1/index.php (16)
