@@ -94,4 +94,3 @@ class Controller extends RController
 	}
 }
 
-}   

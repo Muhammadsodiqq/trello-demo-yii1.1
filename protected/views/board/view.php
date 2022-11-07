@@ -19,6 +19,8 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
 
 <?php if (Yii::app()->user->hasFlash('notice')) { ?>
 	<div class="alert alert-info" role="alert">
@@ -145,17 +147,17 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body d-flex">
+				<div>
+					<label for="card_text" class="font-weight-bold">Izoh:</label><input type="checkbox" class="ml-2 trigger" name="showhidecheckbox">
+					<div class="showthis show_area form-group">
+						<textarea required id="textarea" class="form-control" id="exampleFormControlTextarea3" rows="10" cols="90"></textarea>
+					</div><br>
+					<p class="font-weight-normal type_text" id="card_text"> </p>
+					<button class="btn btn-primary d-none" id="btn_save">save</button>
 
-				<label for="card_text" class="font-weight-bold">Izoh:</label><input type="checkbox" class="ml-2 trigger" name="showhidecheckbox">
-				<div class="showthis show_area form-group">
-					<textarea required id="textarea" class="form-control" id="exampleFormControlTextarea3" rows="4"></textarea>
-				</div><br>
-				<p class="font-weight-normal type_text" id="card_text"> </p>
-				<button class="btn btn-primary d-none" id="btn_save">save</button>
-
-				<label for="card_date" id="deadline_label" class="font-weight-bold"></label>
-				<p class="font-weight-normal" id="card_date"> </p>
+					<label for="card_date" id="deadline_label" class="font-weight-bold"></label>
+					<p class="font-weight-normal" id="card_date"> </p>
 
 
 					<label for="tags" id="tag_label" class="font-weight-bold"></label>
@@ -174,8 +176,8 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 				<hr>
 				<div class=" w-100  m-1">
 					<button data-toggle="modal" data-target="#addDeadline" class="btn btn-primary m-3 btn-sm">Deadline qo'shish</button>
-					<button data-toggle="modal" data-target="#addUser" class="btn btn-primary m-3 btn-sm">Foydalanuchi qo'shish</button>
-					<button data-toggle="modal" data-target="#addDTag" class="btn btn-primary  m-3  btn-sm">Tag qo'shish</button>
+					<button data-toggle="modal" id="adduserbtn" data-target="#addUser" class="btn btn-primary m-3 btn-sm">Foydalanuchi qo'shish</button>
+					<button data-toggle="modal" data-target="#addDTag" id="addtagbtn" class="btn btn-primary  m-3  btn-sm">Tag qo'shish</button>
 				</div>
 			</div>
 		</div>
@@ -186,6 +188,8 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 <div class="modal fade  bg-white " id="addDeadline" style="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
+			<div class="alert alert-danger d-none" id="CardDeadlineUpdateerror"></div>
+
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -196,8 +200,8 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 				<form action="/board/view/id/<?= $id ?>" method="POST" class="row g-3">
 					<div class="col-md-6">
 						<label for="inputEmail4" class="form-label">Name</label>
-						<input type="date" required class="form-control" id="inputEmail4" name="Card[deadline]" placeholder="name" />
-						<button type="submit" class="btn btn-primary mt-4">Save changes</button>
+						<input type="date" required class="form-control" id="Card_deadline" name="Card[deadline]" placeholder="name" />
+						<button type="submit" id="deadline_submit" class="btn btn-primary mt-4">Save changes</button>
 					</div>
 				</form>
 			</div>
@@ -207,38 +211,62 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 
 
 <div class="modal fade shadow-inner bg-white " id="addDTag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/tag/create/" method="POST" class="row g-3">
-                    <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Name</label>
-                        <input type="text" required class="form-control" id="inputEmail4" name="Tags[name]" placeholder="name" />
-                        <input type="hidden" name="Tags[card_id]" value="1">
-                        <select class="form-select" name="Tags[color_id]" style="margin-top: 10px; display: block;">
-                            <?php foreach ($colors as $color) { ?>
-                                <option value="<?= $color->id ?>"><?= $color->name ?></option>
-                            <?php } ?>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="alert alert-danger d-none" id="CardTagUpdateerror"></div>
 
-                        </select>
-                        <button type="submit" class="btn btn-primary mt-4">Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-success d-none" id="teg_alert" role="alert">
+
+				</div>
+				<div class="d-flex">
+					<form action="/tag/create/" method="POST" class="row g-3">
+						<div class="col-md-6">
+							<label for="inputEmail4" class="form-label">Name</label>
+							<input type="text" required class="form-control" id="tag_value" name="Tags[name]" placeholder="name" />
+							<select class="form-select" name="Tags[color_id]" id="color_id" style="margin-top: 10px; display: block;">
+								<?php foreach ($colors as $color) { ?>
+									<option value="<?= $color->id ?>"><?= $color->name ?></option>
+								<?php } ?>
+
+							</select>
+							<button type="submit" id="tag_submit" class="btn btn-primary mt-4">Save changes</button>
+						</div>
+					</form>
+					<hr>
+					<div class="m-2 tags_check">
+
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+							<label class="form-check-label" for="flexCheckDefault">
+								Default checkbox
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+							<label class="form-check-label" for="flexCheckChecked">
+								Checked checkbox
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
 <div class="modal fade shadow-lg p-3 mb-5 bg-secondary rounded" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
+			<div class="alert alert-danger d-none" id="CardMemberUpdateerror"></div>
+
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -247,16 +275,12 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 			</div>
 			<div class="modal-body">
 				<!-- Foydalanuvchi qo'shish -->
-				<button class="btn btn-primary m-3">save</button>
-				<select class="selectpickerr w-100" name="Cards[card_member_id][]" multiple data-live-search="true">
-					<?php foreach ($board_members as $key => $board_member) {
-						$card_member = CardMembers::model()->find('user_id = :user_id AND card_id = :card_id', ['user_id' => $board_member->user_id, 'card_id' => $model->id]);
-					?>
-						<option <?= $card_member ? "selected" : "" ?> value="<?= $board_member->user_id ?>"> <?= $board_member['user']->username ?> </option>
-					<?php } ?>
+				<button id="submit_user_add" class="btn btn-primary m-3">save</button>
+				<select id="generals" name="generals" class="form-control kt-selectpicker" multiple title="Choose one of the following...">
+					<option value="">sss</option>
+					<option value="">sss</option>
 				</select>
 			</div>
-
 		</div>
 	</div>
 </div>
@@ -266,12 +290,11 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 <script type="text/javascript">
-    $('.selectpickerr').selectpicker({
-        style: 'btn-info',
-        size: 4   ,
-		dropupAuto:false
-    });
-
+	// $('option').mousedown(function(e) {
+	//     e.preventDefault();
+	//     $(this).prop('selected', !$(this).prop('selected'));
+	//     return false;
+	// });
 </script>
 
 <!-- card view -->
@@ -307,6 +330,7 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 				card_date.innerText = data.card.deadline
 				input.value = data.card.title;
 				textarea.value = data.card.description;
+				$("#Card_deadline").val(data.card.deadline)
 				tags.innerHTML = ''
 				members.innerHTML = ''
 				deadline_label.innerText = data.card.deadline ? "Muddat" : ""
@@ -356,6 +380,7 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 <!-- card update -->
 <script>
 	$('#btn_save').click(function() {
+
 		$.ajax({
 			url: `<?php echo Yii::app()->createUrl('Card/Update'); ?>`,
 			type: 'POST',
@@ -372,10 +397,9 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 				$("#card_title").text(data.data.title)
 				$("#textarea").val(data.data.description)
 				$("#input").val(data.data.title)
-				$(".type_text").css('display','block')
-				$(".showthis").css('display','none')
+				$(".type_text").css('display', 'block')
+				$(".showthis").css('display', 'none')
 				$(".trigger").prop('checked', false)
-
 
 				btn1.forEach((e) => {
 					console.log(e.innerText = data.data.title);
@@ -392,6 +416,208 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	})
 </script>
 
+<!-- update  card deadline -->
+<script>
+	deadline_submit.addEventListener('click', function(e) {
+		e.preventDefault()
+
+		$.ajax({
+			url: `<?php echo Yii::app()->createUrl('Card/UpdateDeadline'); ?>`,
+			type: 'POST',
+			data: {
+				id: "<?php echo Yii::app()->user->id; ?>",
+				deadline: $("#Card_deadline").val(),
+				card_id: card_id
+			},
+			dataType: 'json',
+			success: function(data) {
+				console.log(data.data.deadline);
+				card_date.innerText = data.data.deadline
+				deadline_label.innerText = data.data.deadline ? "Muddat" : ""
+				$("#addDeadline").css('display', 'none')
+			},
+			error: function(request, error) {
+				console.log("Request: " + JSON.stringify(request));
+				$("#CardDeadlineUpdateerror").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
+				$("#CardDeadlineUpdateerror").removeClass("d-none")
+			}
+		});
+	})
+</script>
+
+<!-- update card tag -->
+<script>
+	tag_submit.addEventListener('click', function(e) {
+		e.preventDefault()
+
+		$.ajax({
+			url: `<?php echo Yii::app()->createUrl('Tag/Create'); ?>`,
+			type: 'POST',
+			data: {
+				id: "<?php echo Yii::app()->user->id; ?>",
+				name: $("#tag_value").val(),
+				card_id: card_id,
+				board_id: "<?= $id ?>",
+				color_id: color_id.value
+			},
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				tag_label.innerText = 'Teglar:'
+				tags.innerHTML = tags.innerHTML + `<button type="button" style="background-color: ${data.data.color.name};color:#17505e; " class="btn m-1">${data.data.name}</button>`
+
+				$("#addDTag").modal("toggle")
+				$("#CardTagUpdateerror").addClass("d-none")
+
+			},
+			error: function(request, error) {
+				console.log("Request: " + JSON.stringify(request));
+				$("#CardTagUpdateerror").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
+				$("#CardTagUpdateerror").removeClass("d-none")
+			}
+		});
+	})
+</script>
+
+<!-- get board members -->
+<script>
+	adduserbtn.addEventListener('click', function(e) {
+		e.preventDefault()
+
+		$.ajax({
+			url: `<?php echo Yii::app()->createUrl('Board/GetBoardMembers'); ?>`,
+			type: 'POST',
+			data: {
+				id: "<?php echo Yii::app()->user->id; ?>",
+				card_id: card_id,
+			},
+			dataType: 'json',
+			success: function(data) {
+				$("#generals").html('')
+				data.data.forEach(function(e) {
+					$("#generals").append(`<option value='${e.user_id}' ${e.is_card_member ? 'selected' : ''}>${e.username}</option>`)
+				})
+				$('option').mousedown(function(e) {
+					e.preventDefault();
+					$(this).prop('selected', !$(this).prop('selected'));
+					return false;
+				});
+			},
+			error: function(request, error) {
+				console.log("Request: " + JSON.stringify(request));
+
+			}
+		});
+	})
+
+	submit_user_add.addEventListener('click', function(e) {
+		e.preventDefault()
+		$.ajax({
+			url: `<?php echo Yii::app()->createUrl('Card/UpdateCardMember'); ?>`,
+			type: 'POST',
+			data: {
+				id: "<?php echo Yii::app()->user->id; ?>",
+				card_id: card_id,
+				card_member_id: $("#generals").val()
+			},
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				if (data.data) {
+					members.innerHTML = ''
+
+					for (const key in data.data) {
+						console.log(data.data[key]);
+						member_label.innerText = 'Userlar:'
+						members.innerHTML = members.innerHTML + `<a class="alert ml-2 alert-info">${data.data[key].user.username}</a>`
+					}
+				}
+				$("#addUser").modal("toggle")
+				$("#CardMemberUpdateerror").addClass("d-none")
+
+			},
+			error: function(request, error) {
+				console.log("Request: " + JSON.stringify(request));
+				$("#CardMemberUpdateerror").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
+				$("#CardMemberUpdateerror").removeClass("d-none")
+			}
+		});
+	})
+</script>
+<!-- get tag -->
+<script>
+	addtagbtn.addEventListener("click", function(e) {
+		e.preventDefault()
+
+		$.ajax({
+			url: `<?php echo Yii::app()->createUrl('Tag/GetTags'); ?>`,
+			type: 'POST',
+			data: {
+				id: "<?php echo Yii::app()->user->id; ?>",
+				card_id: card_id,
+				board_id: "<?= $id ?>",
+			},
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				$(".tags_check").html("")
+				data.data.forEach(function(e) {
+					console.log(e);
+					$(".tags_check").html($(".tags_check").html() + `<div class="form-check">
+							<input class="tag_checkbox form-check-input" type="checkbox" value="${e.id}" id="${e.id}" ${e.is_card_tag ? 'checked' : ""}>
+							<label class="form-check-label" for="${e.id}">
+								${e.name}
+							</label>
+						</div>`)
+				})
+
+				$(".tag_checkbox").change(function() {
+					console.log(this);
+					if ($(this).is(":checked")) {
+						console.log(this.id + " checked");
+					} else {
+						console.log(this.id + " unchecked");
+
+					}
+					$.ajax({
+						url: `<?php echo Yii::app()->createUrl('Card/UpdateCardMember'); ?>`,
+						type: 'POST',
+						data: {
+							id: "<?php echo Yii::app()->user->id; ?>",
+							card_id: card_id,
+							card_member_id: $("#generals").val()
+						},
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							if (data.data) {
+								members.innerHTML = ''
+
+								for (const key in data.data) {
+									console.log(data.data[key]);
+									member_label.innerText = 'Userlar:'
+									members.innerHTML = members.innerHTML + `<a class="alert ml-2 alert-info">${data.data[key].user.username}</a>`
+								}
+							}
+							$("#addUser").modal("toggle")
+							$("#CardMemberUpdateerror").addClass("d-none")
+
+						},
+						error: function(request, error) {
+							console.log("Request: " + JSON.stringify(request));
+							$("#CardMemberUpdateerror").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
+							$("#CardMemberUpdateerror").removeClass("d-none")
+						}
+					});
+
+				})
+			},
+			error: function(request, error) {
+				console.log("Request: " + JSON.stringify(request));
+			}
+		});
+	})
+</script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/board.js"></script>
 <?php if (Yii::app()->user->hasFlash('success')) { ?>
 
@@ -403,3 +629,4 @@ $is_own = Boards::model()->findByPk($id)->user_id == Yii::app()->user->id;
 	</script>
 
 <?php } ?>
+<option value="selected" selected></option>
