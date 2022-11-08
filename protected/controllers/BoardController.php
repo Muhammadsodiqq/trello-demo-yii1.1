@@ -1,5 +1,9 @@
 <?php
 
+use Boards;
+use Exception;
+use Controller;
+
 class BoardController extends Controller
 {
     /**
@@ -31,12 +35,12 @@ class BoardController extends Controller
         return array(
             array(
                 'allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'create', 'update', 'UpdateCardColumn', 'delete'),
+                'actions' => array('index', 'view', 'create', 'update', 'UpdateCardColumn', 'DeleteBoard'),
                 'users' => array('@'),
             ),
             array(
                 'allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('UpdateCardColumn','GetBoardMembers'),
+                'actions' => array('UpdateCardColumn', 'GetBoardMembers'),
                 'users' => array('*'),
             ),
             array(
@@ -49,6 +53,8 @@ class BoardController extends Controller
     public function actionIndex()
     {
         $id = Yii::app()->user->id;
+        $user = Users::model()->findByPk($id);
+
         $user_boards = Boards::model()->findAll('user_id = :user_id', [':user_id' => $id]);
 
         $member_boards = Yii::app()->db->createCommand('SELECT b.id,b.name,b.user_id
@@ -66,7 +72,7 @@ class BoardController extends Controller
     public function actionCreate()
     {
         try {
-            $this->checkAjax();
+            $this->checkAjax('Board.Create');
 
             $model = new Boards;
             $model->name = @$_POST['name'];
@@ -99,32 +105,15 @@ class BoardController extends Controller
     public function actionView($id)
     {
 
-        $columns = Columns::model()->byid()->with('cards')->findAll('board_id = :board_id', [':board_id' => $id]);
+        $columns = Columns::model()->byid()->with([
+            'cards' => [
+                "order" => "cards.id ASC"
+            ]
+        ])->findAll('board_id = :board_id', [':board_id' => $id]);
         $board_members = BoardMembers::model()->with('user')->findAll('board_id = :board_id', [':board_id' => $id]);
         $BoardAdmin = Boards::model()->with('user')->findByPk($id)->user->username;
 
         $colors = Colors::model()->findAll();
-
-        if (isset($_POST['Board'])) {
-
-            $model = new Columns;
-            $model->title = $_POST['Board']['title'];
-            $model->board_id = $id;
-            if ($model->save()) {
-                return $this->redirect('/board/view/id/' . $id);
-            }
-        }
-
-        if (isset($_POST['Card'])) {
-            // print_r($_POST['Card']);die;
-            $model = new Cards;
-            $model->title = $_POST['Card']['title'];
-            $model->description = $_POST['Card']['description'];
-            $model->column_id = $_POST['Card']['column_id'];
-            if ($model->save()) {
-                return $this->redirect('/board/view/id/' . $id);
-            }
-        }
 
         $this->render('view', [
             'columns' => $columns,
@@ -151,6 +140,7 @@ class BoardController extends Controller
 
     public function actionDeleteBoard($id)
     {
+        $this->checkPermission('Board.DeleteBoard', Yii::app()->user->id);
         $model = Boards::model()->findByPk($id)->delete();
 
         $this->redirect(Yii::app()->request->urlReferrer);
@@ -159,7 +149,7 @@ class BoardController extends Controller
     public function actionGetBoardMembers()
     {
         try {
-            $this->checkAjax();
+            $this->checkAjax('Board.GetBoardMembers');
 
             $member_boards = Yii::app()->db->createCommand('SELECT b.id,b.name,bm.user_id, u.username
 			FROM board_members bm
@@ -169,23 +159,22 @@ class BoardController extends Controller
 			ON bm.user_id = u.id
 			WHERE b.user_id =:user_id')->bindValue(':user_id', $_POST['id'])->queryAll();
 
-			$arr = [];
-			foreach($member_boards as $board_member){
-				$card_member = CardMembers::model()->find('user_id = :user_id AND card_id = :card_id', ['user_id' => $board_member['user_id'], 'card_id' => $_POST['card_id']]);
-				if($card_member){
-					$board_member['is_card_member'] = true;
-				}else {
-					$board_member['is_card_member'] = false;
-				}
-				array_push($arr, $board_member);
-			}
+            $arr = [];
+            foreach ($member_boards as $board_member) {
+                $card_member = CardMembers::model()->find('user_id = :user_id AND card_id = :card_id', ['user_id' => $board_member['user_id'], 'card_id' => $_POST['card_id']]);
+                if ($card_member) {
+                    $board_member['is_card_member'] = true;
+                } else {
+                    $board_member['is_card_member'] = false;
+                }
+                array_push($arr, $board_member);
+            }
             echo CJSON::encode([
                 'ok' => true,
                 "data" => $arr,
             ]);
-			
         } catch (Exception $error) {
-			$httpVersion = Yii::app()->request->getHttpVersion();
+            $httpVersion = Yii::app()->request->getHttpVersion();
             header("HTTP/$httpVersion 400");
 
             echo CJSON::encode([
@@ -194,5 +183,4 @@ class BoardController extends Controller
             ]);
         }
     }
-
 }

@@ -96,6 +96,7 @@ class AssignmentController extends RController
 		    // Form is submitted and data is valid, redirect the user
 		    if( isset($_POST['AssignmentForm'])===true )
 			{
+
 				$formModel->attributes = $_POST['AssignmentForm'];
 				if( $formModel->validate()===true )
 				{

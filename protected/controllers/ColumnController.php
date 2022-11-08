@@ -12,7 +12,7 @@ class ColumnController extends Controller
 	public function actionCreate()
 	{
 		try {
-			$this->checkAjax();
+			$this->checkAjax('Column.Create');
 
 			$model = new Columns;
 			$model->title = @$_POST['title'];

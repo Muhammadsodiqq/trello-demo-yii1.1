@@ -5,7 +5,12 @@ class TagController extends Controller
     public function actionCreate()
     {
         try {
-            $this->checkAjax();
+            $this->checkAjax('Tag.Create');
+			$isExists = Tags::model()->find('board_id = :board_id AND name = :name AND color_id = :color_id',["board_id" => $_POST["board_id"], "name" => @$_POST['name'],"color_id" => @$_POST['color_id']]);
+
+			if($isExists){
+				throw new Exception("this tag is already exists for this board");
+			}
             $model = new Tags;
             $model->name = @$_POST['name'];
             $model->color_id = @$_POST['color_id'];
@@ -43,7 +48,7 @@ class TagController extends Controller
 	public function actionGetTags()
 	{
 		try {
-			$this->checkAjax();
+			$this->checkAjax('Tag.GetTags');
 
 			$model = Tags::model()->findAll('board_id = :board_id',["board_id" => $_POST["board_id"]]);
 
@@ -79,21 +84,57 @@ class TagController extends Controller
 
 	public function actionTegControl()
 	{
-		$this->checkAjax();
-		if(!@$_POST['is_delete']){
-			throw new Exception("invalid request");
-		}
-		$card = Cards::model()->find('card_id = :card_id ', ['card_id' => $_POST['card_id'], 'tag_id' => $_POST['tag_id']]);
-		$tag = Tags::model()->find('tag_id = :tag_id', ['card_id' => $_POST['card_id'], 'tag_id' => $_POST['tag_id']]);
-
-		if(!$model){
-			throw new Exception("invalid request");
-		}
+		try {
+			$this->checkAjax('Tag.TegControl');
 		
-		if(@$_POST['is_delete'] == true){
-			$model->delete();
-		}else{
+			// echo CJSON::encode([
+			// 	'ok' => true,
+			// 	"data" => @$_POST['is_delete'] == true ,
+			// ]);
+			// die;
+			if(!isset($_POST['is_delete'])){
+				throw new Exception("invalid request");
+			}
+			$card = Cards::model()->find('id = :card_id ', ['card_id' => $_POST['card_id']]);
+			$tag = Tags::model()->find('id = :tag_id', ['tag_id' => $_POST['tag_id']]);
+	
+			if(!$card || !$tag){
+				throw new Exception("invalid request");
+			}
+			
+			if(@$_POST['is_delete']){
+				CardTags::model()->find('card_id = :card_id AND tag_id = :tag_id', ['card_id' => $_POST['card_id'],'tag_id' => $_POST['tag_id']])->delete();
+			}else{
+				$isExists = CardTags::model()->find('card_id = :card_id AND tag_id = :tag_id', ['card_id' => $_POST['card_id'],'tag_id' => $_POST['tag_id']]);
 
+				if($isExists){
+					throw new Exception("this tag is already exists for this board");
+				}
+				$model = new CardTags;
+	
+				$model->card_id = $_POST['card_id'];
+				$model->tag_id = $_POST['tag_id'];
+	
+				if(!$model->save()){
+					$this->getError($model);
+				}
+				$data = Tags::model()->with('color')->findByPk($_POST['tag_id']);
+			}
+
+			
+			echo CJSON::encode([
+				'ok' => true,
+				"data" => @$data ? $this->convertModelToArray($data) : null,
+			]);
+	
+		} catch (Exception $error) {
+			$httpVersion = Yii::app()->request->getHttpVersion();
+            header("HTTP/$httpVersion 400");
+
+            echo CJSON::encode([
+                'ok' => false,
+                "msg" => $error->getMessage(),
+            ]);
 		}
 	}
 }

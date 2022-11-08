@@ -3,6 +3,10 @@
 class UserController extends Controller
 {
 	private $_identity;
+	/**
+	 * @property RAuthorizer
+	 */
+	private $_authorizer;
 
 	public function actionIndex()
 	{
@@ -49,15 +53,22 @@ class UserController extends Controller
 			$model->attributes = $_POST['Users'];
 
 			if ($model->save()) {
-				$model["password"] = $_POST['Users']['password'];
-				$this->_identity = new UserIdentity($model->username, $model->password);
+				$assignment = new Authassignment;
 
-				if ($this->_identity->authenticate()) {
-					Yii::app()->user->login($this->_identity);
-					if (@$_COOKIE["tokenLink"]) {
-						$this->redirect('/inviteLink/invite/token/' . $_COOKIE["tokenLink"]);
+				$assignment->itemname = 'user';
+				$assignment->userid = $model->id;
+
+				if($assignment->save()){
+					$model["password"] = $_POST['Users']['password'];
+					$this->_identity = new UserIdentity($model->username, $model->password);
+	
+					if ($this->_identity->authenticate()) {
+						Yii::app()->user->login($this->_identity);
+						if (@$_COOKIE["tokenLink"]) {
+							$this->redirect('/inviteLink/invite/token/' . $_COOKIE["tokenLink"]);
+						}
+						$this->redirect("/");
 					}
-					$this->redirect("/");
 				}
 			}
 		}

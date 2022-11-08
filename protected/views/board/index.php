@@ -11,7 +11,7 @@ $this->breadcrumbs = array(
 	<?php foreach ($user_boards as $user_board) { ?>
 		<a href="/board/view/id/<?= $user_board->id ?>" class="list-group-item list-group-item-action d-flex justify-content-between">
 			<?= $user_board->name ?>
-			<a href="/board/DeleteBoard/id/<?= $user_board->id ?>" class="d-inline-block btn btn-danger btn-sm">Delete</a>
+			<a href="<?php echo Yii::app()->createUrl('Board/DeleteBoard',["id" => $user_board->id ]); ?>" class="d-inline-block btn btn-danger btn-sm">Delete</a>
 		</a>
 	<?php } ?>
 </div>

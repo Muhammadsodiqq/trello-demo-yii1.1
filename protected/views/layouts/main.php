@@ -40,7 +40,7 @@
                     <div>
                         <div class="row">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="search-bar" placeholder="Search icon" />
+                                <!-- <input type="text" class="form-control" id="search-bar" placeholder="Search icon" /> -->
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
     </script>
     <!--JS below-->
 
-    <script>
+    <!-- <script>
         const searchBar = document.getElementById("search-bar");
         const list = document.getElementById("list");
 
@@ -149,7 +149,7 @@
         filter();
 
         searchBar.addEventListener("keyup", filter);
-    </script>
+    </script> -->
 </body>
 
 </html>

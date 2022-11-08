@@ -70,13 +70,23 @@ class Controller extends RController
         return $result;
     }
 
-    public function checkAjax()
+    public function checkAjax($access_name)
 	{
 		if (!Yii::app()->request->isAjaxRequest || !isset($_POST['id'])) {
 			throw new Exception('Invalid request');
 		}
-		if (!Users::model()->findByPk($_POST['id'])) {
+		$user = Users::model()->findByPk($_POST['id']);
+		if (!$user) {
 			throw new Exception('Invalid user');
+		}
+
+		$this->checkPermission($access_name,$user->id);
+	}
+
+	public function checkPermission($access_name,$user_id){
+		$permission = Yii::app()->getAuthManager()->checkAccess($access_name,$user_id,[]);
+		if(!$permission){
+			throw new Exception('this user has not permission!');
 		}
 
 		return true;
