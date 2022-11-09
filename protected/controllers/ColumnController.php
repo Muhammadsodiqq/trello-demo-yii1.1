@@ -4,35 +4,42 @@ class ColumnController extends Controller
 {
 	public function actionDelete($id)
 	{
-		$model=Columns::model()->findByPk($id)->delete();
+		$model = Columns::model()->findByPk($id)->delete();
 
 		$this->redirect(Yii::app()->request->urlReferrer);
 	}
 
-	public function actionCreate()
+	public function actionCreate($board_id)
 	{
+		// header('Content-type: application/json');
+		
 		try {
 			$this->checkAjax('Column.Create');
 
 			$model = new Columns;
-			$model->title = @$_POST['title'];
-			$model->board_id = @$_POST['board_id'];
-			if (!$model->save()) {
-				$this->getError($model);
+			$this->performAjaxValidation($model);
+			if (isset($_POST['Columns'])) {
+				$model->title = @$_POST['Columns']['title'];
+				$model->board_id = $board_id;
+				if ($model->save()) {
+					echo CJSON::encode([
+						'ok' => true,
+						"data" => $model
+					]);
+					exit;
+				}
 			}
 			echo CJSON::encode([
-				'ok' => true,
-				"data" => $model
+				'ok' => false,
+				"model" => $this->renderPartial("_form_board",["model"=>$model],true,true),
 			]);
-		} catch (Exception $error) {
-			$httpVersion = Yii::app()->request->getHttpVersion();
-			header("HTTP/$httpVersion 400");
 
+		}catch(Exception $error){
 			echo CJSON::encode([
 				'ok' => false,
-				"msg" => $error->getMessage()
+				"msg" => $error->getMessage(),
 			]);
 		}
-	}
 
+	}
 }

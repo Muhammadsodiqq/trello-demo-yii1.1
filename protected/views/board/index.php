@@ -6,25 +6,36 @@ $this->breadcrumbs = array(
 );
 ?>
 
-<div class="list-group">
-	<h1>Sizning doskalaringiz</h1>
+<h1>Sizning doskalaringiz</h1>
+<div class="list-group" id="list_board">
 	<?php foreach ($user_boards as $user_board) { ?>
+		<div></div>
 		<a href="/board/view/id/<?= $user_board->id ?>" class="list-group-item list-group-item-action d-flex justify-content-between">
 			<?= $user_board->name ?>
 			<a href="<?php echo Yii::app()->createUrl('Board/DeleteBoard',["id" => $user_board->id ]); ?>" class="d-inline-block btn btn-danger btn-sm">Delete</a>
 		</a>
 	<?php } ?>
 </div>
+<?php if (Yii::app()->user->checkAccess("Board.Create")) { ?>
+
 <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#myModal">
 	doska qo'shish
 </button>
+<?php } ?>
+<div class="list-group">
+		<h3><?= !$member_boards ? "" : "Siz ulangan do'skalar" ?></h3>
+		<?php foreach ($member_boards as $member_board) { ?>
+			<a href="/board/view/id/<?= $member_board['id'] ?>" class="list-group-item list-group-item-action">
+				<?= $member_board['name'] ?>
+			</a>
+		<?php } ?>
+	</div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="alert alert-danger d-none" id="error">
-
 		</div>
 		<div class="modal-content">
 			<div class="modal-header">
@@ -62,7 +73,7 @@ $this->breadcrumbs = array(
 			dataType: 'json',
 			success: function(data) {
 				
-				$(".list-group").html( $(".list-group").html() + `<a href="/board/view/id/${data.data.id}" class="list-group-item list-group-item-action d-flex justify-content-between">
+				$("#list_board").html( $("#list_board").html() + `<a href="/board/view/id/${data.data.id}" class="list-group-item list-group-item-action d-flex justify-content-between">
 				${data.data.name}
 					<a href="/board/DeleteBoard/id/${data.data.id}" class="d-inline-block btn btn-danger btn-sm">Delete</a>`)
 

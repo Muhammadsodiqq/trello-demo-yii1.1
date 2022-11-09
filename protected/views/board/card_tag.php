@@ -1,4 +1,3 @@
-
 <div class="modal fade shadow-inner bg-white " id="addDTag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -12,7 +11,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="alert alert-success d-none" id="teg_alert" role="alert">
-						changed succesfuly
+					changed succesfuly
 				</div>
 				<div class="d-flex">
 					<form action="/tag/create/" method="POST" class="row g-3">
@@ -60,12 +59,13 @@
 				tag_label.innerText = 'Teglar:'
 				tags.innerHTML = tags.innerHTML + `<button type="button" tag_id="${data.data.id}" style="background-color: ${data.data.color.name};color:#17505e; " class="btn m-1">${data.data.name}</button>`
 				$(".tags_check").html($(".tags_check").html() + `<div class="form-check">
-							<input class="tag_checkbox form-check-input" type="checkbox" value="${data.data.id}" id="${data.data.id}" 'checked' >
+							<input class="tag_checkbox form-check-input" type="checkbox" value="${data.data.id}" id="${data.data.id}" checked >
 							<label class="form-check-label" for="${data.data.id}">	
 								${data.data.name}
 							</label>
 						</div>`)
-				$("#addDTag").modal("toggle")
+
+						checkboxClick()
 				$("#CardTagUpdateerror").addClass("d-none")
 
 			},
@@ -103,7 +103,16 @@
 						</div>`)
 				})
 
-				$(".tag_checkbox").change(function() {
+				checkboxClick()
+			},
+			error: function(request, error) {
+				console.log("Request: " + JSON.stringify(request));
+			}
+		});
+	})
+
+	function checkboxClick(){
+		$(".tag_checkbox").change(function() {
 					let is_delete;
 					if ($(this).is(":checked")) {
 						is_delete = null;
@@ -131,16 +140,16 @@
 
 							$("#CardTagUpdateerror").addClass("d-none")
 							$("#teg_alert").removeClass('d-none');
-							if(data.data){
+							if (data.data) {
 								console.log(teg_id);
 								console.log(data.data.id);
 								tags.innerHTML = tags.innerHTML + `<button type="button" tag_id="${data.data.id}" style="background-color: ${data.data.color.name};color:#17505e; " class="btn m-1">${data.data.name}</button>`
-							}else{
-								document.querySelector("[tag_id ='" +  teg_id + "']").remove();
+							} else {
+								document.querySelector("[tag_id ='" + teg_id + "']").remove();
 							}
-							
+
 							setTimeout(function() {
-								$("#addDTag").modal("toggle")
+								// $("#addDTag").modal("toggle")
 								$("#teg_alert").addClass('d-none');
 								$(".tag_checkbox").prop("disabled", false);
 
@@ -155,10 +164,5 @@
 					});
 
 				})
-			},
-			error: function(request, error) {
-				console.log("Request: " + JSON.stringify(request));
-			}
-		});
-	})
+	}
 </script>

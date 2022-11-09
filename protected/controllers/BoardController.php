@@ -1,8 +1,8 @@
 <?php
 
-use Boards;
-use Exception;
-use Controller;
+use \Boards;
+use \Exception;
+use \Controller;
 
 class BoardController extends Controller
 {
@@ -107,7 +107,10 @@ class BoardController extends Controller
 
         $columns = Columns::model()->byid()->with([
             'cards' => [
-                "order" => "cards.id ASC"
+                "order" => "cards.id ASC",
+                "with" => ['cardMembers' => [
+                    "with" => 'user'
+                ]]
             ]
         ])->findAll('board_id = :board_id', [':board_id' => $id]);
         $board_members = BoardMembers::model()->with('user')->findAll('board_id = :board_id', [':board_id' => $id]);
@@ -126,15 +129,24 @@ class BoardController extends Controller
 
     public function actionUpdateCardColumn($column_id)
     {
-        $data = $_POST;
-        header('Content-type: application/json');
+        try {
+            $this->checkAjax('Board.UpdateCardColumn');
+            $data = $_POST;
 
-        if (isset($data["card_id"])) {
             $model = Cards::model()->findByPk($data["card_id"]);
+
+            if (!@$model) {
+                throw new Exception('invalid card');
+            }
+
             $model->column_id = $data["column_id"];
             $model->update();
 
-            echo CJSON::encode(["ok" => true]);
+            echo CJSON::encode([
+                'ok' => true,
+            ]);
+        } catch (Exception $error) {
+            $this->errorCatch($error);
         }
     }
 
@@ -183,4 +195,6 @@ class BoardController extends Controller
             ]);
         }
     }
+
+
 }

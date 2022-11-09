@@ -104,6 +104,8 @@ class CardController extends Controller
 
     public function actionUpdateCardMember()
     {
+        $transaction = Yii::app()->db->beginTransaction();
+
         try {
             $this->checkAjax('Card.UpdateCardMember');
 
@@ -131,11 +133,14 @@ class CardController extends Controller
             }
             $card_members = CardMembers::model()->with('user')->findAll("card_id = :card_id", ["card_id" => $_POST['card_id']]);
 
+            $transaction->commit();
+
             echo CJSON::encode([
                 'ok' => true,
                 "data" => $this->convertModelToArray($card_members),
             ]);
         } catch (Exception $error) {
+            $transaction->rollback();
             $httpVersion = Yii::app()->request->getHttpVersion();
             header("HTTP/$httpVersion 400");
 
@@ -148,6 +153,8 @@ class CardController extends Controller
 
     public function actionUpdateCardTag()
     {
+        $transaction = Yii::app()->db->beginTransaction();
+
         try {
             $this->checkAjax('Card.UpdateCardTag');
 
@@ -175,11 +182,15 @@ class CardController extends Controller
 
             $cardTags = CardTags::model()->with('tag')->findAll("card_id = :card_id", ["card_id" => $id]);
 
+            $transaction->commit();
+
             echo CJSON::encode([
                 'ok' => true,
                 "data" => $this->convertModelToArray($cardTags),
             ]);
         } catch (Exception $error) {
+            $transaction->rollback();
+
             $httpVersion = Yii::app()->request->getHttpVersion();
             header("HTTP/$httpVersion 400");
 
@@ -192,24 +203,33 @@ class CardController extends Controller
 
     public function actionCreate()
     {
-        if (isset($_POST['Card'])) {
-            $model = new Cards;
-            $model->title = $_POST['Card']['title'];
-            $model->description = $_POST['Card']['description'];
-            $model->column_id = $_POST['Card']['column_id'];
+        $transaction = Yii::app()->db->beginTransaction();
 
-            
-            if ($model->save()) {
-                if (!Yii::app()->user->checkAccess("admin")) {
-                    $card_member = new CardMembers;
-    
-                    $card_member['card_id'] = $model->id;
-                    $card_member['user_id'] = Yii::app()->user->id;
-                    if ($card_member->save()) {
-                        $this->redirect(Yii::app()->request->urlReferrer);
+        try {
+            if (isset($_POST['Card'])) {
+                $model = new Cards;
+                $model->title = $_POST['Card']['title'];
+                $model->description = $_POST['Card']['description'];
+                $model->column_id = $_POST['Card']['column_id'];
+
+
+                if ($model->save()) {
+                    if (!Yii::app()->user->checkAccess("admin")) {
+                        $card_member = new CardMembers;
+
+                        $card_member['card_id'] = $model->id;
+                        $card_member['user_id'] = Yii::app()->user->id;
+                        if ($card_member->save()) {
+                            $transaction->commit();
+
+                            $this->redirect(Yii::app()->request->urlReferrer);
+                        }
                     }
                 }
             }
+        } catch (Exception $error) {
+            $transaction->rollback();
+            $this->redirect(Yii::app()->request->urlReferrer);
         }
     }
 
@@ -222,30 +242,4 @@ class CardController extends Controller
 
         return $model;
     }
-    // Uncomment the following methods and override them if needed
-    /*
-public function filters()
-{
-// return the filter configuration for this controller, e.g.:
-return array(
-'inlineFilterName',
-array(
-'class'=>'path.to.FilterClass',
-'propertyName'=>'propertyValue',
-),
-);
-}
-
-public function actions()
-{
-// return external action classes, e.g.:
-return array(
-'action1'=>'path.to.ActionClass',
-'action2'=>array(
-'class'=>'path.to.AnotherActionClass',
-'propertyName'=>'propertyValue',
-),
-);
-}
- */
 }

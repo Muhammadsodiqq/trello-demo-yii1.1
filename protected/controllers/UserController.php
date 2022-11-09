@@ -46,6 +46,8 @@ class UserController extends Controller
 
 	public function actionSignup()
 	{
+		$transaction = Yii::app()->db->beginTransaction();
+
 		$model = new Users('create');
 
 		if (isset($_POST['Users'])) {
@@ -65,13 +67,19 @@ class UserController extends Controller
 					if ($this->_identity->authenticate()) {
 						Yii::app()->user->login($this->_identity);
 						if (@$_COOKIE["tokenLink"]) {
+							$transaction->commit();
+
 							$this->redirect('/inviteLink/invite/token/' . $_COOKIE["tokenLink"]);
 						}
+						$transaction->commit();
+
 						$this->redirect("/");
 					}
 				}
 			}
 		}
+		
+		$transaction->rollback();
 
 		$this->render('signup', array('model' => $model));
 	}

@@ -25,7 +25,7 @@ class InviteLinkController extends Controller
 
 		$model = new BoardMembers;
 		$id = Yii::app()->user->id;
-		$isExists = BoardMembers::model()->find('user_id = :user_id AND board_id = :board_id ', ['user_id' => $id,'board_id' => $invite->board_id]);
+		$isExists = BoardMembers::model()->find('user_id = :user_id AND board_id = :board_id ', ['user_id' => $id, 'board_id' => $invite->board_id]);
 		if ($isExists) {
 			$this->redirect('/board/view/id/' . $invite->board_id);
 		}
@@ -35,12 +35,6 @@ class InviteLinkController extends Controller
 		if ($model->save()) {
 			$this->redirect('/board/view/id/' . $invite->board_id);
 		}
-
-		// echo $_COOKIE["tokenLink"];
-
-
-
-		// $this->render('index');
 	}
 
 
@@ -69,31 +63,4 @@ class InviteLinkController extends Controller
 			$this->redirect(Yii::app()->request->urlReferrer);
 		}
 	}
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }

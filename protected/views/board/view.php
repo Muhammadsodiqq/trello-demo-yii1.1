@@ -6,7 +6,8 @@ $cs->registerCssFile($baseUrl . '/css/board/main.css');
 $is_own = Yii::app()->user->checkAccess("");
 
 ?>
-
+<input type="hidden" id="b_id" value="<?= $id ?>">
+<input type="hidden" id="u_id" value="<?= Yii::app()->user->id; ?>">
 <?php if (Yii::app()->user->checkAccess("InviteLink.Generate")) { ?>
 	<?php if (Yii::app()->user->hasFlash('notice')) { ?>
 		<div class="alert alert-info" role="alert">
@@ -20,31 +21,41 @@ $is_own = Yii::app()->user->checkAccess("");
 <?php } ?>
 
 <div class="board" id="board">
-	<?php foreach ($columns as $column) { ?>
-		<div class="taskColumn" id="<?= $column->title ?>" column_id="<?= $column->id ?>">
-			<?php if (Yii::app()->user->checkAccess("Card.Create")) { ?>
-				<button type="button" class="w-100 mb-1  btn btn-success ml-auto" id="columnbtn" column_id="<?= $column->id ?>" data-toggle="modal" data-target="#myModal1">
-					card qo'shish
-				</button>
-			<?php } ?>
-			<div class="colHdr"><strong><?= $column->title ?></strong></div>
-
-			<?php foreach (($column->cards) as $card) {	?>
-				<?php if (!Yii::app()->user->checkAccess("admin")) { ?>
-					<?php if (CardMembers::model()->find('card_id = :card_id AND user_id = :user_id',['card_id' => $card->id, 'user_id' => Yii::app()->user->id])) { ?>
-						<div class="taskDiv" data-toggle="modal" data-target="#myModal2" draggable="true" id="<?= $card->id ?>"><span id="<?= $card->id ?>"><strong id="<?= $card->id ?>"><?= $card->title ?></strong></span></div>
-
-					<?php }	?>
-				<?php } else {	?>
-					<div class="taskDiv" data-toggle="modal" data-target="#myModal2" draggable="true" id="<?= $card->id ?>"><span id="<?= $card->id ?>"><strong id="<?= $card->id ?>"><?= $card->title ?></strong></span></div>
+		<?php foreach ($columns as $column) { ?>
+			<div class="taskColumn" id="<?= $column->title ?>" column_id="<?= $column->id ?>">
+				<?php if (Yii::app()->user->checkAccess("Card.Create")) { ?>
+					<button type="button" class="w-100 mb-1  btn btn-success ml-auto" id="columnbtn" column_id="<?= $column->id ?>" data-toggle="modal" data-target="#myModal1">
+						card qo'shish
+					</button>
 				<?php } ?>
-			<?php } ?>
-		</div>
-	<?php } ?>
+				<div class="colHdr"><strong><?= $column->title ?></strong></div>
 
+				<?php foreach ($column->cards as $card) {	?>
+					<?php if (!Yii::app()->user->checkAccess("admin")) { ?>
+						<?php if (CardMembers::model()->find('card_id = :card_id AND user_id = :user_id', ['card_id' => $card->id, 'user_id' => Yii::app()->user->id])) { ?>
+							<div class="taskDiv" data-toggle="modal" data-target="#myModal2" draggable="true" id="<?= $card->id ?>"><span id="<?= $card->id ?>"><strong id="<?= $card->id ?>"><?= $card->title ?></strong></span></div>
+
+						<?php }	?>
+					<?php } else {	?>
+						<div role="taskDiv" class="taskDiv d-flex" data-toggle="modal" data-target="#myModal2" draggable="true" id="<?= $card->id ?>">
+							<span id="<?= $card->id ?>">
+								<strong id="<?= $card->id ?>"><?= $card->title ?>
+								</strong>
+							</span>
+
+							<div id="<?= $card->id ?>" role="members" class="members ml-auto">
+								<?php foreach ($card->cardMembers as $member) {	?>
+									<a id="<?= $card->id ?>" class="btn ml-2 btn-info btn-sm"><?= $member['user']['username'] ?></a>
+								<?php }	?>
+							</div>
+						</div>
+					<?php } ?>
+				<?php } ?>
+			</div>
+		<?php } ?>
 	<?php if (Yii::app()->user->checkAccess("Column.Create")) { ?>
 
-		<button type="button" class="taskColumnAdd btn btn-info ml-auto" data-toggle="modal" data-target="#myModal">
+		<button type="button" id="taskColumnAdd" class="taskColumnAdd btn btn-info ml-auto" data-toggle="modal" data-target="#myModal">
 			list qo'shish
 		</button>
 
@@ -85,14 +96,8 @@ $is_own = Yii::app()->user->checkAccess("");
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<form action="/board/view/id/<?= $id ?>" method="POST" class="row g-3">
-						<div class="col-md-6">
-							<label for="inputEmail4" class="form-label">Name</label>
-							<input type="text" required class="form-control" id="list_title" name="Board[title]" placeholder="name" />
-							<button type="submit" id="list_submit" class="btn btn-primary mt-4">Save changes</button>
-						</div>
-					</form>
+				<div class="modal-body" id="main-modal">
+
 				</div>
 			</div>
 		</div>
@@ -137,6 +142,58 @@ $is_own = Yii::app()->user->checkAccess("");
 	</div>
 <?php } ?>
 
+
+<script>
+	function send(url, formdata = null, type = null) {
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: formdata,
+			dataType: 'json',
+			success: function(data) {
+				if (data.ok == false) {
+					$("#main-modal").html(data.model)
+
+					$("#modal_saver").click(function(e) {
+						console.log(
+							'bos'
+						);
+						e.preventDefault()
+						send(url, $("#board-form").serialize(),'column')
+						return;
+					});
+					return;
+
+				} else {
+					$("#myModal").toggle('hide');
+					$('body').removeClass('modal-open');
+					$('.modal-backdrop').remove();
+
+					if (type == 'column') {
+						$("#board").append(`
+					<div class="taskColumn" id="${data.data.title}" column_id="${data.data.id}">
+					<button type="button" class="w-100 mb-1  btn btn-success ml-auto" id="columnbtn" column_id="${data.data.id}" data-toggle="modal" data-target="#myModal1">
+						card qo'shish
+					</button>
+				<div class="colHdr"><strong>${data.data.title}</strong></div>
+
+				
+			</div>
+					`)
+					}
+				}
+			},
+			error: function(request, error) {
+				console.log($("#error"));
+			}
+		});
+	}
+	$("#taskColumnAdd").click(function() {
+		send(`<?php echo Yii::app()->createUrl('Column/Create', ['board_id' => $id]); ?>`)
+	})
+</script>
+
+
 <?php
 if (Yii::app()->user->checkAccess("Card.View")) {
 	$this->renderPartial('card_view');
@@ -154,7 +211,6 @@ if (Yii::app()->user->checkAccess("Card.UpdateCardTag")) {
 	$this->renderPartial('card_tag', ["colors" => $colors, "id" => $id]);
 }
 ?>
-
 
 
 

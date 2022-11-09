@@ -1,18 +1,19 @@
   function dragStart(event) {
 	event.dataTransfer.setData("Text", event.target.id);
 };
-let arr = {};
+let arr = {
+	id : u_id.value
+};
 async function dragEnter(event) {
 	event.preventDefault();
 	let card_id;
+	console.log(event.target);
 	if (event.target.className == "taskColumn") {
 		event.target.style.border = "1px dotted rgb(255,0,0)";
 		arr.column_id = event.target.getAttribute("column_id")
-	} else if (event.target.className == "taskDiv") {
+	} else if (event.target.getAttribute("role") == "taskDiv" || event.target.getAttribute("role") == 'members') {
 		event.target.style.backgroundColor = "grey";
 		arr.card_id = event.target.id
-
-
 	}
 
 
@@ -49,9 +50,9 @@ function drop(event) {
 		// actionSpan.innerHTML = 'Moved to: ' + event.target.id + ' ' + actionDateTime;
 		document.getElementById(data).appendChild(actionSpan);
 		// console.log(event.target);
-		// console.log(arr);
+		console.log(arr);
 		$.ajax({
-			url : '/board/UpdateCardColumn/column_id/1',
+			url : '/board/UpdateCardColumn/column_id/' + b_id.value,
 			type : 'POST',
 			data : arr,
 			dataType:'json',

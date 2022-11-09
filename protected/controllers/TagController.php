@@ -4,6 +4,8 @@ class TagController extends Controller
 {
     public function actionCreate()
     {
+		$transaction = Yii::app()->db->beginTransaction();
+
         try {
             $this->checkAjax('Tag.Create');
 			$isExists = Tags::model()->find('board_id = :board_id AND name = :name AND color_id = :color_id',["board_id" => $_POST["board_id"], "name" => @$_POST['name'],"color_id" => @$_POST['color_id']]);
@@ -12,29 +14,35 @@ class TagController extends Controller
 				throw new Exception("this tag is already exists for this board");
 			}
             $model = new Tags;
+			$model->load(Yii::app()->request);
             $model->name = @$_POST['name'];
             $model->color_id = @$_POST['color_id'];
             $model->board_id = @$_POST['board_id'];
 
-            if (!$model->save()) {
-                $this->getError($model);	
+
+            if ($model->save()) {
+                // $this->getError($model);	
+				$card_tags = new CardTags;
+	
+				$card_tags['card_id'] = $_POST['card_id'];
+				$card_tags['tag_id'] = $model->id;
+	
+				if($card_tags->save()){
+					// $this->getError($card_tags);
+					$data = Tags::model()->with('color')->findByPk($model->id);
+					$transaction->commit();
+				}
             }
 
-            $card_tags = new CardTags;
 
-            $card_tags['card_id'] = $_POST['card_id'];
-            $card_tags['tag_id'] = $model->id;
-
-            if(!$card_tags->save()){
-                $this->getError($card_tags);
-			}
-			$data = Tags::model()->with('color')->findByPk($model->id);
 			echo CJSON::encode([
                 'ok' => true,
                 "data" => $this->convertModelToArray($data),
             ]);
 
         } catch (Exception $error) {
+			$transaction->rollback();
+
 			$httpVersion = Yii::app()->request->getHttpVersion();
             header("HTTP/$httpVersion 400");
 
@@ -84,14 +92,11 @@ class TagController extends Controller
 
 	public function actionTegControl()
 	{
+		$transaction = Yii::app()->db->beginTransaction();
+
 		try {
 			$this->checkAjax('Tag.TegControl');
 		
-			// echo CJSON::encode([
-			// 	'ok' => true,
-			// 	"data" => @$_POST['is_delete'] == true ,
-			// ]);
-			// die;
 			if(!isset($_POST['is_delete'])){
 				throw new Exception("invalid request");
 			}
@@ -121,13 +126,16 @@ class TagController extends Controller
 				$data = Tags::model()->with('color')->findByPk($_POST['tag_id']);
 			}
 
-			
+			$transaction->commit();
+
 			echo CJSON::encode([
 				'ok' => true,
 				"data" => @$data ? $this->convertModelToArray($data) : null,
 			]);
 	
 		} catch (Exception $error) {
+			$transaction->rollback();
+
 			$httpVersion = Yii::app()->request->getHttpVersion();
             header("HTTP/$httpVersion 400");
 
