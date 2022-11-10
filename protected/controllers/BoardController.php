@@ -1,8 +1,8 @@
 <?php
 
-use \Boards;
-use \Exception;
-use \Controller;
+// use \Boards;
+// use \Exception;
+// use \Controller;
 
 class BoardController extends Controller
 {
@@ -75,30 +75,27 @@ class BoardController extends Controller
             $this->checkAjax('Board.Create');
 
             $model = new Boards;
-            $model->name = @$_POST['name'];
-            $model->user_id = @$_POST['id'];
-            if (!$model->save()) {
-                foreach ($model->getErrors() as $attribute => $error) {
-
-                    foreach ($error as $message) {
-
-                        throw new Exception($message);
-                    }
+            if(isset($_POST['Boards'])){
+                $model->name = @$_POST['Boards']['name'];
+                $model->user_id = Yii::app()->user->id;
+                if ($model->save()) {
+                    echo CJSON::encode([
+						'ok' => true,
+						"data" => $model
+					]);
+					exit;
                 }
             }
             echo CJSON::encode([
-                'ok' => true,
-                "data" => $model,
-            ]);
+				'ok' => false,
+				"model" => $this->renderPartial("_form_board",["model"=>$model],true,true),
+			]);
         } catch (Exception $error) {
 
-            $httpVersion = Yii::app()->request->getHttpVersion();
-            header("HTTP/$httpVersion 400");
-
             echo CJSON::encode([
-                'ok' => false,
-                "msg" => $error->getMessage(),
-            ]);
+				'ok' => "error",
+				"msg" => $error->getMessage(),
+			]);
         }
     }
 
@@ -152,8 +149,14 @@ class BoardController extends Controller
 
     public function actionDeleteBoard($id)
     {
-        $this->checkPermission('Board.DeleteBoard', Yii::app()->user->id);
-        $model = Boards::model()->findByPk($id)->delete();
+        // $this->checkPermission('Board.DeleteBoard', Yii::app()->user->id);
+        $model = Boards::model()->findByPk($id);
+        if(!@$model->user_id == Yii::app()->user->id) {
+			Yii::app()->user->setFlash('error', "you don't have acces for delete this");
+            $this->redirect(Yii::app()->request->urlReferrer);
+            
+        }
+        $model->delete();
 
         $this->redirect(Yii::app()->request->urlReferrer);
     }

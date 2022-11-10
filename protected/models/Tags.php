@@ -35,12 +35,24 @@ class Tags extends CActiveRecord
 		return array(
 			array('name, color_id, board_id', 'required'),
 			array('color_id, board_id', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
+			array('name','uniqueOnColumn', 'length', 'max'=>255),
 			array('created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, color_id, board_id, created_at', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function uniqueOnColumn($attribute,$params)
+	{
+		if($this->board_id && $this->name && $this->color_id){
+
+			$isExists = Tags::model()->find('board_id = :board_id AND name = :name AND color_id = :color_id',["board_id" => $this->board_id, "name" => $this->name,"color_id" => $this->color_id]);
+			if($isExists){
+				$this->addError($attribute, 'this teg already exsists on this board');
+			}
+		}
+
 	}
 
 	/**

@@ -36,7 +36,7 @@ class ColumnController extends Controller
 
 		}catch(Exception $error){
 			echo CJSON::encode([
-				'ok' => false,
+				'ok' => 'error',
 				"msg" => $error->getMessage(),
 			]);
 		}

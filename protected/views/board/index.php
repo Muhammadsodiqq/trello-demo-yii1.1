@@ -5,31 +5,35 @@ $this->breadcrumbs = array(
 	'Board',
 );
 ?>
-
+<?php if (Yii::app()->user->hasFlash('error')) { ?>
+		<div class="alert alert-danger" role="alert">
+			 <strong><?php echo Yii::app()->user->getFlash('error'); ?></strong>
+		</div>
+	<?php } ?>
 <h1>Sizning doskalaringiz</h1>
 <div class="list-group" id="list_board">
 	<?php foreach ($user_boards as $user_board) { ?>
 		<div></div>
 		<a href="/board/view/id/<?= $user_board->id ?>" class="list-group-item list-group-item-action d-flex justify-content-between">
 			<?= $user_board->name ?>
-			<a href="<?php echo Yii::app()->createUrl('Board/DeleteBoard',["id" => $user_board->id ]); ?>" class="d-inline-block btn btn-danger btn-sm">Delete</a>
+			<a href="<?php echo Yii::app()->createUrl('Board/DeleteBoard', ["id" => $user_board->id]); ?>" class="d-inline-block btn btn-danger btn-sm">Delete</a>
 		</a>
 	<?php } ?>
 </div>
 <?php if (Yii::app()->user->checkAccess("Board.Create")) { ?>
 
-<button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#myModal">
-	doska qo'shish
-</button>
+	<button type="button" id="addColumn" class="btn btn-primary mt-2" data-toggle="modal" data-target="#myModal">
+		doska qo'shish
+	</button>
 <?php } ?>
 <div class="list-group">
-		<h3><?= !$member_boards ? "" : "Siz ulangan do'skalar" ?></h3>
-		<?php foreach ($member_boards as $member_board) { ?>
-			<a href="/board/view/id/<?= $member_board['id'] ?>" class="list-group-item list-group-item-action">
-				<?= $member_board['name'] ?>
-			</a>
-		<?php } ?>
-	</div>
+	<h3><?= !$member_boards ? "" : "Siz ulangan do'skalar" ?></h3>
+	<?php foreach ($member_boards as $member_board) { ?>
+		<a href="/board/view/id/<?= $member_board['id'] ?>" class="list-group-item list-group-item-action">
+			<?= $member_board['name'] ?>
+		</a>
+	<?php } ?>
+</div>
 
 
 <!-- Modal -->
@@ -44,14 +48,8 @@ $this->breadcrumbs = array(
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<form action="/board" method="POST" class="row g-3">
-					<div class="col-md-6">
-						<label for="inputEmail4" class="form-label">Name</label>
-						<input type="text" required class="form-control" id="inputEmail4" name="Board[name]" placeholder="name" />
-						<button id="submit" type="submit" class="btn btn-primary mt-4">Save changes</button>
-					</div>
-				</form>
+			<div class="modal-body" id="main-modal">
+
 			</div>
 
 		</div>
@@ -59,12 +57,65 @@ $this->breadcrumbs = array(
 </div>
 
 <script>
+	if (window.history.replaceState) {
+		window.history.replaceState(null, null, window.location.href);
+	}
 
+	function send(url, formdata = null, type = null) {
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: formdata,
+			dataType: 'json',
+			success: function(data) {
+				if (data.ok == false) {
+					$("#main-modal").html(data.model)
+
+					$("#modal_saver").click(function(e) {
+						console.log(
+							'bos'
+						);
+						e.preventDefault()
+						send(url, $("#board-form").serialize(), 'column')
+						return;
+					});
+					return;
+
+				} else {
+					$("#myModal").toggle('hide');
+					$('body').removeClass('modal-open');
+					$('.modal-backdrop').remove();
+
+					// if (type == 'column') {
+					$("#list_board").html($("#list_board").html() + `<a href="/board/view/id/${data.data.id}" class="list-group-item list-group-item-action d-flex justify-content-between">
+				${data.data.name}
+					<a href="/board/DeleteBoard/id/${data.data.id}" class="d-inline-block btn btn-danger btn-sm">Delete</a>`)
+
+					$('.modal').removeClass('in');
+					$('.modal').attr("aria-hidden", "true");
+					$('.modal').css("display", "none");
+					$('.modal-backdrop').remove();
+					$('body').removeClass('modal-open');
+					$("#inputEmail4").val('')
+					$("#error").addClass("d-none")
+					// }
+				}
+			},
+			error: function(request, error) {
+				console.log($("#error"));
+			}
+		});
+	}
+	$("#addColumn").click(function() {
+		send(`<?php echo Yii::app()->createUrl('Board/Create'); ?>`)
+	})
+</script>
+<!-- <script>
 	$("#submit").click(function(e) {
 		e.preventDefault();
 		// console.log($("#inputEmail4").val());
 		$.ajax({
-			url: "<?php echo Yii::app()->createUrl('Board/Create');?>",
+			url: "<?php echo Yii::app()->createUrl('Board/Create'); ?>",
 			type: 'POST',
 			data: {
 				id: "<?php echo Yii::app()->user->id; ?>",
@@ -72,16 +123,16 @@ $this->breadcrumbs = array(
 			},
 			dataType: 'json',
 			success: function(data) {
-				
-				$("#list_board").html( $("#list_board").html() + `<a href="/board/view/id/${data.data.id}" class="list-group-item list-group-item-action d-flex justify-content-between">
+
+				$("#list_board").html($("#list_board").html() + `<a href="/board/view/id/${data.data.id}" class="list-group-item list-group-item-action d-flex justify-content-between">
 				${data.data.name}
 					<a href="/board/DeleteBoard/id/${data.data.id}" class="d-inline-block btn btn-danger btn-sm">Delete</a>`)
 
 				$('.modal').removeClass('in');
-                $('.modal').attr("aria-hidden","true");
-                $('.modal').css("display", "none");
-                $('.modal-backdrop').remove();
-                $('body').removeClass('modal-open');
+				$('.modal').attr("aria-hidden", "true");
+				$('.modal').css("display", "none");
+				$('.modal-backdrop').remove();
+				$('body').removeClass('modal-open');
 				$("#inputEmail4").val('')
 				$("#error").addClass("d-none")
 				$("#error").html('')
@@ -93,4 +144,4 @@ $this->breadcrumbs = array(
 			}
 		});
 	});
-</script>
+</script> -->

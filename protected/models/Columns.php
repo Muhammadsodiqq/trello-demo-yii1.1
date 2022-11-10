@@ -34,11 +34,20 @@ class Columns extends CActiveRecord
 			array('title, board_id', 'required'),
 			array('board_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
+			array('title', 'uniqueOnBoard', 'max'=>255),
 			array('created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, board_id, created_at', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function uniqueOnBoard($attribute,$params){
+		$isExsists = $this::model()->find('title = :title AND board_id = :board_id',["title" => $this->title,"board_id" => $this->board_id]);
+
+		if($isExsists){
+			$this->addError($attribute, 'this column already exsists on this board');
+		}
 	}
 
 	/**

@@ -21,38 +21,38 @@ $is_own = Yii::app()->user->checkAccess("");
 <?php } ?>
 
 <div class="board" id="board">
-		<?php foreach ($columns as $column) { ?>
-			<div class="taskColumn" id="<?= $column->title ?>" column_id="<?= $column->id ?>">
-				<?php if (Yii::app()->user->checkAccess("Card.Create")) { ?>
-					<button type="button" class="w-100 mb-1  btn btn-success ml-auto" id="columnbtn" column_id="<?= $column->id ?>" data-toggle="modal" data-target="#myModal1">
-						card qo'shish
-					</button>
-				<?php } ?>
-				<div class="colHdr"><strong><?= $column->title ?></strong></div>
+	<?php foreach ($columns as $column) { ?>
+		<div class="taskColumn" id="<?= $column->title ?>" column_id="<?= $column->id ?>">
+			<?php if (Yii::app()->user->checkAccess("Card.Create")) { ?>
+				<button type="button" class="w-100 mb-1  btn btn-success ml-auto columnbtn" id="columnbtn" column_id="<?= $column->id ?>" data-toggle="modal" data-target="#myModal">
+					card qo'shish
+				</button>
+			<?php } ?>
+			<div class="colHdr"><strong><?= $column->title ?></strong></div>
 
-				<?php foreach ($column->cards as $card) {	?>
-					<?php if (!Yii::app()->user->checkAccess("admin")) { ?>
-						<?php if (CardMembers::model()->find('card_id = :card_id AND user_id = :user_id', ['card_id' => $card->id, 'user_id' => Yii::app()->user->id])) { ?>
-							<div class="taskDiv" data-toggle="modal" data-target="#myModal2" draggable="true" id="<?= $card->id ?>"><span id="<?= $card->id ?>"><strong id="<?= $card->id ?>"><?= $card->title ?></strong></span></div>
+			<?php foreach ($column->cards as $card) {	?>
+				<?php if (!Yii::app()->user->checkAccess("admin")) { ?>
+					<?php if (CardMembers::model()->find('card_id = :card_id AND user_id = :user_id', ['card_id' => $card->id, 'user_id' => Yii::app()->user->id])) { ?>
+						<div class="taskDiv" data-toggle="modal" data-target="#myModal" draggable="true" id="<?= $card->id ?>"><span id="<?= $card->id ?>"><strong id="<?= $card->id ?>"><?= $card->title ?></strong></span></div>
 
-						<?php }	?>
-					<?php } else {	?>
-						<div role="taskDiv" class="taskDiv d-flex" data-toggle="modal" data-target="#myModal2" draggable="true" id="<?= $card->id ?>">
-							<span id="<?= $card->id ?>">
-								<strong id="<?= $card->id ?>"><?= $card->title ?>
-								</strong>
-							</span>
+					<?php }	?>
+				<?php } else {	?>
+					<div role="taskDiv" class="taskDiv d-flex" data-toggle="modal" data-target="#myModal" draggable="true" id="<?= $card->id ?>">
+						<span id="<?= $card->id ?>">
+							<strong id="<?= $card->id ?>"><?= $card->title ?>
+							</strong>
+						</span>
 
-							<div id="<?= $card->id ?>" role="members" class="members ml-auto">
-								<?php foreach ($card->cardMembers as $member) {	?>
-									<a id="<?= $card->id ?>" class="btn ml-2 btn-info btn-sm"><?= $member['user']['username'] ?></a>
-								<?php }	?>
-							</div>
+						<div id="<?= $card->id ?>" role="members" class="members ml-auto">
+							<?php foreach ($card->cardMembers as $member) {	?>
+								<a id="<?= $card->id ?>" class="btn ml-2 btn-info btn-sm"><?= $member['user']['username'] ?></a>
+							<?php }	?>
 						</div>
-					<?php } ?>
+					</div>
 				<?php } ?>
-			</div>
-		<?php } ?>
+			<?php } ?>
+		</div>
+	<?php } ?>
 	<?php if (Yii::app()->user->checkAccess("Column.Create")) { ?>
 
 		<button type="button" id="taskColumnAdd" class="taskColumnAdd btn btn-info ml-auto" data-toggle="modal" data-target="#myModal">
@@ -105,83 +105,79 @@ $is_own = Yii::app()->user->checkAccess("");
 
 <?php } ?>
 
-<?php if (Yii::app()->user->checkAccess("Card.Create")) { ?>
+<?php if (Yii::app()->user->checkAccess("Card.Create")) {
 
-	<div class="modal fade " id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Card qo'shish</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="/card/create" method="POST" class="row g-3">
-						<div class="col-md-6">
-							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label">Title</label>
-								<input type="text" class="form-control" id="exampleFormControlInput1" name="Card[title]" placeholder="name@example.com">
-							</div>
-							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label">Description</label>
-								<textarea class="form-control" id="exampleFormControlTextarea1" name="Card[description]" rows="3"></textarea>
-								<input type="hidden" name="Card[column_id]" id="inp-hidden">
-							</div>
-							<button type="submit" class="btn btn-primary mt-4">Save changes</button>
-							<?php if (Yii::app()->user->checkAccess("Column.Delete")) { ?>
-
-								<a href="#" id="column_delete" class="btn btn-danger mt-4">Column Delete</a>
-							<?php } ?>
-
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-<?php } ?>
-
+	$this->renderPartial('card_tag');
+	$this->renderPartial('card_user',);
+} ?>
 
 <script>
-	function send(url, formdata = null, type = null) {
+	$('#myModal').on('hidden.bs.modal', function() {
+		$('body').removeClass('modal-open');
+		$('.modal-backdrop').remove();
+		$("#error").addClass("d-none")
+
+	})
+
+	function send(url, formdata = null, type = null, status = 0) {
 		$.ajax({
 			url: url,
 			type: 'POST',
 			data: formdata,
 			dataType: 'json',
 			success: function(data) {
+
+				
 				if (data.ok == false) {
 					$("#main-modal").html(data.model)
 
 					$("#modal_saver").click(function(e) {
-						console.log(
-							'bos'
-						);
 						e.preventDefault()
-						send(url, $("#board-form").serialize(),'column')
+						send(url, $("#board-form").serialize(), type, 1)
 						return;
 					});
 					return;
 
-				} else {
-					$("#myModal").toggle('hide');
-					$('body').removeClass('modal-open');
-					$('.modal-backdrop').remove();
+				} else if (data.ok == true) {
 
-					if (type == 'column') {
-						$("#board").append(`
-					<div class="taskColumn" id="${data.data.title}" column_id="${data.data.id}">
-					<button type="button" class="w-100 mb-1  btn btn-success ml-auto" id="columnbtn" column_id="${data.data.id}" data-toggle="modal" data-target="#myModal1">
-						card qo'shish
-					</button>
-				<div class="colHdr"><strong>${data.data.title}</strong></div>
+					if (status == 1) {
+
+						if (type == 'column') {
+							$("#board").append(`
+							<div class="taskColumn" id="${data.data.title}" column_id="${data.data.id}">
+								<button type="button" class="w-100 mb-1  btn btn-success ml-auto columnbtn" id="columnbtn" column_id="${data.data.id}" data-toggle="modal" data-target="#myModal1">
+									card qo'shish
+								</button>
+								<div class="colHdr"><strong>${data.data.title}</strong></div>
+							</div>`)
+
+							$("#myModal").toggle('hide');
+
+						}
+						if (type == 'card') {
+							$(`.taskColumn[column_id = ${data.data.column_id}]`).append(`
+						<div class="taskDiv" data-toggle="modal" data-target="#myModal" draggable="true" id="${data.data.id}"><span id="${data.data.id}"><strong id="${data.data.id}">${data.data.title}</strong></span></div>
+							`);
+							$("#myModal").toggle('hide');
+
+						}
+						if (type == 'card_view') {
+							$("#card_text").text(data.data.description)
+							$("#card_title").text(data.data.title)
+							$(".type_text").css('display', 'block')
+							$(".showthis").css('display', 'none')
+							$(".trigger").prop('checked', false)
+							$('#modal_saver').addClass("d-none")
+							
+						}
+					}
+
+				} else if (data.ok == "error") {
+					$("#error").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
+					$("#error").removeClass("d-none")
+				}
 
 				
-			</div>
-					`)
-					}
-				}
 			},
 			error: function(request, error) {
 				console.log($("#error"));
@@ -189,27 +185,38 @@ $is_own = Yii::app()->user->checkAccess("");
 		});
 	}
 	$("#taskColumnAdd").click(function() {
-		send(`<?php echo Yii::app()->createUrl('Column/Create', ['board_id' => $id]); ?>`)
+		send(`<?php echo Yii::app()->createUrl('Column/Create', ['board_id' => $id]); ?>`, null, 'column')
+	})
+
+	$(".columnbtn").click(function(e) {
+		let column_id = $(this).attr("column_id")
+		send(`/Card/Create/column_id/${column_id}`, null, 'card')
+	})
+	$(".taskDiv").click(function(e) {
+		// console.log($(this));
+
+		let id = $(this).attr("id");
+		send(`/card/view/id/${id}`, null, 'card_view')
+
 	})
 </script>
-
-
 <?php
-if (Yii::app()->user->checkAccess("Card.View")) {
-	$this->renderPartial('card_view');
-}
+// if (Yii::app()->user->checkAccess("Card.View")) {
 
-if (Yii::app()->user->checkAccess("Card.UpdateDeadline")) {
-	$this->renderPartial('card_deadline');
-}
+// }
 
-if (Yii::app()->user->checkAccess("Card.UpdateCardMember")) {
-	$this->renderPartial('card_user',);
-}
+// if (Yii::app()->user->checkAccess("Card.UpdateDeadline")) {
+// 	$this->renderPartial('card_deadline');
+// }
 
-if (Yii::app()->user->checkAccess("Card.UpdateCardTag")) {
-	$this->renderPartial('card_tag', ["colors" => $colors, "id" => $id]);
-}
+// if (Yii::app()->user->checkAccess("Card.UpdateCardMember")) {
+// 	$this->renderPartial('card_user',);
+// }
+
+// if (Yii::app()->user->checkAccess("Card.UpdateCardTag")) {
+// 	$this->renderPartial('card_tag', ["colors" => $colors, "id" => $id]);
+// }
+// 
 ?>
 
 

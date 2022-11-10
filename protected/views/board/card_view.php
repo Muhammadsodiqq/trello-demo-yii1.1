@@ -2,26 +2,28 @@
     <div class="modal-dialog" role="document">
 
         <div class="modal-content">
-            <div class="alert alert-danger d-none" id="CardUpdateerror"></div>
+
+            <div class="alert alert-danger d-none" id="error"></div>
             <div class="modal-header">
-                <label for="card_title" class="font-weight-bold d-block">Title:</label>
-                <div class="">
-                    <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
-                        <input type="checkbox" class="ml-2 trigger" name="showhidecheckbox">
-                    <?php } ?>
-                    <div class="showthis show_text form-group">
-                        <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
-                            <input required id="input" type="text" class="form-control" name="showhideinput">
-                        <?php } ?>
-                    </div><br>
-                    <h5 class="modal-title type_text" id="card_title"></h5>
-                </div>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body d-flex ">
                 <div style="min-width: 50%;">
+                    <label for="card_title" class="font-weight-bold d-block">Title:</label>
+                    <div class="d-inline">
+                        <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
+                            <input type="checkbox" class="ml-2 trigger" name="showhidecheckbox">
+                            <?php } ?>
+                            <div class="showthis show_text form-group">
+                                <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
+                                    <input required id="input" type="text" class="form-control" name="showhideinput">
+                                    <?php } ?>
+                                </div><br>
+                                <h5 class="modal-title type_text" id="card_title"></h5>
+                    </div>
                     <label for="card_text" class="font-weight-bold">Izoh:</label>
                     <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
                         <input type="checkbox" class="ml-2 trigger" name="showhidecheckbox">
@@ -39,8 +41,8 @@
 
 
                     <label for="tags" id="tag_label" class="font-weight-bold"></label>
-                        <div id="tags">
-                        </div>
+                    <div id="tags">
+                    </div>
 
                     <label for="tags" id="member_label" class="font-weight-bold"></label>
                     <div id="members">
@@ -48,7 +50,7 @@
                     </div>
                     <?php if (Yii::app()->user->checkAccess("Card.Delete")) { ?>
 
-                    <a href="#" id="card_delete" class="btn btn-danger mt-4">Delete</a>
+                        <a href="#" id="card_delete" class="btn btn-danger mt-4">Delete</a>
                     <?php } ?>
 
                 </div>
@@ -80,13 +82,13 @@
     })
     let btn = document.querySelectorAll("#columnbtn")
     let card_id
-    btn.forEach((e) => {
-        e.addEventListener('click', function(e) {
-            let btn = document.querySelector("#inp-hidden")
-            btn.value = e.target.getAttribute('column_id')
-            column_delete.href = '/column/delete/id/' + e.target.getAttribute('column_id')
-        })
-    })
+    // btn.forEach((e) => {
+    //     e.addEventListener('click', function(e) {
+    //         let btn = document.querySelector("#inp-hidden")
+    //         btn.value = e.target.getAttribute('column_id')
+    //         column_delete.href = '/column/delete/id/' + e.target.getAttribute('column_id')
+    //     })
+    // })
 
     let btn1 = document.querySelectorAll(".taskDiv")
 
@@ -113,9 +115,9 @@
                 card_text.innerText = data.card.description
                 card_title.innerText = data.card.title
                 card_date.innerText = data.card.deadline
-                if(typeof(input) !== 'undefined'){
+                if (typeof(input) !== 'undefined') {
                     input.value = data.card.title;
-                textarea.value = data.card.description;
+                    textarea.value = data.card.description;
                 }
 
                 $("#Card_deadline").val(data.card.deadline)

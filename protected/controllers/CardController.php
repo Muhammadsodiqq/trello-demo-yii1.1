@@ -7,20 +7,37 @@ class CardController extends Controller
     {
         try {
             $this->checkAjax('Card.View');
-            $card = $this->loadModel($id);
+            // $model = new Cards;
+            $model = $this->loadModel($id);
+
             $cardTags = CardTags::model()->with('tag')->findAll("card_id = :card_id", ["card_id" => $id]);
             $card_members = CardMembers::model()->with('user')->findAll("card_id = :card_id", ["card_id" => $id]);
-            echo CJSON::encode([
-                "card" => $card,
-                "tags" => $this->convertModelToArray($cardTags),
-                "card_members" => $this->convertModelToArray($card_members)
-            ]);
-        } catch (Exception $error) {
-            $httpVersion = Yii::app()->request->getHttpVersion();
-            header("HTTP/$httpVersion 400");
+
+
+            if (isset($_POST['Cards'])) {
+                $model->title = @$_POST['Cards']['title'];
+                $model->description = @$_POST['Cards']['description'];
+                if ($model->save()) {
+                    echo CJSON::encode([
+                        'ok' => true,
+                        "data" => $model
+                    ]);
+                    exit;
+                }
+            }
 
             echo CJSON::encode([
                 'ok' => false,
+                "model" => $this->renderPartial("_view_card", [
+                    "model" => $model,
+                    // "card" => $model,
+                    "tags" => $cardTags,
+                    "card_members" => $card_members
+                ], true, true),
+            ]);
+        } catch (Exception $error) {
+            echo CJSON::encode([
+                'ok' => 'error',
                 "msg" => $error->getMessage(),
             ]);
         }
@@ -36,39 +53,6 @@ class CardController extends Controller
     }
 
 
-    public function actionUpdate()
-    {
-
-        try {
-            $this->checkAjax('Card.Update');
-
-            $model = $this->loadModel($_POST['card_id']);
-
-            if (!$model) {
-                throw new Exception("invalid card id");
-            }
-
-            $model->title = @$_POST['title'];
-            $model->description = @$_POST['description'];
-
-            if (!$model->save()) {
-                $this->getError($model);
-            }
-
-            echo CJSON::encode([
-                'ok' => true,
-                "data" => $model,
-            ]);
-        } catch (Exception $error) {
-            $httpVersion = Yii::app()->request->getHttpVersion();
-            header("HTTP/$httpVersion 400");
-
-            echo CJSON::encode([
-                'ok' => false,
-                "msg" => $error->getMessage(),
-            ]);
-        }
-    }
 
     public function actionUpdateDeadline()
     {
@@ -201,35 +185,61 @@ class CardController extends Controller
         }
     }
 
-    public function actionCreate()
+    public function actionCreate($column_id)
     {
         $transaction = Yii::app()->db->beginTransaction();
 
         try {
-            if (isset($_POST['Card'])) {
-                $model = new Cards;
-                $model->title = $_POST['Card']['title'];
-                $model->description = $_POST['Card']['description'];
-                $model->column_id = $_POST['Card']['column_id'];
-
+            $this->checkAjax('Card.Create');
+            $user_id = Yii::app()->user->id;
+            $model = new Cards;
+            if (isset($_POST['Cards'])) {
+                $model->attributes = $_POST['Cards'];
+                $model->column_id = $column_id;
+                $isExists = Columns::model()->findByPk($column_id);
+                $Board = Boards::model()->findByPk(@$isExists->board_id);
+                $isBoardmember = BoardMembers::model()->find('board_id = :board_id AND user_id = :user_id', ["board_id" => @$Board->id, 'user_id' => $user_id]);
+                if ((!@$isExists->board->user_id == $user_id) && !$isBoardmember) {
+                    throw new Exception("you don't have acces for this board");
+                }
 
                 if ($model->save()) {
                     if (!Yii::app()->user->checkAccess("admin")) {
                         $card_member = new CardMembers;
 
                         $card_member['card_id'] = $model->id;
-                        $card_member['user_id'] = Yii::app()->user->id;
+                        $card_member['user_id'] = $user_id;
                         if ($card_member->save()) {
                             $transaction->commit();
 
-                            $this->redirect(Yii::app()->request->urlReferrer);
+                            echo CJSON::encode([
+                                'ok' => true,
+                                "data" => $model
+                            ]);
+                            return;
                         }
                     }
+                    $transaction->commit();
+
+                    echo CJSON::encode([
+                        'ok' => true,
+                        "data" => $model
+                    ]);
+                    return;
                 }
             }
+
+            echo CJSON::encode([
+                'ok' => false,
+                "model" => $this->renderPartial("_form_card", ["model" => $model], true, true),
+            ]);
         } catch (Exception $error) {
             $transaction->rollback();
-            $this->redirect(Yii::app()->request->urlReferrer);
+
+            echo CJSON::encode([
+                'ok' => "error",
+                "msg" => $error->getMessage(),
+            ]);
         }
     }
 
