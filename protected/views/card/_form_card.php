@@ -28,9 +28,9 @@
 
 
     <div class="row">
-        <?php echo $form->labelEx($model, 'title'); ?>
+        <?php echo $form->labelEx($model, 'description'); ?>
         <?php echo $form->textArea($model, 'description', array('size' => 60, 'maxlength' => 255, "class" => "form-control")); ?>
-        <?php echo $form->error($model, 'title'); ?>
+        <?php echo $form->error($model, 'description'); ?>
     </div>
 
     <div class="row buttons">

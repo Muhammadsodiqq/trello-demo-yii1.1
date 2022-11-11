@@ -31,13 +31,22 @@ class CardMembers extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('card_id, user_id', 'required'),
+			array('card_id, user_id','uniqueOn', 'required'),
 			array('card_id, user_id', 'numerical', 'integerOnly'=>true),
 			array('created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, card_id, user_id, created_at', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function uniqueOn($attribute, $params)
+	{
+		$isExsists = $this::model()->find('card_id = :card_id AND user_id = :user_id',["card_id" => $this->card_id,"user_id" => $this->user_id]);
+
+		if($isExsists){
+			$this->addError($attribute, 'this teg already exsists on this board');
+		}
 	}
 
 	/**

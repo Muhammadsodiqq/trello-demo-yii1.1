@@ -8,7 +8,9 @@
         // See class documentation of CActiveForm for details on this.
         // 'enableAjaxValidation' => true,
         'enableClientValidation' => true,
-    )); ?>
+    )); 
+    $date = $model->deadline ? (new DateTime($model->deadline))->format('d.m.Y') : '';  
+    ?>
 
     <p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -46,7 +48,7 @@
                 <?php echo CHtml::button('Save', ['id' => "modal_saver", 'class' => 'd-none']); ?>
             </div>
             <label for="card_date" id="deadline_label" class="font-weight-bold">Muddat:</label>
-            <p class="font-weight-normal" id="card_date"><?= $model->deadline ?></p>
+            <p class="font-weight-normal" id="card_date"><?= $date ?></p>
 
 
             <label for="tags" id="tag_label" class="font-weight-bold">Teglar:</label>
@@ -59,7 +61,7 @@
             <label for="tags" id="member_label" class="font-weight-bold">Userlar:</label>
             <div id="members">
                 <?php foreach ($card_members as $model_member) { ?>
-                    <a class="alert ml-2 alert-info"><?= ${$model_member['user']['username']} ?></a>
+                    <a class="alert ml-2 alert-info"><?= $model_member['user']['username'] ?></a>
                 <?php } ?>
             </div>
             <?php if (Yii::app()->user->checkAccess("Card.Delete")) { ?>
@@ -71,11 +73,11 @@
         <hr>
         <div class=" w-100  m-1">
             <?php if (Yii::app()->user->checkAccess("Card.UpdateDeadline")) { ?>
-                <button type="button" data-toggle="modal" data-target="#mySubModal" class="btn btn-primary m-3 btn-sm">Deadline qo'shish</button>
+                <button type="button" id="adddeadlinbtn" data-toggle="modal" data-target="#mySubModal" class="btn btn-primary m-3 btn-sm">Deadline qo'shish</button>
             <?php } ?>
             <?php if (Yii::app()->user->checkAccess("Card.UpdateCardMember")) { ?>
 
-                <button type="button" data-toggle="modal" id="adduserbtn" data-target="#addUser" class="btn btn-primary m-3 btn-sm">Foydalanuchi qo'shish</button>
+                <button type="button" data-toggle="modal" id="adduserbtn" data-target="#mySubModal" class="btn btn-primary m-3 btn-sm">Foydalanuchi qo'shish</button>
             <?php } ?>
 
             <?php if (Yii::app()->user->checkAccess("Card.UpdateCardTag")) { ?>
@@ -109,6 +111,7 @@
 
 
         function subSend(url, formdata = null, type = null, status = 0) {
+            console.log(type);
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -119,6 +122,7 @@
                     if (data.ok == false) {
                         $("#sub-modal").html(data.model)
                         checkboxClick()
+                        memberCheckboxClick()
                         $("#sub_modal_saver").click(function(e) {
                             e.preventDefault()
                             subSend(url, $("#sub-board-form").serialize(), type, 1)
@@ -128,6 +132,7 @@
                     } else if (data.ok == true) {
                         if (status == 1) {
                             if (type == 'tag') {
+                                $("#sub-modal").html(data.model)
                                 $(".tags_check").append(`
                                 <div class="form-check">
                                     <input class="tag_checkbox form-check-input" type="checkbox" value="${data.data.id}" id="${data.data.id}" checked>
@@ -137,6 +142,10 @@
                                 </div>
                                 `)
                                 checkboxClick()
+                            }   
+                            if(type == 'user'){
+                                console.log('user');
+                                memberCheckboxClick()
                             }
                         }
                     } else if (data.ok == "error") {
@@ -148,16 +157,24 @@
 
             })
         }
-        console.log($('#addtagbtn'));
+        // console.log($('#addtagbtn'));s
 
         $('#addtagbtn').click(function() {
             subSend(`/tag/create/board_id/<?= $model['column']['board_id'] ?>/card_id/<?= $model['id'] ?>`, null, 'tag')
         })
 
+        $('#adduserbtn').click(function() {
+            subSend(`<?php echo Yii::app()->createUrl('Board/GetBoardMembers',['card_id'=>$model['id']]); ?>`, null, 'user')
+        })
+
+        $('#adddeadlinbtn').click(function() {
+            subSend(`<?php echo Yii::app()->createUrl('Card/UpdateDeadline',['card_id'=>$model['id']]); ?>`, null, 'deadline')
+        })
+
 
 
         function checkboxClick() {
-            console.log('k');
+            // console.log('k');
             $(".tag_checkbox").change(function() {
                 let is_delete;
                 if ($(this).is(":checked")) {
@@ -173,9 +190,11 @@
                     url: `<?php echo Yii::app()->createUrl('Tag/TegControl'); ?>`,
                     type: 'POST',
                     data: {
-                        card_id: '<?= $model->id ?>',
-                        tag_id: teg_id,
-                        is_delete
+                        CardTags: {
+                            card_id: '<?= $model->id ?>',
+                            tag_id: teg_id,
+                            is_delete
+                        }
                     },
                     dataType: 'json',
                     beforeSend: function() {
@@ -190,7 +209,6 @@
                             console.log(data.data.id);
                             tags.innerHTML = tags.innerHTML + `<button type="button" tag_id="${data.data.id}" style="background-color: ${data.data.color.name};color:#17505e; " class="btn m-1">${data.data.name}</button>`
                         } else {
-                            document.querySelector("[tag_id ='" + teg_id + "']").remove();
                         }
 
                         setTimeout(function() {
@@ -205,6 +223,62 @@
                         console.log(request.responseJSON);
                         $("#CardTagUpdateerror").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
                         $("#CardTagUpdateerror").removeClass("d-none")
+                    }
+                });
+
+            })
+        }
+
+        function memberCheckboxClick() {
+            console.log('k');
+            $(".member_checkbox").change(function() {
+            console.log('c');
+
+                let is_delete;
+                if ($(this).is(":checked")) {
+                    is_delete = null;
+                } else {
+                    is_delete = true;
+                }
+                // console.log(is_delete);
+                // console.log(this.value);
+
+                let user_id = this.value
+                $.ajax({
+                    url: `<?php echo Yii::app()->createUrl('Board/CardUserControl',['card_id'=>$model['id']]); ?>`,
+                    type: 'POST',
+                    data: {
+                        BoardMember: {
+                            user_id: user_id,
+                            is_delete
+                        }
+                    },
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $(".tag_checkbox").prop("disabled", true);
+                    },
+                    success: function(data) {
+
+                        if(data)
+                        $("#sub_error").addClass("d-none")
+                        $("#teg_alert").removeClass('d-none');
+                        if (data.data) {
+                            console.log(data.data.id);
+                        } else {
+                        }
+
+                        setTimeout(function() {
+                            // $("#addDTag").modal("toggle")
+                            $("#teg_alert").addClass('d-none');
+                            $(".tag_checkbox").prop("disabled", false);
+
+                        }, 1000);
+
+                    },
+                    error: function(request, error) {
+                        console.log(request.responseJSON);
+                        $("#sub_error").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
+                        $("#sub_error").removeClass("d-none")
                     }
                 });
 

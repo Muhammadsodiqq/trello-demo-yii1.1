@@ -21,7 +21,7 @@
 </div>
 
 <!-- get board members -->
-<script>
+<!-- <script>
 	adduserbtn.addEventListener('click', function(e) {
 		e.preventDefault()
 
@@ -84,7 +84,7 @@
 			}
 		});
 	})
-</script>
+</script> -->
 
 
 

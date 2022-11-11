@@ -49,9 +49,11 @@
     <hr>
     <div class="m-2 tags_check" style="min-width: 30%;">
         <h4>Teglar</h4>
-        <?php foreach ($tags as $tag) { ?>
+        <?php foreach ($tags as $tag) { 
+                $cardTeg = CardTags::model()->find("card_id = :card_id AND tag_id = :tag_id",['card_id' => $card_id, 'tag_id' => $tag['id']]);
+            ?>
             <div class="form-check">
-                <input class="tag_checkbox form-check-input" type="checkbox" value="<?= $tag['id'] ?>" id="<?= $tag['id'] ?>" checked>
+                <input class="tag_checkbox form-check-input" type="checkbox" value="<?= $tag['id'] ?>" id="<?= $tag['id'] ?>" <?= $cardTeg ? 'checked' : ''?>>
                 <label class="form-check-label" for="<?= $tag['id'] ?>">
                     <?= $tag->name ?>
                 </label>

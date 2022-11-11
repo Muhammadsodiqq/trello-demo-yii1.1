@@ -35,7 +35,7 @@ class BoardController extends Controller
         return array(
             array(
                 'allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'create', 'update', 'UpdateCardColumn', 'DeleteBoard'),
+                'actions' => array('index', 'view', 'create', 'update', 'UpdateCardColumn', 'DeleteBoard', 'CardUserControl'),
                 'users' => array('@'),
             ),
             array(
@@ -75,27 +75,27 @@ class BoardController extends Controller
             $this->checkAjax('Board.Create');
 
             $model = new Boards;
-            if(isset($_POST['Boards'])){
+            if (isset($_POST['Boards'])) {
                 $model->name = @$_POST['Boards']['name'];
                 $model->user_id = Yii::app()->user->id;
                 if ($model->save()) {
                     echo CJSON::encode([
-						'ok' => true,
-						"data" => $model
-					]);
-					exit;
+                        'ok' => true,
+                        "data" => $model
+                    ]);
+                    exit;
                 }
             }
             echo CJSON::encode([
-				'ok' => false,
-				"model" => $this->renderPartial("_form_board",["model"=>$model],true,true),
-			]);
+                'ok' => false,
+                "model" => $this->renderPartial("_form_board", ["model" => $model], true, true),
+            ]);
         } catch (Exception $error) {
 
             echo CJSON::encode([
-				'ok' => "error",
-				"msg" => $error->getMessage(),
-			]);
+                'ok' => "error",
+                "msg" => $error->getMessage(),
+            ]);
         }
     }
 
@@ -151,32 +151,31 @@ class BoardController extends Controller
     {
         // $this->checkPermission('Board.DeleteBoard', Yii::app()->user->id);
         $model = Boards::model()->findByPk($id);
-        if(!@$model->user_id == Yii::app()->user->id) {
-			Yii::app()->user->setFlash('error', "you don't have acces for delete this");
+        if (!@$model->user_id == Yii::app()->user->id) {
+            Yii::app()->user->setFlash('error', "you don't have acces for delete this");
             $this->redirect(Yii::app()->request->urlReferrer);
-            
         }
         $model->delete();
 
         $this->redirect(Yii::app()->request->urlReferrer);
     }
 
-    public function actionGetBoardMembers()
+    public function actionGetBoardMembers($card_id)
     {
         try {
             $this->checkAjax('Board.GetBoardMembers');
-
+            $model = new CardMembers;
             $member_boards = Yii::app()->db->createCommand('SELECT b.id,b.name,bm.user_id, u.username
 			FROM board_members bm
 			LEFT JOIN boards b
 			ON b.id = bm.board_id
 			LEFT JOIN users u 
 			ON bm.user_id = u.id
-			WHERE b.user_id =:user_id')->bindValue(':user_id', $_POST['id'])->queryAll();
+			WHERE b.user_id =:user_id')->bindValue(':user_id', Yii::app()->user->id)->queryAll();
 
             $arr = [];
             foreach ($member_boards as $board_member) {
-                $card_member = CardMembers::model()->find('user_id = :user_id AND card_id = :card_id', ['user_id' => $board_member['user_id'], 'card_id' => $_POST['card_id']]);
+                $card_member = CardMembers::model()->find('user_id = :user_id AND card_id = :card_id', ['user_id' => $board_member['user_id'], 'card_id' => $card_id]);
                 if ($card_member) {
                     $board_member['is_card_member'] = true;
                 } else {
@@ -185,19 +184,60 @@ class BoardController extends Controller
                 array_push($arr, $board_member);
             }
             echo CJSON::encode([
-                'ok' => true,
-                "data" => $arr,
+                'ok' => false,
+                "model" => $this->renderPartial("_view_card_member", ["model" => $model, 'data' => $arr, 'card_id' => $card_id], true, true),
             ]);
         } catch (Exception $error) {
-            $httpVersion = Yii::app()->request->getHttpVersion();
-            header("HTTP/$httpVersion 400");
 
             echo CJSON::encode([
-                'ok' => false,
+                'ok' => 'error',
                 "msg" => $error->getMessage(),
             ]);
         }
     }
 
+    public function actionCardUserControl($card_id)
+    {
+        try {
+            $this->checkAjax('Board.GetBoardMembers');
+            $model = new CardMembers;
 
+            if (isset($_POST['BoardMember'])) {
+
+                $user = BoardMembers::model()->find('user_id = :user_id', ['user_id' => $_POST['BoardMember']['user_id']]);
+                if ($user['board']['user_id'] != Yii::app()->user->id) {
+                    throw new Exception("invalid member");
+                }
+
+                if (@$_POST['BoardMember']['is_delete'] == true) {
+                    $delete = CardMembers::model()->find('card_id = :card_id AND user_id = :user_id', ['card_id' => $card_id, 'user_id' => $_POST['BoardMember']['user_id']])->delete();
+
+                    echo CJSON::encode([
+                        'ok' => true,
+                        "data" => null
+                    ]);
+                    exit;
+                } else {
+                    $model['card_id'] = $card_id;
+                    $model['user_id'] = $_POST['BoardMember']['user_id'];
+
+                    if (!$model->save()) {
+                        $this->getError($model);
+                    }
+                    echo CJSON::encode([
+                        'ok' => true,
+                        "data" => $model
+                    ]);
+                    exit;
+                }
+            } else {
+                throw new Exception('invalid request');
+            }
+        } catch (Exception $error) {
+            echo CJSON::encode([
+                'ok' => 'error',
+                "msg" => $error->getMessage(),
+            ]);
+        }
+    }
 }

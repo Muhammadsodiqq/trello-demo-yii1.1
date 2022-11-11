@@ -54,33 +54,46 @@ class CardController extends Controller
 
 
 
-    public function actionUpdateDeadline()
+    public function actionUpdateDeadline($card_id)
     {
         try {
             $this->checkAjax('Card.UpdateDeadline');
 
-            $model = $this->loadModel($_POST['card_id']);
+            $model = $this->loadModel($card_id);
 
             if (!$model) {
                 throw new Exception("invalid card id");
             }
+            if (isset($_POST['Cards'])) {
+                // var_dump($_POST['Cards']);die;
 
-            $model->deadline = $_POST['deadline'] ?? $model->deadline;
+                $model->attributes = $_POST['Cards'];
 
-            if (!$model->save()) {
-                $this->getError($model);
+                if(empty($model->deadline))
+                    $model->deadline = null;
+                    
+                if ($model->save()) {
+                    echo CJSON::encode([
+                        'ok' => true,
+                        "data" => $model
+                    ]);
+                }
             }
 
-            echo CJSON::encode([
-                'ok' => true,
-                "data" => $model,
-            ]);
-        } catch (Exception $error) {
-            $httpVersion = Yii::app()->request->getHttpVersion();
-            header("HTTP/$httpVersion 400");
 
             echo CJSON::encode([
                 'ok' => false,
+                "model" => $this->renderPartial("_deadline_form", [
+                    "model" => $model,
+                ], true, true),
+            ]);
+            // echo CJSON::encode([
+            //     'ok' => true,
+            //     "data" => $model,
+            // ]);
+        } catch (Exception $error) {
+            echo CJSON::encode([
+                'ok' => "error",
                 "msg" => $error->getMessage(),
             ]);
         }
