@@ -2,13 +2,31 @@
 
 class TagController extends Controller
 {
+
+	/**
+	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 */
+	public $layout = '//layouts/column2';
+
+	/**
+	 * @return array action filters
+	 */
+	public function filters()
+	{
+		return array(
+			'rights', // perform access control for CRUD operations
+		);
+	}
+
+
 	public function actionCreate($board_id, $card_id)
 	{
 		$transaction = Yii::app()->db->beginTransaction();
 
 		try {
 			$board = Boards::model()->findByPk($board_id);
-			
+
 			if (@$board->user_id !== Yii::app()->user->id) {
 				throw new Exception('access denied board');
 			}

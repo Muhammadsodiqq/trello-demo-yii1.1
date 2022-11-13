@@ -20,11 +20,11 @@
         <div style="min-width: 50%;">
             <label for="card_title" class="font-weight-bold d-block">Title:</label>
             <div class="d-inline">
-                <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
+                <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
                     <input type="checkbox" class="ml-2 trigger">
                 <?php } ?>
                 <div class="row showthis show_text form-group">
-                    <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
+                    <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
                         <?php echo $form->labelEx($model, 'title'); ?>
                         <?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 255, "class" => "form-control", "id" => 'input',)); ?>
                         <?php echo $form->error($model, 'title'); ?>
@@ -33,11 +33,11 @@
                 <h5 class="modal-title type_text" id="card_title"><?= $model->title ?></h5>
             </div>
             <label for="card_text" class="font-weight-bold">Izoh:</label>
-            <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
+            <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
                 <input type="checkbox" class="ml-2 trigger">
             <?php } ?>
             <div class="row showthis show_area form-group">
-                <?php if (Yii::app()->user->checkAccess("Card.Update")) { ?>
+                <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
                     <?php echo $form->labelEx($model, 'description'); ?>
                     <?php echo $form->textArea($model, 'description', array('size' => 60, 'maxlength' => 255, "class" => "form-control", 'id' => 'textarea', 'value' => $model->description)); ?>
                     <?php echo $form->error($model, 'description'); ?>
@@ -148,6 +148,8 @@
                                 memberCheckboxClick()
                             }
                         }
+                        console.log($('#sub-board-form_es_'));
+                        $('#sub-board-form_es_').addClass("d-none")
                     } else if (data.ok == "error") {
                         $("#sub_error").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
                         $("#sub_error").removeClass("d-none")

@@ -113,11 +113,15 @@ $is_own = Yii::app()->user->checkAccess("");
 
 <script>
 	$('#myModal').on('hidden.bs.modal', function() {
+		console.log('frfr');
 		$('body').removeClass('modal-open');
 		$('.modal-backdrop').remove();
 		$("#error").addClass("d-none")
-
 	})
+
+	$('#myModal').on('shown.bs.modal', function() {
+		$(this).css("z-index", parseInt($('.modal-backdrop').css('z-index')) + 1);
+	});
 
 	function send(url, formdata = null, type = null, status = 0) {
 		$.ajax({
@@ -127,7 +131,7 @@ $is_own = Yii::app()->user->checkAccess("");
 			dataType: 'json',
 			success: function(data) {
 
-				
+
 				if (data.ok == false) {
 					$("#main-modal").html(data.model)
 
@@ -168,16 +172,17 @@ $is_own = Yii::app()->user->checkAccess("");
 							$(".showthis").css('display', 'none')
 							$(".trigger").prop('checked', false)
 							$('#modal_saver').addClass("d-none")
-							
+
 						}
 					}
-
+					console.log($('#board-form_es_'));
+					$('#board-form_es_').addClass("d-none")
 				} else if (data.ok == "error") {
 					$("#error").html(`<strong>Error!</strong> ${request.responseJSON.msg}`)
 					$("#error").removeClass("d-none")
 				}
 
-				
+
 			},
 			error: function(request, error) {
 				console.log($("#error"));
