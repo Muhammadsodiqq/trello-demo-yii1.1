@@ -22,18 +22,25 @@ class ColumnController extends Controller
 
 	public function actionDelete($id)
 	{
-		$model = Columns::model()->findByPk($id)->delete();
+		$model = Columns::model()->findByPk($id);
+		if (@$model['column']['board']['user_id'] != Yii::app()->user->id) {
+			throw new Exception('access denied');
+		}
+		$model->delete();
 
 		$this->redirect(Yii::app()->request->urlReferrer);
 	}
 
 	public function actionCreate($board_id)
 	{
-		// header('Content-type: application/json');
 
 		try {
-			$this->checkAjax('Column.Create');
+			$this->checkAjax();
+			$isOwn = Boards::model()->findByPk($board_id);
 
+			if (@$isOwn->user_id != Yii::app()->user->id) {
+				throw new Exception('access denied');
+			}
 			$model = new Columns;
 			$this->performAjaxValidation($model);
 			if (isset($_POST['Columns'])) {

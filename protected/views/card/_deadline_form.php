@@ -16,6 +16,7 @@
         'enableClientValidation' => true,
     ));
 
+     echo $form->errorSummary($model); 
     $date = (new DateTime($model->deadline))->format('d.m.Y');
     $this->widget('zii.widgets.jui.CJuiDatePicker', array(
         'name' => 'Cards[deadline]',

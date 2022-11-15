@@ -9,15 +9,15 @@ class UserController extends Controller
 	 */
 	public $layout = '//layouts/column2';
 
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'rights', // perform access control for CRUD operations
-		);
-	}
+	// /**
+	//  * @return array action filters
+	//  */
+	// public function filters()
+	// {
+	// 	return array(
+	// 		'rights', // perform access control for CRUD operations
+	// 	);
+	// }
 
 
 	private $_identity;

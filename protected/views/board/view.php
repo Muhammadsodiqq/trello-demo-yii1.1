@@ -80,7 +80,6 @@ $is_own = Yii::app()->user->checkAccess("");
 
 
 
-<?php if (Yii::app()->user->checkAccess("Column.Create")) { ?>
 
 	<!-- Modal -->
 
@@ -103,12 +102,10 @@ $is_own = Yii::app()->user->checkAccess("");
 		</div>
 	</div>
 
-<?php } ?>
 
 <?php if (Yii::app()->user->checkAccess("Card.Create")) {
 
 	$this->renderPartial('card_tag');
-	$this->renderPartial('card_user',);
 } ?>
 
 <script>

@@ -68,7 +68,7 @@ class Controller extends RController
 		return $result;
 	}
 
-	public function checkAjax($access_name)
+	public function checkAjax()
 	{
 		if (!Yii::app()->request->isAjaxRequest) {
 			throw new Exception('Invalid request');
@@ -76,15 +76,6 @@ class Controller extends RController
 
 	}
 
-	public function checkPermission($access_name, $user_id)
-	{
-		$permission = Yii::app()->getAuthManager()->checkAccess($access_name, $user_id, []);
-		if (!$permission) {
-			throw new Exception('this user has not permission!');
-		}
-
-		return true;
-	}
 
 	public function getError($model)
 	{

@@ -4,21 +4,30 @@
 $this->breadcrumbs = array(
 	'Board',
 );
+// var_dump(Yii::app()->user->hasFlash('error'));	
 ?>
 <?php if (Yii::app()->user->hasFlash('error')) { ?>
-		<div class="alert alert-danger" role="alert">
-			 <strong><?php echo Yii::app()->user->getFlash('error'); ?></strong>
-		</div>
-	<?php } ?>
-<h1>Sizning doskalaringiz</h1>
+	<div class="alert alert-danger" role="alert">
+		<strong><?php echo Yii::app()->user->getFlash('error'); ?></strong>
+	</div>
+<?php } ?>
+<?php if (Yii::app()->user->checkAccess("admin")) { ?>
+
+	<h1>Sizning doskalaringiz</h1>
+<?php } ?>
+
 <div class="list-group" id="list_board">
-	<?php foreach ($user_boards as $user_board) { ?>
-		<div></div>
-		<a href="/board/view/id/<?= $user_board->id ?>" class="list-group-item list-group-item-action d-flex justify-content-between">
-			<?= $user_board->name ?>
-			<a href="<?php echo Yii::app()->createUrl('Board/DeleteBoard', ["id" => $user_board->id]); ?>" class="d-inline-block btn btn-danger btn-sm">Delete</a>
-		</a>
-	<?php } ?>
+	<?php foreach ($boards as $board) {
+		if ($board['status'] == 1) {
+	?>
+
+			<div></div>
+			<a href="/board/view/id/<?= $board['id'] ?>" class="list-group-item list-group-item-action d-flex justify-content-between">
+				<?= $board['name'] ?>
+				<a href="<?php echo Yii::app()->createUrl('Board/DeleteBoard', ["id" => $board['id']]); ?>" class="d-inline-block btn btn-danger btn-sm">Delete</a>
+			</a>
+	<?php }
+	} ?>
 </div>
 <?php if (Yii::app()->user->checkAccess("Board.Create")) { ?>
 
@@ -27,12 +36,15 @@ $this->breadcrumbs = array(
 	</button>
 <?php } ?>
 <div class="list-group">
-	<h3><?= !$member_boards ? "" : "Siz ulangan do'skalar" ?></h3>
-	<?php foreach ($member_boards as $member_board) { ?>
-		<a href="/board/view/id/<?= $member_board['id'] ?>" class="list-group-item list-group-item-action">
-			<?= $member_board['name'] ?>
-		</a>
-	<?php } ?>
+	<h3><?= !$boards ? "" : "Siz ulangan do'skalar" ?></h3>
+	<?php foreach ($boards as $board) {
+		if ($board['status'] == 0) {
+	?>
+			<a href="/board/view/id/<?= $board['id'] ?>" class="list-group-item list-group-item-action">
+				<?= $board['name'] ?>
+			</a>
+	<?php }
+	} ?>
 </div>
 
 
@@ -70,6 +82,7 @@ $this->breadcrumbs = array(
 			success: function(data) {
 				if (data.ok == false) {
 					$("#main-modal").html(data.model)
+					console.log($("#main-modal"));
 
 					$("#modal_saver").click(function(e) {
 						console.log(
@@ -102,7 +115,7 @@ $this->breadcrumbs = array(
 				}
 			},
 			error: function(request, error) {
-				console.log($("#error"));
+				console.log(error);
 			}
 		});
 	}

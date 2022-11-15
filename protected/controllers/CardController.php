@@ -27,9 +27,12 @@ class CardController extends Controller
             // $model = new Cards;
             $model = $this->loadModel($id);
 
+            // if($model['column']['board']['user_id'] != Yii::app()->user->id){
+            //     throw new Exception('access denied');
+            // }
+
             $cardTags = CardTags::model()->with('tag')->findAll("card_id = :card_id", ["card_id" => $id]);
             $card_members = CardMembers::model()->with('user')->findAll("card_id = :card_id", ["card_id" => $id]);
-
 
             if (isset($_POST['Cards'])) {
                 $model->title = @$_POST['Cards']['title'];
@@ -47,7 +50,6 @@ class CardController extends Controller
                 'ok' => false,
                 "model" => $this->renderPartial("_view_card", [
                     "model" => $model,
-                    // "card" => $model,
                     "tags" => $cardTags,
                     "card_members" => $card_members
                 ], true, true),
@@ -62,14 +64,15 @@ class CardController extends Controller
 
     public function actionDelete($id)
     {
-        $this->checkPermission('Card.Delete', Yii::app()->user->id);
+        $isOwn = $this->loadModel($id);
+        if($isOwn['column']['board']['user_id'] != Yii::app()->user->id){
+            throw new Exception('access denied');
+        }
 
         $this->loadModel($id)->delete();
 
         $this->redirect(Yii::app()->request->urlReferrer);
     }
-
-
 
     public function actionUpdateDeadline($card_id)
     {
@@ -78,11 +81,10 @@ class CardController extends Controller
 
             $model = $this->loadModel($card_id);
 
-            if (!$model) {
-                throw new Exception("invalid card id");
+            if ($model['column']['board']['user_id'] != Yii::app()->user->id) {
+                throw new Exception("access denied");
             }
             if (isset($_POST['Cards'])) {
-                // var_dump($_POST['Cards']);die;
 
                 $model->attributes = $_POST['Cards'];
 
@@ -97,17 +99,13 @@ class CardController extends Controller
                 }
             }
 
-
             echo CJSON::encode([
                 'ok' => false,
                 "model" => $this->renderPartial("_deadline_form", [
                     "model" => $model,
                 ], true, true),
             ]);
-            // echo CJSON::encode([
-            //     'ok' => true,
-            //     "data" => $model,
-            // ]);
+
         } catch (Exception $error) {
             echo CJSON::encode([
                 'ok' => "error",
@@ -121,12 +119,12 @@ class CardController extends Controller
         $transaction = Yii::app()->db->beginTransaction();
 
         try {
-            $this->checkAjax('Card.UpdateCardMember');
+            $this->checkAjax();
 
             $model = $this->loadModel($_POST['card_id']);
 
-            if (!$model) {
-                throw new Exception("invalid card id");
+            if (@$model['column']['board']['user_id'] != Yii::app()->user->id) {
+                throw new Exception("access denied");
             }
 
             CardMembers::model()->deleteAll('card_id = :card_id', ['card_id' => $_POST['card_id']]);
@@ -165,62 +163,12 @@ class CardController extends Controller
         }
     }
 
-    public function actionUpdateCardTag()
-    {
-        $transaction = Yii::app()->db->beginTransaction();
-
-        try {
-            $this->checkAjax('Card.UpdateCardTag');
-
-            $model = $this->loadModel($_POST['card_id']);
-
-            if (!$model) {
-                throw new Exception("invalid card id");
-            }
-
-            if (isset($_POST['tag_id'])) {
-                CardTags::model()->deleteAll('card_id = :card_id AND tag_id = :tag_id', ['card_id' => $_POST['card_id'], "tag_id" => $_POST['tag_id']]);
-
-                $tag = Tags::model()->findByPk($_POST['tag_id']);
-                if (!$tag) {
-                    throw new Exception("invalid tag");
-                }
-                $card_tags = new CardTags;
-
-                $card_tags['card_id'] = $_POST['card_id'];
-                $card_tags['tag_id'] = $_POST['tag_id'];
-                if (!$card_tags->save()) {
-                    $this->getError($card_tags);
-                }
-            }
-
-            $cardTags = CardTags::model()->with('tag')->findAll("card_id = :card_id", ["card_id" => $id]);
-
-            $transaction->commit();
-
-            echo CJSON::encode([
-                'ok' => true,
-                "data" => $this->convertModelToArray($cardTags),
-            ]);
-        } catch (Exception $error) {
-            $transaction->rollback();
-
-            $httpVersion = Yii::app()->request->getHttpVersion();
-            header("HTTP/$httpVersion 400");
-
-            echo CJSON::encode([
-                'ok' => false,
-                "msg" => $error->getMessage(),
-            ]);
-        }
-    }
-
     public function actionCreate($column_id)
     {
         $transaction = Yii::app()->db->beginTransaction();
 
         try {
-            $this->checkAjax('Card.Create');
+            $this->checkAjax();
             $user_id = Yii::app()->user->id;
             $model = new Cards;
             if (isset($_POST['Cards'])) {

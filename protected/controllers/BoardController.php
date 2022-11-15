@@ -27,24 +27,26 @@ class BoardController extends Controller
         $id = Yii::app()->user->id;
         $user = Users::model()->findByPk($id);
 
-        $user_boards = Boards::model()->findAll('user_id = :user_id', [':user_id' => $id]);
 
-        $member_boards = Yii::app()->db->createCommand('SELECT b.id,b.name,b.user_id
+        $boards = Yii::app()->db->createCommand('SELECT b.id,b.name,b.user_id ,0 as status
 												FROM board_members bm
-												LEFT JOIN boards b
+												INNER JOIN boards b
 												ON b.id = bm.board_id
-												WHERE bm.user_id =:user_id')->bindValue(':user_id', $id)->queryAll();
+								    			WHERE bm.user_id =:user_id
+                                                UNION ALL SELECT id, name, user_id, 1 as status
+                                                FROM boards WHERE user_id = :user_id
+                                                ')->bindValue(':user_id', $id)->queryAll();
 
+        // var_dump($boards);die;
         $this->render('index', [
-            'user_boards' => $user_boards,
-            'member_boards' => $member_boards,
+            'boards' => $boards,
         ]);
     }
 
     public function actionCreate()
     {
         try {
-            $this->checkAjax('Board.Create');
+            $this->checkAjax();
 
             $model = new Boards;
             if (isset($_POST['Boards'])) {
@@ -73,7 +75,12 @@ class BoardController extends Controller
 
     public function actionView($id)
     {
+        $isOwn = Boards::model()->findByPk($id);
+        $isBoardmember = BoardMembers::model()->find('board_id = :board_id AND user_id = :user_id', ["board_id" => @$isOwn->id, 'user_id' => Yii::app()->user->id]);
 
+        if ((@$isOwn->user_id != Yii::app()->user->id) || !$isBoardmember) {
+            throw new Exception('access denied');
+        }
         $columns = Columns::model()->byid()->with([
             'cards' => [
                 "order" => "cards.id ASC",
@@ -99,16 +106,15 @@ class BoardController extends Controller
     public function actionUpdateCardColumn($column_id)
     {
         try {
-            $this->checkAjax('Board.UpdateCardColumn');
-            $data = $_POST;
+            $this->checkAjax();
 
-            $model = Cards::model()->findByPk($data["card_id"]);
-
-            if (!@$model) {
-                throw new Exception('invalid card');
+            $model = Cards::model()->findByPk($_POST["card_id"]);
+            $isOwn = Boards::model()->findByPk($model['column']['board_id']);
+            if (!@$isOwn->user_id == Yii::app()->user->id) {
+                throw new Exception('access denied');
             }
 
-            $model->column_id = $data["column_id"];
+            $model->column_id = $_POST["column_id"];
             $model->update();
 
             echo CJSON::encode([
@@ -121,7 +127,6 @@ class BoardController extends Controller
 
     public function actionDeleteBoard($id)
     {
-        // $this->checkPermission('Board.DeleteBoard', Yii::app()->user->id);
         $model = Boards::model()->findByPk($id);
         if (!@$model->user_id == Yii::app()->user->id) {
             Yii::app()->user->setFlash('error', "you don't have acces for delete this");
@@ -135,7 +140,7 @@ class BoardController extends Controller
     public function actionGetBoardMembers($card_id)
     {
         try {
-            $this->checkAjax('Board.GetBoardMembers');
+            $this->checkAjax();
             $model = new CardMembers;
             $member_boards = Yii::app()->db->createCommand('SELECT b.id,b.name,bm.user_id, u.username
 			FROM board_members bm
@@ -170,8 +175,10 @@ class BoardController extends Controller
 
     public function actionCardUserControl($card_id)
     {
+        $transaction = Yii::app()->db->beginTransaction();
+
         try {
-            $this->checkAjax('Board.GetBoardMembers');
+            $this->checkAjax();
             $model = new CardMembers;
 
             if (isset($_POST['BoardMember'])) {
@@ -183,6 +190,7 @@ class BoardController extends Controller
 
                 if (@$_POST['BoardMember']['is_delete'] == true) {
                     $delete = CardMembers::model()->find('card_id = :card_id AND user_id = :user_id', ['card_id' => $card_id, 'user_id' => $_POST['BoardMember']['user_id']])->delete();
+                    $transaction->commit();
 
                     echo CJSON::encode([
                         'ok' => true,
@@ -196,6 +204,8 @@ class BoardController extends Controller
                     if (!$model->save()) {
                         $this->getError($model);
                     }
+                    $transaction->commit();
+
                     echo CJSON::encode([
                         'ok' => true,
                         "data" => $model
@@ -203,9 +213,13 @@ class BoardController extends Controller
                     exit;
                 }
             } else {
+                $transaction->rollback();
+
                 throw new Exception('invalid request');
             }
         } catch (Exception $error) {
+            $transaction->rollback();
+
             echo CJSON::encode([
                 'ok' => 'error',
                 "msg" => $error->getMessage(),

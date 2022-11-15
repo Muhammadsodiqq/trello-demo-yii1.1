@@ -10,6 +10,8 @@
         'enableClientValidation' => true,
     )); 
     $date = $model->deadline ? (new DateTime($model->deadline))->format('d.m.Y') : '';  
+
+
     ?>
 
     <p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -20,11 +22,11 @@
         <div style="min-width: 50%;">
             <label for="card_title" class="font-weight-bold d-block">Title:</label>
             <div class="d-inline">
-                <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
+                <?php if (Yii::app()->user->checkAccess("admin")) { ?>
                     <input type="checkbox" class="ml-2 trigger">
                 <?php } ?>
                 <div class="row showthis show_text form-group">
-                    <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
+                    <?php if (Yii::app()->user->checkAccess("admin")) { ?>
                         <?php echo $form->labelEx($model, 'title'); ?>
                         <?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 255, "class" => "form-control", "id" => 'input',)); ?>
                         <?php echo $form->error($model, 'title'); ?>
@@ -33,11 +35,11 @@
                 <h5 class="modal-title type_text" id="card_title"><?= $model->title ?></h5>
             </div>
             <label for="card_text" class="font-weight-bold">Izoh:</label>
-            <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
+            <?php if (Yii::app()->user->checkAccess("admin")) { ?>
                 <input type="checkbox" class="ml-2 trigger">
             <?php } ?>
             <div class="row showthis show_area form-group">
-                <?php if (Yii::app()->user->checkAccess("Card.View")) { ?>
+                <?php if (Yii::app()->user->checkAccess("admin")) { ?>
                     <?php echo $form->labelEx($model, 'description'); ?>
                     <?php echo $form->textArea($model, 'description', array('size' => 60, 'maxlength' => 255, "class" => "form-control", 'id' => 'textarea', 'value' => $model->description)); ?>
                     <?php echo $form->error($model, 'description'); ?>

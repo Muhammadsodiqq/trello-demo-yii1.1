@@ -37,14 +37,16 @@ class Cards extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, description, column_id', 'required'),
-			array('column_id', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>255),
-			array('deadline, created_at', 'safe'),
+			array('column_id', 'numerical', 'integerOnly' => true),
+			array('title', 'length', 'max' => 255),
+			array('deadline', 'date', 'format' => 'd.m.Y'),
+			array('created_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, description, deadline, column_id, created_at', 'safe', 'on'=>'search'),
+			array('id, title, description, deadline, column_id, created_at', 'safe', 'on' => 'search'),
 		);
 	}
+
 
 	/**
 	 * @return array relational rules.
@@ -91,17 +93,17 @@ class Cards extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('deadline',$this->deadline,true);
-		$criteria->compare('column_id',$this->column_id);
-		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('title', $this->title, true);
+		$criteria->compare('description', $this->description, true);
+		$criteria->compare('deadline', $this->deadline, true);
+		$criteria->compare('column_id', $this->column_id);
+		$criteria->compare('created_at', $this->created_at, true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
@@ -111,7 +113,7 @@ class Cards extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return Cards the static model class
 	 */
-	public static function model($className=__CLASS__)
+	public static function model($className = __CLASS__)
 	{
 		return parent::model($className);
 	}

@@ -97,7 +97,7 @@ class TagController extends Controller
 		$transaction = Yii::app()->db->beginTransaction();
 
 		try {
-			$this->checkAjax('Tag.TegControl');
+			$this->checkAjax();
 			// var_dump($_POST['CardTags']);
 			if (isset($_POST['CardTags'])) {
 				if (@$_POST['CardTags']['is_delete'] == true) {

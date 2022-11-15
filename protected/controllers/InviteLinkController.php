@@ -28,7 +28,6 @@ class InviteLinkController extends Controller
 		Yii::app()->request->cookies['tokenLink'] = $cookie;
 
 		if (Yii::app()->user->isGuest) {
-
 			$this->redirect('/user/login');
 		}
 		$invite = InviteLinks::model()->find('token = :token', ['token' => $token]);
@@ -60,6 +59,11 @@ class InviteLinkController extends Controller
 	{
 		$model = new InviteLinks;
 
+		$isOwn = Boards::model()->findByPk($board_id);
+
+		if ($isOwn->user_id != Yii::app()->user->id) {
+			throw new Exception('access denied');
+		}
 
 		$oldLink = InviteLinks::model()->find('board_id = :board_id', ['board_id' => $board_id]);
 
